@@ -49,6 +49,9 @@
     <Compile Include="Classes\Gameplay.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\PlayerAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\PlayerAnimationTypes.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Flowereater.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeleton.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Turtle.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\Hero.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\Player.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Entity.cs" />
@@ -107,6 +110,24 @@
     <Folder Include="Classes\Control\" />
     <Folder Include="Classes\Logic\Environment\" />
     <Folder Include="Classes\Logic\Levels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cobsllestone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dirt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Grass.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sand2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
