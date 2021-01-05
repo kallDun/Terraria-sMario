@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Terraria_sMario.Classes.Logic.Objects.Creatures
+namespace Terraria_sMario.Classes.Logic.Objects
 {
-    class Creature
+    enum EffectTypes
     {
-
-
-
+        Fire, Ice, Poisoning, Stunning, Curse, Blessing
     }
 }
