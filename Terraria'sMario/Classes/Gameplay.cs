@@ -1,6 +1,6 @@
-﻿
-using System;
+﻿using System;
 using System.Drawing;
+using System.Windows.Forms;
 using Terraria_sMario.Classes.Logic.Levels;
 
 namespace Terraria_sMario.Classes
@@ -21,5 +21,7 @@ namespace Terraria_sMario.Classes
         public void checkCollision() => activeLevel.CheckCollision();
 
         public void checkField() => activeLevel.updateFieldOfView();
+
+        public void KeyboardListener(KeyEventArgs e) => activeLevel.KeyboardListener(e);
     }
 }

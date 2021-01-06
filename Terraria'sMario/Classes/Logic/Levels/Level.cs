@@ -132,6 +132,18 @@ namespace Terraria_sMario.Classes.Logic.Levels
             {
                 player.Jump();
             }
+            if (ControlKeyboard.checkOnPressedRight(e))
+            {
+                offsetPositionX(-5);
+            }
+            if (ControlKeyboard.checkOnPressedLeft(e))
+            {
+                offsetPositionX(5);
+            }
+            if (ControlKeyboard.checkOnPressedTop(e))
+            {
+                player.Jump();
+            }
         }
 
         // generate blocks methods

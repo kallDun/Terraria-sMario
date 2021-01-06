@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
 {
@@ -16,7 +13,17 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             health = 100;
 
             drawingImage = Resources.sherifreworked;
+            animations = new List<PlayerAnimation>
+            {
+                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Walking),
+                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Standing),
+                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Running),
+                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Jumping),
+                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Hitting),
+                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Dead)
+            };  
         }
+
 
     }
 }

@@ -13,11 +13,19 @@ namespace Terraria_sMario
 {
     public partial class Form1 : Form
     {
-        public Form1() => InitializeComponent();
+        public Form1()
+        { 
+            InitializeComponent();
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
+        }
 
         private Gameplay gameplay;
         private Graphics g;
 
+        void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            gameplay.KeyboardListener(e);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             gameplay = new Gameplay();

@@ -8,7 +8,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
     {
         public List<PlayerAnimation> animations { get; protected set; }
 
-
         public override void Draw(Graphics g)
         {
             if (!isRendered) return;
