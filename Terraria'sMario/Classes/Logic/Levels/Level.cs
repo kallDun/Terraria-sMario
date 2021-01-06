@@ -5,9 +5,9 @@ using System.Windows.Forms;
 using Terraria_sMario.Classes.Control;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
-using Terraria_sMario.Classes.Logic.Services;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
 namespace Terraria_sMario.Classes.Logic.Levels
@@ -20,25 +20,17 @@ namespace Terraria_sMario.Classes.Logic.Levels
         
         public List<ParentObject> objectsInTheView { get; protected set; } = new List<ParentObject> { };
 
-        public Player player { get; protected set; }
+        public List<Player> players { get; protected set; } = new List<Player> { };
 
         public Size fieldSize { get; protected set; }
 
-        // character offset
+        // field offset
 
-        public void offsetPositionX(int offSetX)
+        public void offsetAllObjectsPositionX_Y(int offSetX, int offSetY)
         {
             foreach (var obj in levelObjects)
             {
-                if (obj != player) obj.offsetPositionX(offSetX);
-            }
-        }
-
-        public void offsetPositionY(int offSetY)
-        {
-            foreach (var obj in levelObjects)
-            {
-                obj.offsetPositionY(offSetY);
+                obj.offsetPositionX_Y(offSetX, offSetY);
             }
         }
 
@@ -53,10 +45,13 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             foreach (var item in objectsInTheView)
             {
-                if (item is Entity && item != player) item.Draw(g);
+                if (item is Entity && !(item is Player)) item.Draw(g);
             }
 
-            player.Draw(g);
+            foreach (var player in players)
+            {
+                player.Draw(g);
+            }
         }
 
         public void Update()
@@ -68,45 +63,19 @@ namespace Terraria_sMario.Classes.Logic.Levels
                 if (item is Entity)
                 {
                     (item as Entity).update();
+                    (item as Entity).updateGravitation(objectsInTheView);
                 } 
             }
         }
 
-        public void CheckCollision()
+        public void KeepMainPlayerInTheCenter()
         {
-            foreach (var item in objectsInTheView)
-            {
-                foreach (var block in objectsInTheView)
-                {
-                    if (item is Entity && block != item)
-                    {
-                        if (IntersectionService.isBlockIntersectBlock(item, block))
-                        {
-                            string type = IntersectionService.getTypeOfIntersectingBlock(item, block);
+            var playerPoint = players[0].coords;
+            var offSetX = mainChacterPosition.X - playerPoint.X;
+            var offSetY = mainChacterPosition.Y - playerPoint.Y;
 
-                            switch (type)
-                            {
-                                case "down":
-                                    (item as Entity).setAccelerationToZero();
-                                    item.setUpToTheBlock(block);
-                                    break;
-
-                                case "up":
-                                    (item as Entity).setAccelerationToZero();
-                                    item.setDownToTheBlock(block);
-                                    break;
-
-                                case "left":
-                                    break;
-
-                                case "right":
-                                    break;
-                            }
-                        }
-                    }                    
-                }
-            }
-        }
+            offsetAllObjectsPositionX_Y(offSetX, offSetY);
+        } 
 
         public void updateFieldOfView()
         {
@@ -124,25 +93,25 @@ namespace Terraria_sMario.Classes.Logic.Levels
             }
         }
 
-        // listeners
+        // listeners to control player
 
         public void KeyboardListener(KeyEventArgs e)
         {
             if (ControlKeyboard.checkOnPressedSpace(e))
             {
-                player.Jump();
+                players[0].Jump();
             }
+            else
             if (ControlKeyboard.checkOnPressedRight(e))
             {
-                offsetPositionX(-5);
+                players[0].moveRightOrLeft(5, objectsInTheView);
+                players[0].setAnimation(PlayerAnimationTypes.Walking);
             }
+            else
             if (ControlKeyboard.checkOnPressedLeft(e))
             {
-                offsetPositionX(5);
-            }
-            if (ControlKeyboard.checkOnPressedTop(e))
-            {
-                player.Jump();
+                players[0].moveRightOrLeft(-5, objectsInTheView);
+                players[0].setAnimation(PlayerAnimationTypes.Walking);
             }
         }
 

@@ -1,22 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
 {
-    class PlayerAnimation
+    class PlayerAnimation : ParentAnimation
     {
-        public List<Image> images { get; private set; }
-
         public PlayerAnimationTypes type { get; private set; }
 
-        public PlayerAnimation(List<Image> images, PlayerAnimationTypes type)
+        public PlayerAnimation(List<Image> images, PlayerAnimationTypes type, int skipFrames = 1)
         {
             this.images = images;
             this.type = type;
-        }
-        public void draw(Graphics g)
-        {
+            this.skipFrames = skipFrames;
 
+            activeImage = images.Count() > 0 ? images.First() : null;
         }
     }
 }

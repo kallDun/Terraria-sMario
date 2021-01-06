@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,5 +15,6 @@ namespace Terraria_sMario.Classes.Logic
         public static readonly int fieldHeight = 14;
         public static readonly int blockSize = 50;
 
+        public static readonly Point mainChacterPosition = new Point(480, 250);
     }
 }

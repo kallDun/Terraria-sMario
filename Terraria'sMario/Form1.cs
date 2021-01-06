@@ -31,7 +31,7 @@ namespace Terraria_sMario
             gameplay = new Gameplay();
             update.Start();
             draw.Start();
-            collision.Start();
+            checkCamera.Start();
             checkField.Start();
         }
 
@@ -45,8 +45,8 @@ namespace Terraria_sMario
 
         private void update_Tick(object sender, EventArgs e) => gameplay.Update();
 
-        private void collision_Tick(object sender, EventArgs e) => gameplay.checkCollision();
-
         private void checkField_Tick(object sender, EventArgs e) => gameplay.checkField();
+
+        private void checkCamera_Tick(object sender, EventArgs e) => gameplay.KeepMainPlayerInTheCenter();
     }
 }

@@ -1,24 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Features
 {
-    class EnemyAnimation
+    class EnemyAnimation : ParentAnimation
     {
-        public List<Image> images { get; private set; }
-
         public EnemyAnimationTypes type { get; private set; }
 
-        public EnemyAnimation(List<Image> images, EnemyAnimationTypes type)
+        public EnemyAnimation(List<Image> images, EnemyAnimationTypes type, int skipFrames = 1)
         {
             this.images = images;
             this.type = type;
+            this.skipFrames = skipFrames;
+
+            activeImage = images.Count() > 0 ? images.First() : null;
         }
-
-        public void draw(Graphics g)
-        {
-
-        }
-
     }
 }

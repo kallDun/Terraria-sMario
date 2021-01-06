@@ -15,7 +15,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             drawingImage = Resources.sherifreworked;
             animations = new List<PlayerAnimation>
             {
-                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Walking),
+                new PlayerAnimation(new List<Image> { 
+                    AnimationsResx.sherif_walking_1,
+                    AnimationsResx.sherif_walking_2}, PlayerAnimationTypes.Walking, 4),
+
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Standing),
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Running),
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Jumping),

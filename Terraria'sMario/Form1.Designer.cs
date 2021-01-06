@@ -32,7 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.draw = new System.Windows.Forms.Timer(this.components);
             this.update = new System.Windows.Forms.Timer(this.components);
-            this.collision = new System.Windows.Forms.Timer(this.components);
+            this.checkCamera = new System.Windows.Forms.Timer(this.components);
             this.checkField = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -56,10 +56,10 @@
             this.update.Interval = 40;
             this.update.Tick += new System.EventHandler(this.update_Tick);
             // 
-            // collision
+            // checkCamera
             // 
-            this.collision.Interval = 40;
-            this.collision.Tick += new System.EventHandler(this.collision_Tick);
+            this.checkCamera.Interval = 40;
+            this.checkCamera.Tick += new System.EventHandler(this.checkCamera_Tick);
             // 
             // checkField
             // 
@@ -87,7 +87,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Timer draw;
         private System.Windows.Forms.Timer update;
-        private System.Windows.Forms.Timer collision;
+        private System.Windows.Forms.Timer checkCamera;
         private System.Windows.Forms.Timer checkField;
     }
 }

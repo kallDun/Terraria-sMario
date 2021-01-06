@@ -18,7 +18,7 @@ namespace Terraria_sMario.Classes
 
         public void Draw(Graphics g) => activeLevel.Draw(g);
 
-        public void checkCollision() => activeLevel.CheckCollision();
+        public void KeepMainPlayerInTheCenter() => activeLevel.KeepMainPlayerInTheCenter();
 
         public void checkField() => activeLevel.updateFieldOfView();
 

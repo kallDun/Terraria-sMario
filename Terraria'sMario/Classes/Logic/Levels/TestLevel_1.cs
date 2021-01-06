@@ -10,9 +10,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public TestLevel_1 ()
         {
-            player = new Hero(480, 100); // 100 -> 306
+            var player = new Hero(480, 100); // 100 -> 306
             levelObjects.Add(player);
-
+            players.Add(player);
 
             fieldSize = new Size(100, 100);
 

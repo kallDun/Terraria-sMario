@@ -20,20 +20,7 @@ namespace Terraria_sMario.Classes.Logic.Objects
 
         abstract public void updateProperties();
 
-        // change position methods 
-
-        public void offsetPositionX(int offsetX) => coords = new Point(coords.X + offsetX, coords.Y);
-
-        public void offsetPositionY(int offsetY) => coords = new Point(coords.X, coords.Y + offsetY);
-
-        public void setUpToTheBlock(ParentObject block)
-        {
-            coords = new Point(coords.X, block.coords.Y - size.Height);
-        }
-
-        internal void setDownToTheBlock(ParentObject block)
-        {
-            coords = new Point(coords.X, block.coords.Y + size.Height);
-        }
+        public void offsetPositionX_Y(int offSetX, int offSetY) => 
+            coords = new Point(coords.X + offSetX, coords.Y + offSetY); // change position method 
     }
 }

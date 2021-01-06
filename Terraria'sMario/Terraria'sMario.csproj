@@ -50,6 +50,8 @@
     <Compile Include="Classes\Gameplay.cs" />
     <Compile Include="Classes\Logic\Levels\Level.cs" />
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
+    <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Animations\ParentAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\PlayerAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\PlayerAnimationTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\FlowerEater.cs" />
@@ -78,10 +80,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Animations.Designer.cs">
+    <Compile Include="AnimationsResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Animations.resx</DependentUpon>
+      <DependentUpon>AnimationsResx.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -100,9 +102,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Animations.resx">
+    <EmbeddedResource Include="AnimationsResx.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Animations.Designer.cs</LastGenOutput>
+      <LastGenOutput>AnimationsResx.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

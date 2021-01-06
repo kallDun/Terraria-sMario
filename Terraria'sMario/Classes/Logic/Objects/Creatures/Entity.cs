@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
@@ -10,8 +12,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public List<Effect> effects { get; protected set; } = new List<Effect> { };
         public List<EffectTypes> resistancesEffects { get; protected set; } = new List<EffectTypes> { };
-
-        protected double acceler = 0;
 
         public bool isAlive() => health > 0;
 
@@ -50,12 +50,62 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                     break;
                 }
             }
+        }
 
-            //gravitation
-            coords = new System.Drawing.Point(coords.X, (int)(coords.Y + Math.Round(acceler)));
+        // Gravitation
+
+        protected double acceler = 0;
+
+        public void updateGravitation(in List<ParentObject> objects) 
+        {
+            int offsetY = (int) Math.Round(acceler);
+
+            while (offsetY != 0)
+            {
+                var testCoords = new Point(coords.X, coords.Y + offsetY);
+
+                if (!IntersectionService.isBlockIntersectSomething
+                (new AbstractObject(testCoords, size),
+                this,
+                objects))
+                {
+                    coords = testCoords;
+                    offsetY = 0;
+                }
+                else
+                {
+                    acceler = 0;
+                    offsetY = offsetY > 0 ? offsetY - 1 : offsetY + 1;
+                }
+            }
+
             acceler += 1.5;
         }
 
-        public void setAccelerationToZero() => acceler = 0;
+        // Moving System
+
+        public void Jump() 
+        {
+            acceler = -20; 
+        }
+
+        public void moveRightOrLeft(int offsetX, in List<ParentObject> objects) 
+        {
+            while (offsetX != 0)
+            {
+                var testCoords = new Point(coords.X + offsetX, coords.Y);
+
+                if (!IntersectionService.isBlockIntersectSomething
+                (new AbstractObject(testCoords, size),
+                this,
+                objects))
+                {
+                    coords = testCoords;
+                    offsetX = 0;
+                }
+                else offsetX += offsetX > 0 ? - 1 : 1;
+            }
+        }
+
     }
 }
