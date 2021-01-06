@@ -12,6 +12,12 @@ namespace Terraria_sMario.Classes.Logic.Objects
         public Point coords { get; protected set; }
         public Size size { get; protected set; }
 
+        public bool isRendered = true; 
+
+        public Image drawingImage { get; protected set; }
+
         public abstract void Draw(Graphics g);
+
+        abstract public void updateProperties();
     }
 }

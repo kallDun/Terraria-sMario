@@ -11,8 +11,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
         public override void Draw(Graphics g)
         {
-
+            if (!isRendered) return;
         }
 
+        public override void updateProperties()
+        {
+            
+        }
     }
 }

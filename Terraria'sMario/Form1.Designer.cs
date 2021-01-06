@@ -30,7 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.framesPerSecond = new System.Windows.Forms.Timer(this.components);
+            this.draw = new System.Windows.Forms.Timer(this.components);
+            this.update = new System.Windows.Forms.Timer(this.components);
+            this.collision = new System.Windows.Forms.Timer(this.components);
+            this.checkField = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,24 +42,41 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1264, 681);
+            this.pictureBox1.Size = new System.Drawing.Size(1300, 700);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // framesPerSecond
+            // draw
             // 
-            this.framesPerSecond.Interval = 40;
+            this.draw.Interval = 40;
+            this.draw.Tick += new System.EventHandler(this.draw_Tick);
+            // 
+            // update
+            // 
+            this.update.Interval = 40;
+            this.update.Tick += new System.EventHandler(this.update_Tick);
+            // 
+            // collision
+            // 
+            this.collision.Interval = 40;
+            this.collision.Tick += new System.EventHandler(this.collision_Tick);
+            // 
+            // checkField
+            // 
+            this.checkField.Interval = 40;
+            this.checkField.Tick += new System.EventHandler(this.checkField_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1300, 700);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Terraria\'s Mario";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -65,7 +85,10 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Timer framesPerSecond;
+        private System.Windows.Forms.Timer draw;
+        private System.Windows.Forms.Timer update;
+        private System.Windows.Forms.Timer collision;
+        private System.Windows.Forms.Timer checkField;
     }
 }
 

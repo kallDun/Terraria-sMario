@@ -1,18 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using Terraria_sMario.Classes.Logic.Objects.Features;
+﻿
+using System;
+using System.Collections.Generic;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
     abstract class Entity : ParentObject
     {
-        public float health { get; protected set; }
-
-        public Image drawingImage { get; protected set; }
+        public float health { get; protected set; }        
 
         public List<Effect> effects { get; protected set; } = new List<Effect> { };
         public List<EffectTypes> resistancesEffects { get; protected set; } = new List<EffectTypes> { };
+
+        protected double acceler = 0;
 
         public bool isAlive() => health > 0;
 
@@ -52,6 +51,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 }
             }
 
+            //gravitation
+            coords = new System.Drawing.Point(coords.X, (int)(coords.Y + Math.Round(acceler)));
+            acceler += 1.5;
         }
+
+        public void setAccelerationToZero() => acceler = 0;
     }
 }

@@ -8,16 +8,16 @@ using Terraria_sMario.Classes.Logic.Objects.Features;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
-    class Flovereater : Enemy
+    class FlowerEater : Enemy
     {
-        public Flovereater(int X, int Y)
+        public FlowerEater(int X, int Y)
         {
             coords = new Point(X, Y);
             size = new Size(50, 50);
             health = 500;
             resistancesEffects.Add(EffectTypes.Stunning);
 
-            //drawingImage = Resources.flovereater_image;  <== needs to add
+            //drawingImage = Resources.flowerEater_image;  <== needs to add
 
             animations = new List<EnemyAnimation>
             {

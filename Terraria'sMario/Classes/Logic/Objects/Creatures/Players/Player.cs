@@ -11,6 +11,15 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public override void Draw(Graphics g)
         {
+            if (!isRendered) return;
+
+            g.DrawImage(drawingImage, coords);
+        }
+
+        public void Jump() => acceler = -20;
+
+        public override void updateProperties()
+        {
             
         }
     }
