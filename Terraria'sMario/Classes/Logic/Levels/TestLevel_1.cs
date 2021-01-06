@@ -10,6 +10,10 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public TestLevel_1 ()
         {
+            player = new Hero(480, 100); // 100 -> 306
+            levelObjects.Add(player);
+
+
             fieldSize = new Size(100, 100);
 
             int height_1 = 8;
@@ -24,9 +28,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
             fillFieldWithGrass(height_2, width_1, width_2);
             fillFieldWithGrass(height_3, width_2, width_3);
             fillFieldWithGrass(height_4, width_3, fieldWidth + 1);
-
-            player = new Hero(480, 100); // 100 -> 306
-            levelObjects.Add(player);
         }
 
         

@@ -12,10 +12,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
         public Hero(int X, int Y)
         {
             coords = new Point(X, Y);
-            size = new Size(44, 30);
-            health = 20;
+            size = new Size(55, 100);
+            health = 100;
 
-            drawingImage = Resources.hero;
+            drawingImage = Resources.sherifreworked;
         }
 
     }

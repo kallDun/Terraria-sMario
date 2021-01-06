@@ -1,4 +1,5 @@
 ﻿
+using System;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
 
@@ -7,19 +8,32 @@ namespace Terraria_sMario.Classes.Logic.Services
     static class IntersectionService
     {
 
-        public static bool isEntityIntersectOtherEntity(Entity mainCreature, Entity otherCreature)
+        public static bool isBlockIntersectBlock(ParentObject ourBlock, ParentObject otherBlock)
         {
-            return false;
+            return 
+                ourBlock.coords.X + ourBlock.size.Width > otherBlock.coords.X &&
+                ourBlock.coords.X < otherBlock.coords.X + otherBlock.size.Width &&
+                ourBlock.coords.Y + ourBlock.size.Height > otherBlock.coords.Y &&
+                ourBlock.coords.Y < otherBlock.coords.Y + otherBlock.size.Height;
         }
 
-        public static bool isEntityIntersectBlockUpOrDown(Entity creature, ParentObject block)
+        public static string getTypeOfIntersectingBlock(ParentObject ourBlock, ParentObject otherBlock)
         {
-            var flag = creature.coords.X + creature.size.Width > block.coords.X &&
-                       creature.coords.X < block.coords.X + block.size.Width &&
-                       creature.coords.Y + creature.size.Height > block.coords.Y &&
-                       creature.coords.Y < block.coords.Y + block.size.Height;
-            return flag;
+            if (Math.Abs((ourBlock.coords.Y + ourBlock.size.Height) - (otherBlock.coords.Y + otherBlock.size.Height)) 
+                < otherBlock.size.Height / 4)
+            {
+                if (ourBlock.coords.X + ourBlock.size.Width < otherBlock.coords.X + otherBlock.size.Width)
+                    return "left";
+                else
+                    return "right";
+            }
+            else
+            {
+                if (ourBlock.coords.Y + ourBlock.size.Height < otherBlock.coords.Y + otherBlock.size.Height)
+                    return "down";
+                else
+                    return "up";
+            }
         }
-
     }
 }

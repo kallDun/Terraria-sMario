@@ -1,5 +1,4 @@
 ﻿
-using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -24,6 +23,24 @@ namespace Terraria_sMario.Classes.Logic.Levels
         public Player player { get; protected set; }
 
         public Size fieldSize { get; protected set; }
+
+        // character offset
+
+        public void offsetPositionX(int offSetX)
+        {
+            foreach (var obj in levelObjects)
+            {
+                if (obj != player) obj.offsetPositionX(offSetX);
+            }
+        }
+
+        public void offsetPositionY(int offSetY)
+        {
+            foreach (var obj in levelObjects)
+            {
+                obj.offsetPositionY(offSetY);
+            }
+        }
 
         // threads
 
@@ -61,11 +78,30 @@ namespace Terraria_sMario.Classes.Logic.Levels
             {
                 foreach (var block in objectsInTheView)
                 {
-                    if (item is Entity)
+                    if (item is Entity && block != item)
                     {
-                        if (IntersectionService.isEntityIntersectBlockUpOrDown(item as Entity, block))
+                        if (IntersectionService.isBlockIntersectBlock(item, block))
                         {
-                            (item as Entity).setAccelerationToZero();
+                            string type = IntersectionService.getTypeOfIntersectingBlock(item, block);
+
+                            switch (type)
+                            {
+                                case "down":
+                                    (item as Entity).setAccelerationToZero();
+                                    item.setUpToTheBlock(block);
+                                    break;
+
+                                case "up":
+                                    (item as Entity).setAccelerationToZero();
+                                    item.setDownToTheBlock(block);
+                                    break;
+
+                                case "left":
+                                    break;
+
+                                case "right":
+                                    break;
+                            }
                         }
                     }                    
                 }
@@ -98,7 +134,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
             }
         }
 
-        // generate methods
+        // generate blocks methods
 
         protected void fillFieldWithGrass(int height, int width0, int width)
         {
