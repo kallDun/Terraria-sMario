@@ -236,5 +236,20 @@
   <ItemGroup>
     <None Include="Resources\Health_empty.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sherif_beat_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sherif_beat_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sherif_beat_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sherif_beat_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sherif_beat_5.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
