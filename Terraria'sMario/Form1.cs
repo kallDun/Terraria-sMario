@@ -22,10 +22,7 @@ namespace Terraria_sMario
         private Gameplay gameplay;
         private Graphics g;
 
-        void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            gameplay.KeyboardListener(e);
-        }
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             gameplay = new Gameplay();
@@ -34,7 +31,6 @@ namespace Terraria_sMario
             checkCamera.Start();
             checkField.Start();
         }
-
         private void draw_Tick(object sender, EventArgs e)
         {
             pictureBox1.Image = new Bitmap(Size.Width, Size.Height);
@@ -48,5 +44,11 @@ namespace Terraria_sMario
         private void checkField_Tick(object sender, EventArgs e) => gameplay.checkField();
 
         private void checkCamera_Tick(object sender, EventArgs e) => gameplay.KeepMainPlayerInTheCenter();
+
+        // KEYBOARD LISTENER
+
+        void Form1_KeyDown(object sender, KeyEventArgs e) => gameplay.KeyboardListenerKeyDown(e);
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e) => gameplay.KeyboardListenerKeyUp(e);
     }
 }

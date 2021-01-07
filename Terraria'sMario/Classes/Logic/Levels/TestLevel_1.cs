@@ -1,5 +1,6 @@
 ﻿
 using System.Drawing;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
@@ -10,9 +11,12 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public TestLevel_1 ()
         {
-            var player = new Hero(480, 100); // 100 -> 306
+            var player = new Hero(480, 100, "Player_1"); // 100 -> 306
             levelObjects.Add(player);
             players.Add(player);
+
+            var skelet = new Skeleton(550, 100);
+            levelObjects.Add(skelet);
 
             fieldSize = new Size(100, 100);
 

@@ -53,7 +53,7 @@
             // 
             // update
             // 
-            this.update.Interval = 40;
+            this.update.Interval = 30;
             this.update.Tick += new System.EventHandler(this.update_Tick);
             // 
             // checkCamera
@@ -77,6 +77,7 @@
             this.Name = "Form1";
             this.Text = "Terraria\'s Mario";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

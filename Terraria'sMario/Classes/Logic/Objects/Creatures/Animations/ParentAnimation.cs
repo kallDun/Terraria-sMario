@@ -15,8 +15,15 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
         protected int skipFrames;
         protected int skipedFrames = 1;
 
-        public void Draw(Graphics g, Point playerCoord)
+        public bool isTurnToRight { get; protected set; } = true;
+
+        public void Draw(Graphics g, Point playerCoord, bool isTurnToRight)
         {
+            if (this.isTurnToRight != isTurnToRight)
+            {
+                flipImages();
+                this.isTurnToRight = isTurnToRight;
+            }
             g.DrawImage(activeImage, playerCoord);
 
             if (skipFrames == skipedFrames)
@@ -32,6 +39,16 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
                 skipedFrames++;
             }
         }
+
+        private void flipImages()
+        {
+            foreach (var image in images)
+            {
+                image.RotateFlip(RotateFlipType.Rotate180FlipY);
+            }
+        }
+
+        public bool isLastFrame() => images.Count() > 0 && activeImage == images.Last();
     }
 
 }

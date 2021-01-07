@@ -14,8 +14,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
         {
             coords = new Point(X, Y);
             size = new Size(50, 50);
-            health = 500;
+            maxHealth = 500;
+            health = maxHealth;
+            jumpHeight = -14;
             resistancesEffects.Add(EffectTypes.Stunning);
+            uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.WithoutName);
 
             //drawingImage = Resources.flowerEater_image;  <== needs to add
 

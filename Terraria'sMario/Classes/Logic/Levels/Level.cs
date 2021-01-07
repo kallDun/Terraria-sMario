@@ -6,6 +6,7 @@ using Terraria_sMario.Classes.Control;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using static Terraria_sMario.Classes.Logic.Parameters;
@@ -64,15 +65,22 @@ namespace Terraria_sMario.Classes.Logic.Levels
                 {
                     (item as Entity).update();
                     (item as Entity).updateGravitation(objectsInTheView);
+
+                    if (item is Enemy)
+                    {
+                        (item as Enemy).updateBehavior(objectsInTheView);
+                    }
                 } 
             }
+
+            controlKeyboard.updateMove(players, objectsInTheView);
         }
 
-        public void KeepMainPlayerInTheCenter()
+        public void KeepMainObjectInTheCenter()
         {
             var playerPoint = players[0].coords;
-            var offSetX = mainChacterPosition.X - playerPoint.X;
-            var offSetY = mainChacterPosition.Y - playerPoint.Y;
+            var offSetX = centerPosition.X - playerPoint.X;
+            var offSetY = centerPosition.Y - playerPoint.Y;
 
             offsetAllObjectsPositionX_Y(offSetX, offSetY);
         } 
@@ -83,10 +91,10 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             foreach (var obj in levelObjects)
             {
-                if (obj.coords.X >= -blockSize &&
-                    obj.coords.X <= fieldWidth * blockSize &&
-                    obj.coords.Y >= 0 &&
-                    obj.coords.Y <= fieldHeight * blockSize)
+                if (obj.coords.X >= -2 * blockSize &&
+                    obj.coords.X <= (fieldWidth + 4) * blockSize &&
+                    obj.coords.Y >= -2 * blockSize &&
+                    obj.coords.Y <= (fieldHeight + 4) * blockSize)
                 {
                     objectsInTheView.Add(obj);
                 }
@@ -95,25 +103,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         // listeners to control player
 
-        public void KeyboardListener(KeyEventArgs e)
-        {
-            if (ControlKeyboard.checkOnPressedSpace(e))
-            {
-                players[0].Jump();
-            }
-            else
-            if (ControlKeyboard.checkOnPressedRight(e))
-            {
-                players[0].moveRightOrLeft(5, objectsInTheView);
-                players[0].setAnimation(PlayerAnimationTypes.Walking);
-            }
-            else
-            if (ControlKeyboard.checkOnPressedLeft(e))
-            {
-                players[0].moveRightOrLeft(-5, objectsInTheView);
-                players[0].setAnimation(PlayerAnimationTypes.Walking);
-            }
-        }
+        private ControlKeyboard controlKeyboard = new ControlKeyboard();
+
+        public void KeyboardListenerPressed(KeyEventArgs e) => controlKeyboard.KeyPress(e);
+
+        public void KeyboardListenerReleased(KeyEventArgs e) => controlKeyboard.KeyUp(e);
 
         // generate blocks methods
 

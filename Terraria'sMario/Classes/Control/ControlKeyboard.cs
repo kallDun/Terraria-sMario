@@ -1,31 +1,62 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Terraria_sMario.Classes.Logic.Objects;
+using Terraria_sMario.Classes.Logic.Objects.Creatures;
 
 namespace Terraria_sMario.Classes.Control
 {
-    static class ControlKeyboard
+    class ControlKeyboard
     {
-        public static bool checkOnPressedSpace(KeyEventArgs e)
+        public bool isWentRight_player1 { get; private set; } = false;
+        public bool isWentLeft_player1 { get; private set; } = false;
+        public bool isJumped_player1 { get; private set; } = false;
+        public bool isWentRight_player2 { get; private set; } = false;
+        public bool isWentLeft_player2 { get; private set; } = false;
+        public bool isJumped_player2 { get; private set; } = false;
+
+
+        public void KeyPress(KeyEventArgs e)
         {
-            return e.KeyCode == Keys.Space;
+            if (checkOnPressedLeft(e)) isWentLeft_player1 = true;
+            if (checkOnPressedRight(e)) isWentRight_player1 = true;
+            if (checkOnPressedSpace(e)) isJumped_player1 = true;
         }
-        public static bool checkOnPressedRight(KeyEventArgs e)
+
+        public void KeyUp(KeyEventArgs e)
+        {
+            if (checkOnPressedLeft(e)) isWentLeft_player1 = false;
+            if (checkOnPressedRight(e)) isWentRight_player1 = false;
+            if (checkOnPressedSpace(e)) isJumped_player1 = false;
+        }
+
+        public void updateMove(List<Player> players, in List<ParentObject> objects)
+        {
+            if (isWentRight_player1) 
+                players[0].moveRightOrLeft(objects, 1);
+            if (isWentLeft_player1)
+                players[0].moveRightOrLeft(objects, -1);
+            if (isJumped_player1)
+                players[0].Jump();
+        }
+
+        public bool checkOnPressedSpace(KeyEventArgs e)
+        {
+            return e.KeyValue == (char) Keys.Space;
+        }
+        public bool checkOnPressedRight(KeyEventArgs e)
         {
             return (e.KeyCode == Keys.Right) || (e.KeyCode == Keys.D);
         }
-        public static bool checkOnPressedLeft(KeyEventArgs e)
+        public bool checkOnPressedLeft(KeyEventArgs e)
         {
             return (e.KeyCode == Keys.Left) || (e.KeyCode == Keys.A);
         }
-        public static bool checkOnPressedTop(KeyEventArgs e)
+        public bool checkOnPressedTop(KeyEventArgs e)
         {
             return (e.KeyCode == Keys.Up) || (e.KeyCode == Keys.W);
         }
-        public static bool checkOnPressedBott(KeyEventArgs e)
+        public bool checkOnPressedBott(KeyEventArgs e)
         {
             return (e.KeyCode == Keys.Down) || (e.KeyCode == Keys.S);
         }

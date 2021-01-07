@@ -18,10 +18,12 @@ namespace Terraria_sMario.Classes
 
         public void Draw(Graphics g) => activeLevel.Draw(g);
 
-        public void KeepMainPlayerInTheCenter() => activeLevel.KeepMainPlayerInTheCenter();
+        public void KeepMainPlayerInTheCenter() => activeLevel.KeepMainObjectInTheCenter();
 
         public void checkField() => activeLevel.updateFieldOfView();
 
-        public void KeyboardListener(KeyEventArgs e) => activeLevel.KeyboardListener(e);
+        public void KeyboardListenerKeyDown(KeyEventArgs e) => activeLevel.KeyboardListenerPressed(e);
+
+        internal void KeyboardListenerKeyUp(KeyEventArgs e) => activeLevel.KeyboardListenerReleased(e);
     }
 }

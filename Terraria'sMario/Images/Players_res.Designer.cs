@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Terraria_sMario {
+namespace Terraria_sMario.Images {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace Terraria_sMario {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Players_res {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Players_res() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Terraria_sMario {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Terraria_sMario.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Terraria_sMario.Images.Players_res", typeof(Players_res).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace Terraria_sMario {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap brick {
+        internal static System.Drawing.Bitmap sherif_image {
             get {
-                object obj = ResourceManager.GetObject("brick", resourceCulture);
+                object obj = ResourceManager.GetObject("sherif_image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Terraria_sMario {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cobsllestone {
+        internal static System.Drawing.Bitmap sherifwent1 {
             get {
-                object obj = ResourceManager.GetObject("cobsllestone", resourceCulture);
+                object obj = ResourceManager.GetObject("sherifwent1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Terraria_sMario {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Dirt {
+        internal static System.Drawing.Bitmap sherifwent2 {
             get {
-                object obj = ResourceManager.GetObject("Dirt", resourceCulture);
+                object obj = ResourceManager.GetObject("sherifwent2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Terraria_sMario {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Grass {
+        internal static System.Drawing.Bitmap sherifwent3 {
             get {
-                object obj = ResourceManager.GetObject("Grass", resourceCulture);
+                object obj = ResourceManager.GetObject("sherifwent3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,39 +103,9 @@ namespace Terraria_sMario {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sand {
+        internal static System.Drawing.Bitmap sherifwent4 {
             get {
-                object obj = ResourceManager.GetObject("sand", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sand2 {
-            get {
-                object obj = ResourceManager.GetObject("sand2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sherif {
-            get {
-                object obj = ResourceManager.GetObject("sherif", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sherifreworked {
-            get {
-                object obj = ResourceManager.GetObject("sherifreworked", resourceCulture);
+                object obj = ResourceManager.GetObject("sherifwent4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

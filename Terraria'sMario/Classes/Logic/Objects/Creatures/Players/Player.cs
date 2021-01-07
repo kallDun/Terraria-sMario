@@ -1,7 +1,8 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
+using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.PlayerAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
@@ -17,17 +18,30 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (activeAnimation == null || activeAnimation?.activeImage == null)
                 g.DrawImage(drawingImage, coords);
             else
-                activeAnimation.Draw(g, coords);
+                activeAnimation.Draw(g, coords, isTurnToRight);
+
+            base.Draw(g);
+        }
+
+        public override int moveRightOrLeft(in List<ParentObject> objects, int direction)
+        {
+            setAnimation(Walking);
+            return base.moveRightOrLeft(objects, direction);
+        }
+
+        public override void Jump()
+        {
+            base.Jump();
+            setAnimation(Jumping);
         }
 
         public override void updateProperties()
         {
-            setAnimation(PlayerAnimationTypes.Standing);
+            if (activeAnimation != null && activeAnimation.isLastFrame())
+                setAnimation(Standing);
         }
 
-        
-
-        internal void setAnimation(PlayerAnimationTypes type) // Animations SET
+        public void setAnimation(PlayerAnimationTypes type) // Animations SET
         {
             activeAnimation = animations.Find(x => x.type == type);
         }
