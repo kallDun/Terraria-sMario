@@ -18,6 +18,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public bool canFly { get; protected set; } = false;
         public bool isRunning = false;
 
+        protected int rangeOfMeleeHit = 15;
         protected bool isTurnToRight = true;
         protected UI_Entity_Draw uI_Entity_Draw;
 
@@ -51,6 +52,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (Effect.isEffectInList(effects, EffectTypes.Curse)) healing /= 2;
             health += healing;
             if (health > maxHealth) health = maxHealth;
+        }
+
+        public virtual void Hit()
+        {
+
         }
 
         public bool isAlive() => health > 0;

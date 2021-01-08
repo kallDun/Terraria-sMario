@@ -78,6 +78,7 @@
     <Compile Include="Classes\Logic\Objects\Features\EffectTypes.cs" />
     <Compile Include="Classes\Logic\Objects\ParentObject.cs" />
     <Compile Include="Classes\Logic\Parameters.cs" />
+    <Compile Include="Classes\Logic\Services\CheckEntityService.cs" />
     <Compile Include="Classes\Logic\Services\IntersectionService.cs" />
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw_Type.cs" />
     <Compile Include="Form1.cs">
