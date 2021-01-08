@@ -25,19 +25,25 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             base.Draw(g);
         }
 
-        public override int moveRightOrLeft(in List<ParentObject> objects, int direction)
+        public override int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false)
         {
             setAnimation(Walking);
-            return base.moveRightOrLeft(objects, direction);
+            return base.moveRightOrLeft(objects, direction, run);
         }
 
-        public void updateBehavior(in List<ParentObject> objects) =>
-            // Enemy behavior
-            enemy_behavior?.update(this, objects);
+        public void updateBehavior(in List<ParentObject> objects) {
+            if (isDead) return;
 
-        public override void updateProperties() // EMPTY 
+            enemy_behavior?.update(this, objects); // Enemy behavior
+        }
+
+        public override void updateProperties() 
         {
-            
+            if (isDead)
+            {
+                setAnimation(Dead);
+                return;
+            }
         }
 
         public void setAnimation(EnemyAnimationTypes type) // Animations SET

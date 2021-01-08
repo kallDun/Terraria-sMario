@@ -23,6 +23,7 @@ namespace Terraria_sMario.Classes.Logic.Services
 
         public static bool isBlockIntersectBlock(in ParentObject ourBlock, in ParentObject otherBlock)
         {
+            if (!ourBlock.isHaveCollision || !otherBlock.isHaveCollision) return false;
             return 
                 ourBlock.coords.X + ourBlock.size.Width > otherBlock.coords.X &&
                 ourBlock.coords.X < otherBlock.coords.X + otherBlock.size.Width &&

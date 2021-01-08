@@ -22,26 +22,41 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             base.Draw(g);
         }
 
-        public override int moveRightOrLeft(in List<ParentObject> objects, int direction)
+        public override int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false)
         {
+            if (isDead) return 0;
+
             setAnimation(Walking);
             return base.moveRightOrLeft(objects, direction);
         }
 
         public override void Jump()
         {
+            if (isDead) return;
+
             base.Jump();
             setAnimation(Jumping);
         }
 
-        public override void Hit(in List<ParentObject> objects)
+        public override bool Hit(in List<ParentObject> objects)
         {
-            base.Hit(objects);
-            setAnimation(Hitting);
+            if (!isDead && base.Hit(in objects))
+            {
+                setAnimation(Hitting);
+                return true;
+            }
+            else
+                return false;
         }
 
         public override void updateProperties()
         {
+            if (isDead)
+            {
+                setAnimation(Dead);
+                return;
+            }
+
             if (activeAnimation != null && activeAnimation.isLastFrame())
                 setAnimation(Standing);
         }

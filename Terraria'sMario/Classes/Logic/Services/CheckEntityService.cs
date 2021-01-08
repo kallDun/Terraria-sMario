@@ -12,29 +12,45 @@ namespace Terraria_sMario.Classes.Logic.Services
 {
     static class CheckEntityService
     {
-        static public Enemy getNearEnemy(in List<ParentObject> objects, in Entity entity, int rangeOfMeleeHit, bool isTurnToRight)
+        public static Entity getNearEntity(in List<ParentObject> objects, Entity entity, int rangeOfMeleeHit)
         {
+            var list = getAllNearEntities(objects, entity, rangeOfMeleeHit);
+            return list.Count > 0 ? list.First() : null;
+        }
+
+        public static List<Entity> getAllNearEntities(List<ParentObject> objects, Entity entity, int rangeOfMeleeHit)
+        {
+            var entities = new List<Entity> { };
+
+            Predicate<ParentObject> predicate =
+                delegate (ParentObject obj) { return
+                (entity is Player) ? obj is Enemy :
+                (entity is Enemy) ? obj is Player :
+                false;
+                };
+
+
             var coord = new Point(entity.coords.X, entity.coords.Y);
             var size = new Size(entity.size.Width + rangeOfMeleeHit, entity.size.Height);
+            if (!entity.isTurnToRight) coord.Offset(-rangeOfMeleeHit, 0);
+            var entityObject = new AbstractObject(coord, size);
 
-            if (!isTurnToRight)
-                coord.Offset(-rangeOfMeleeHit, 0);
 
-            var entityObject = new AbstractObject(coord , size);
             foreach (var obj in objects)
             {
-                if (obj is Enemy)
+                if (predicate(obj) && obj != entity)
                 {
                     if (entityObject.coords.X + entityObject.size.Width > obj.coords.X &&
                         entityObject.coords.X < obj.coords.X + obj.size.Width &&
                         entityObject.coords.Y + entityObject.size.Height > obj.coords.Y &&
                         entityObject.coords.Y < obj.coords.Y + obj.size.Height)
                     {
-                        return obj as Enemy;
-                    }   
+                        entities.Add(obj as Entity);
+                    }
                 }
             }
-            return null;
+
+            return entities;
         }
     }
 }

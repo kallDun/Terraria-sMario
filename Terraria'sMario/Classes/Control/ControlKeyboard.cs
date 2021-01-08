@@ -11,9 +11,6 @@ namespace Terraria_sMario.Classes.Control
         public bool isWentLeft_player1 { get; private set; } = false;
         public bool isJumped_player1 { get; private set; } = false;
         public bool isHitting_player1 { get; private set; } = false;
-        public bool isWentRight_player2 { get; private set; } = false;
-        public bool isWentLeft_player2 { get; private set; } = false;
-        public bool isJumped_player2 { get; private set; } = false;
 
 
         public void KeyPress(KeyEventArgs e)

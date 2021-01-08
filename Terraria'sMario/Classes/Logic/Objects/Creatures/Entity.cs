@@ -1,8 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Features;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
@@ -16,10 +20,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public int jumpHeight { get; protected set; } = -15;
         public int speed { get; protected set; } = 3;
         public bool canFly { get; protected set; } = false;
-        public bool isRunning = false;
+        public bool isTurnToRight { get; protected set; } = true;
 
-        protected int rangeOfMeleeHit = 15;
-        protected bool isTurnToRight = true;
         protected UI_Entity_Draw uI_Entity_Draw;
 
         // Effects System
@@ -37,29 +39,89 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         // Damage and Health System
 
+        public bool isDead { get; private set; } = false;
+
         public void getDamage(float damage)
         {
-            if (damage < 0) return;
+            if (damage < 0 || isDead) return;
             if (Effect.isEffectInList(effects, EffectTypes.Poisoning)) damage *= 1.5f;
             health -= damage;
             uI_Entity_Draw.gettingDamage(damage);
+
+            if (health <= 0) isDead = true;
         }
 
         public void getCure(float healing)
         {
-            if (healing < 0) return;
+            if (healing < 0 || isDead) return;
             if (Effect.isEffectInList(effects, EffectTypes.Blessing)) healing *= 2;
             if (Effect.isEffectInList(effects, EffectTypes.Curse)) healing /= 2;
             health += healing;
             if (health > maxHealth) health = maxHealth;
         }
 
-        public virtual void Hit(in List<ParentObject> objects) => 
-            CheckEntityService.getNearEnemy(objects, this, rangeOfMeleeHit, isTurnToRight)?.getDamage(1);
+        // Hit System
 
-        public bool isAlive() => health > 0;
+        public float baseCloseDamage { get; protected set; } = 5;
+        public float baseTimerHitMax { get; protected set; } = 1; // in seconds
+        public int rangeOfMeleeHit { get; protected set; } = 15;
+        public Weapon weaponInHand { get; protected set; }
+
+        public virtual bool Hit(in List<ParentObject> objects)
+        {
+            if (!isReadyToHit) return false;
+
+            if (weaponInHand != null)
+            {
+                if (weaponInHand.canShoot)
+                {
+                    newObjects.Concat(weaponInHand.Shoot());
+                    restartHitTimer();
+                    return true;
+                }
+                else
+                {
+                    weaponInHand.MakeMeleeDamage(objects, this);
+                    restartHitTimer();
+                    return true;
+                }
+            }
+            else
+            {
+                CheckEntityService.getNearEntity(objects, this, rangeOfMeleeHit)?.getDamage(baseCloseDamage);
+                restartHitTimer();
+                return true;
+            }
+        }
+
+        private Stopwatch timerHitNow = new Stopwatch(); // HIT TIMER
+        public bool isReadyToHit { get; protected set; } = true;
+
+        public void updateTimerForHit()
+        {
+            var max = weaponInHand != null ? weaponInHand.timerHitMax : baseTimerHitMax;
+            if (timerHitNow.ElapsedMilliseconds >= max * 1000)
+            {
+                timerHitNow.Stop();
+                isReadyToHit = true;
+            }
+        }
+        private void restartHitTimer()
+        {
+            timerHitNow.Restart();
+            timerHitNow.Start();
+            isReadyToHit = false;
+        }
 
         // Threads
+
+        protected List<ParentObject> newObjects = new List<ParentObject> { }; //-------------------------
+        public List<ParentObject> updateWorld() // ----------------------------- add new objects to world
+        {
+            var list = new List<ParentObject>(newObjects);
+            newObjects.Clear();
+            return list;
+        }
 
         public void update()
         {
@@ -68,6 +130,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
             // update damage timer
             uI_Entity_Draw.updateDamageTimer();
+
+            // update hit timer
+            updateTimerForHit();
 
             // delete effect if duration <= 0
             for (int i = 0; i < effects.Count; i++)
@@ -82,7 +147,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public override void Draw(Graphics g)
         {
-            uI_Entity_Draw.Draw(g, this);
+            if (!isDead)
+                uI_Entity_Draw.Draw(g, this);
         }
 
         // Gravitation
@@ -124,9 +190,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (acceler == 0) acceler = jumpHeight; 
         }
 
-        public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction) 
+        public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 
         {
-            int offsetX = direction * (int) Math.Round(isRunning ? speed * 1.5 : speed);
+            int offsetX = direction * (int) Math.Round(run ? speed * 1.5 : speed);
 
             while (offsetX != 0)
             {

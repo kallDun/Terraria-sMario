@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria_sMario.Classes.Logic.Objects;
+using Terraria_sMario.Classes.Logic.Objects.Creatures;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 
 namespace Terraria_sMario.Classes.Logic
 {

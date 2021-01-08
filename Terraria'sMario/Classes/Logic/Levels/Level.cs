@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using Terraria_sMario.Classes.Control;
 using Terraria_sMario.Classes.Logic.Objects;
@@ -65,6 +66,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
                 {
                     (item as Entity).update();
                     (item as Entity).updateGravitation(objectsInTheView);
+                    levelObjects.Concat((item as Entity).updateWorld());
 
                     if (item is Enemy)
                     {
