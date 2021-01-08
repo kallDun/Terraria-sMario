@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.PlayerAnimationTypes;
@@ -33,6 +32,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         {
             base.Jump();
             setAnimation(Jumping);
+        }
+
+        public override void Hit(in List<ParentObject> objects)
+        {
+            base.Hit(objects);
+            setAnimation(Hitting);
         }
 
         public override void updateProperties()

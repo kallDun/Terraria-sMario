@@ -24,12 +24,14 @@ namespace Terraria_sMario.Classes.Logic.Services
             foreach (var obj in objects)
             {
                 if (obj is Enemy)
-                { 
-                    return 
-                        ourBlock.coords.X + ourBlock.size.Width > otherBlock.coords.X &&
-                        ourBlock.coords.X < otherBlock.coords.X + otherBlock.size.Width &&
-                        ourBlock.coords.Y + ourBlock.size.Height > otherBlock.coords.Y &&
-                        ourBlock.coords.Y < otherBlock.coords.Y + otherBlock.size.Height;
+                {
+                    if (entityObject.coords.X + entityObject.size.Width > obj.coords.X &&
+                        entityObject.coords.X < obj.coords.X + obj.size.Width &&
+                        entityObject.coords.Y + entityObject.size.Height > obj.coords.Y &&
+                        entityObject.coords.Y < obj.coords.Y + obj.size.Height)
+                    {
+                        return obj as Enemy;
+                    }   
                 }
             }
             return null;

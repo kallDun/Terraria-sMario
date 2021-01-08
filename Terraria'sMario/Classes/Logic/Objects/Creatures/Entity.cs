@@ -54,10 +54,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (health > maxHealth) health = maxHealth;
         }
 
-        public virtual void Hit()
-        {
-
-        }
+        public virtual void Hit(in List<ParentObject> objects) => 
+            CheckEntityService.getNearEnemy(objects, this, rangeOfMeleeHit, isTurnToRight)?.getDamage(1);
 
         public bool isAlive() => health > 0;
 

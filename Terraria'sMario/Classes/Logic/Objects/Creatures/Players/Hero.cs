@@ -34,7 +34,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Standing),
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Running),
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Jumping),
-                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Hitting),
+                new PlayerAnimation(new List<Image> { sherif_beat_5, sherif_beat_4, sherif_beat_3, sherif_beat_2, sherif_beat_1, sherif_beat_2, sherif_beat_3, sherif_beat_4,  }, PlayerAnimationTypes.Hitting, 1),
                 new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Dead)
             };
         }
