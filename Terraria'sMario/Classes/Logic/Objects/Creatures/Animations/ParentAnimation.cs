@@ -49,6 +49,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
         }
 
         public bool isLastFrame() => images.Count() > 0 && activeImage == images.Last();
+
+        public void setFirstFrame()
+        {
+            if (images.Count() > 0) activeImage = images.First();
+        }
     }
 
 }

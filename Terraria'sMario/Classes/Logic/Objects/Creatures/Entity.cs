@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Features;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Classes.Logic.Services;
@@ -13,6 +14,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
     abstract class Entity : ParentObject
     {
+        // Fields
+
         public string Name { get; protected set; } = "Entity";
         public float health { get; protected set; }  
         public float maxHealth { get; protected set; }
@@ -63,7 +66,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         // Hit System
 
         public float baseCloseDamage { get; protected set; } = 5;
-        public float baseTimerHitMax { get; protected set; } = 1; // in seconds
+        public float baseTimerHitMax { get; protected set; } = 1.5f; // in seconds
         public int rangeOfMeleeHit { get; protected set; } = 15;
         public Weapon weaponInHand { get; protected set; }
 
@@ -118,7 +121,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         protected List<ParentObject> newObjects = new List<ParentObject> { }; //-------------------------
         public List<ParentObject> updateWorld() // ----------------------------- add new objects to world
         {
-            var list = new List<ParentObject>(newObjects);
+            var list = newObjects;
             newObjects.Clear();
             return list;
         }
@@ -147,8 +150,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public override void Draw(Graphics g)
         {
-            if (!isDead)
-                uI_Entity_Draw.Draw(g, this);
+            if (!isDead) uI_Entity_Draw.Draw(g, this);
         }
 
         // Gravitation
@@ -187,7 +189,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public virtual void Jump() 
         {
-            if (acceler == 0) acceler = jumpHeight; 
+            if (acceler == 0) acceler = jumpHeight;
         }
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 
@@ -210,7 +212,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                         drawingImage.RotateFlip(RotateFlipType.Rotate180FlipY);
                     }
                     return offsetX;
-                    offsetX = 0;
                 }
                 else offsetX += offsetX > 0 ? - 1 : 1;
             }

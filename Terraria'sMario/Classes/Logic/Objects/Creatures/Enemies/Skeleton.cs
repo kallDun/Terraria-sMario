@@ -26,6 +26,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
                 new List<BehaviorUnitMoving> {
                     new BehaviorUnitMoving(BehaviorTypes.Walking, 6, radius: 10),
                     new BehaviorUnitMoving(BehaviorTypes.Standing, 3)
+                },
+                new List<BehaviorUnitFinding>
+                {
+                    new BehaviorUnitFinding(BehaviorTypes.SearchingInFrontOfView, false, duration: 15, radius: 2)
+                },
+                new List<BehaviorUnitCombat>
+                {
+                    new BehaviorUnitCombat(BehaviorTypes.Hitting, duration: 30)
                 }
                 );
 
@@ -37,8 +45,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
                     Skeleton_walking_3,
                     Skeleton_walking_2, Skeleton_walking_4,
                     Skeleton_walking_2 }, EnemyAnimationTypes.Walking, skipFrames: 3),
+
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Standing),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Running),
+
+                new EnemyAnimation(new List<Image>{ 
+                    Skeleton_walking_3,
+                    Skeleton_walking_2, Skeleton_walking_4,
+                    Skeleton_walking_2 }, EnemyAnimationTypes.Running, skipFrames: 1),
+
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Jumping),
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Hitting),
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Dead)

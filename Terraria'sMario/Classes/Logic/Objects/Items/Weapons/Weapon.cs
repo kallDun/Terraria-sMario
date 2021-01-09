@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Services;
 
@@ -41,6 +40,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
                 if (entity != null)
                 {
                     HitEntity(entity);
+
                     return true;
                 }
                 else
@@ -56,6 +56,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
                 entity.getEffect(effect);
             }
         }
+
 
         public List<ParentObject> Shoot() // EMPTY
         {

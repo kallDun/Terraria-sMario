@@ -11,12 +11,15 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public TestLevel_1 ()
         {
-            var player = new Hero(480, 100, "Player_1"); // 100 -> 306
+            var player = new Hero(480, 100, "Player_1");
             levelObjects.Add(player);
             players.Add(player);
 
-            var skelet = new Skeleton(550, 100);
+            var skelet = new Skeleton(1100, 100);
             levelObjects.Add(skelet);
+
+            var skelet2 = new Skeleton(1200, 100);
+            levelObjects.Add(skelet2);
 
             fieldSize = new Size(100, 100);
 
@@ -27,11 +30,12 @@ namespace Terraria_sMario.Classes.Logic.Levels
             int width_1 = 7;
             int width_2 = 14;
             int width_3 = 19;
+            int width_4 = 40;
 
             fillFieldWithGrass(height_1, 0, width_1);
             fillFieldWithGrass(height_2, width_1, width_2);
             fillFieldWithGrass(height_3, width_2, width_3);
-            fillFieldWithGrass(height_4, width_3, fieldWidth + 1);
+            fillFieldWithGrass(height_4, width_3, width_4);
         }
 
         

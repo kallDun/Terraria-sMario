@@ -10,6 +10,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
     {
         Stand, MoveRight, MoveLeft, FlyRight, FlyLeft, JumpRight, JumpLeft,
 
-        KeepMovingToPlayer, HitPlayer, ShootInPlayer
+        KeepMovingToEnemy, KeepShootDistance, Hit, ShootInPlayer,
+        None
     }
 }

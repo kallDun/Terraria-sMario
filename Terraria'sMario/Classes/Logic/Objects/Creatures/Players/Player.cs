@@ -26,8 +26,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         {
             if (isDead) return 0;
 
-            setAnimation(Walking);
-            return base.moveRightOrLeft(objects, direction);
+            setAnimation(run ? Running : Walking);
+            return base.moveRightOrLeft(objects, direction, run);
         }
 
         public override void Jump()
@@ -58,7 +58,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
 
             if (activeAnimation != null && activeAnimation.isLastFrame())
+            {
+                activeAnimation.setFirstFrame();
                 setAnimation(Standing);
+            }
+                
         }
 
         public void setAnimation(PlayerAnimationTypes type) // Animations SET

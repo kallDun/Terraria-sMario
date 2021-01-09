@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using Terraria_sMario.Classes.Logic.Objects;
+using Terraria_sMario.Classes.Logic.Objects.Creatures;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 
 namespace Terraria_sMario.Classes.Logic.Services
 {
@@ -14,16 +16,19 @@ namespace Terraria_sMario.Classes.Logic.Services
             {
                 if (block != ourLastBlock)
                 {
-                    if (isBlockIntersectBlock(ourNewBlock, block)) 
+                    if (isBlockIntersectBlock(ourNewBlock, ourLastBlock, block)) 
                         return true;
                 }
             }
             return false;
         }
 
-        public static bool isBlockIntersectBlock(in ParentObject ourBlock, in ParentObject otherBlock)
+        public static bool isBlockIntersectBlock(in ParentObject ourBlock, in ParentObject ourLastBlock, in ParentObject otherBlock)
         {
-            if (!ourBlock.isHaveCollision || !otherBlock.isHaveCollision) return false;
+            if (!ourLastBlock.isHaveCollision || !otherBlock.isHaveCollision) return false;
+            if (ourLastBlock is Player && otherBlock is Player) return false;
+            if (ourLastBlock is Enemy && otherBlock is Enemy) return false;
+
             return 
                 ourBlock.coords.X + ourBlock.size.Width > otherBlock.coords.X &&
                 ourBlock.coords.X < otherBlock.coords.X + otherBlock.size.Width &&

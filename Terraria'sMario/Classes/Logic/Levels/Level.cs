@@ -117,12 +117,12 @@ namespace Terraria_sMario.Classes.Logic.Levels
         {
             for (int i = width0; i < width; i++)
             {
-                var grass = new GrassBlock(i * blockSize, height * blockSize);
+                GrassBlock grass = new GrassBlock(i * blockSize, height * blockSize);
                 levelObjects.Add(grass);
 
                 for (int j = height + 1; j < fieldSize.Height; j++)
                 {
-                    var dirt = new DirtBlock(i * blockSize, j * blockSize);
+                    DirtBlock dirt = new DirtBlock(i * blockSize, j * blockSize);
                     levelObjects.Add(dirt);
                 }
             }
