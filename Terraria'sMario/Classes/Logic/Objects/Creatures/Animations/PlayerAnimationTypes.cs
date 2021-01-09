@@ -8,6 +8,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
 {
     enum PlayerAnimationTypes
     {
-        Standing, Walking, Running, Sitting, Hitting, Dead, Jumping
+        Standing, Walking, Running, Sitting, Dead, Jumping,
+        
+        Hitting, Healing, Shooting
     }
 }

@@ -14,6 +14,7 @@ namespace Terraria_sMario.Classes.Logic.Objects
 
         public bool isRendered = true;
         public bool isHaveCollision = true;
+        public bool isToDestroy = false;
 
         public Image drawingImage { get; protected set; }
 

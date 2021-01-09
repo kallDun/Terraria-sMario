@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior;
 using Terraria_sMario.Classes.Logic.Services;
 
@@ -20,7 +21,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
 
         private List<BehaviorUnitFinding> findingBehaviourList;
         private int findBehaveList_on = 0;
-        private List<Entity> found_enemies = new List<Entity> { };
+        private List<Entity> found_enemies = new List<Entity> { }; // Враги
+        private List<Entity> found_ellies = new List<Entity> { }; // Союзники
         private bool isFindEnemy = false;
         private double found_seconds_now = 0;
         private double found_seconds_max = 10;
@@ -42,6 +44,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
 
         public void update(Enemy enemy, in List<ParentObject> objects)
         {
+            if (lastMove == 0) enemy.setAnimation(Features.EnemyAnimationTypes.Standing);
+
             if (isFindEnemy)
             {
                 CombatSystem(enemy, objects);
@@ -76,8 +80,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                 }
             }
 
-            if (lastMove == 0) enemy.setAnimation(Features.EnemyAnimationTypes.Standing);
-
             if (!isJump)
             {
                 var action_moving = movingBehaviourList[moveBehaveList_on].Update(lastMove);
@@ -101,24 +103,32 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
             }
             else
             {
-                enemy.Jump();
-                jump_seconds_now += (1.0 / Parameters.fps);
-
-                if (jump_seconds_now >= jump_seconds_max)
-                {
-                    isJump = false;
-                    jump_seconds_now = 0;
-                    lastMove = enemy.moveRightOrLeft(objects, jump_direction);
-                }
+                EnemyJump(enemy, objects);
             }
         }
+
+        private void EnemyJump(Enemy enemy, List<ParentObject> objects)
+        {
+            enemy.Jump();
+            jump_seconds_now += (1.0 / Parameters.fps);
+
+            if (jump_seconds_now >= jump_seconds_max)
+            {
+                isJump = false;
+                jump_seconds_now = 0;
+                lastMove = enemy.moveRightOrLeft(objects, jump_direction);
+            }
+        }
+
 
         private void CombatSystem(Enemy enemy, List<ParentObject> objects)
         {
             if (!combatBehaviourList[combatBehaveList_on].isActiveUnit())
             {
                 if (combatBehaviourList[combatBehaveList_on] != combatBehaviourList.Last())
+                {
                     combatBehaveList_on++;
+                } 
                 else
                 {
                     combatBehaveList_on = 0;
@@ -128,22 +138,72 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                 }
             }
 
+            int range = enemy.weaponInHand != null ? enemy.weaponInHand.actionRadius : enemy.damage_heal_ActionRadius;
 
-            Entity closestEntity = CheckDistanceBetweenObjectsService.findClosestObjectToListOfObjects(enemy, found_enemies);
-            double distanceToEntity = CheckDistanceBetweenObjectsService.FindDistanceBetweenTwoObjects(enemy, closestEntity);
+            Entity closestEnemy = CheckDistanceBetweenObjectsService.findClosestObjectToListOfObjects(enemy, found_enemies);
+            double? distanceToEnemy = CheckDistanceBetweenObjectsService.FindDistanceBetweenTwoObjects(enemy, closestEnemy);
 
-            var action = combatBehaviourList[combatBehaveList_on].Update(distanceToEntity, enemy);
+            Entity closestElly = CheckDistanceBetweenObjectsService.findClosestObjectToListOfObjects(enemy, found_ellies);
+            double? distanceToElly = CheckDistanceBetweenObjectsService.FindDistanceBetweenTwoObjects(enemy, closestElly);
 
-            if (action == ActionType.KeepMovingToEnemy)
+            var action = combatBehaviourList[combatBehaveList_on].Update(distanceToEnemy, distanceToElly, enemy, range);
+
+            if (action == ActionType.KeepMovingToEnemy ||
+                action == ActionType.KeepMovingToElly ||
+                action == ActionType.Retreat)
             {
-                bool isRight = closestEntity.coords.X > enemy.coords.X;
-                int direction = isRight ? 1 : -1;
-                enemy.moveRightOrLeft(objects, direction, true);
+                var needEntity = action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat ?
+                    closestEnemy : closestElly;
+
+                if (isJump)
+                {
+                    EnemyJump(enemy, objects);
+
+                    CombatAttackUp(enemy, objects, action, needEntity);
+                }
+                else
+                {
+                    bool isRight = needEntity.coords.X > enemy.coords.X;
+                    int direction = isRight ? 1 : -1;
+
+                    if (action == ActionType.Retreat)
+                    {
+                        direction = isRight ? -1 : 1; // Идет в обратную от персонажа сторону
+                    }
+
+                    if (lastMove == 0)
+                    {
+                        isJump = true;
+                        jump_direction = direction;
+                    }
+                    else
+                    {
+                        lastMove = enemy.moveRightOrLeft(objects, direction, 
+                            run: (action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat));
+
+                        CombatAttackUp(enemy, objects, action, needEntity);
+                    }
+                }
             }
             else
             if (action == ActionType.Hit)
             {
                 enemy.Hit(objects);
+            }
+            else
+            if (action == ActionType.Heal)
+            {
+                enemy.Heal(objects);
+            }
+        }
+
+        private static void CombatAttackUp(Enemy enemy, List<ParentObject> objects, ActionType action, Entity needEntity)
+        {
+            if (CheckDistanceBetweenObjectsService.FindDistance_X_BetweenTwoObjects(enemy, needEntity) <= needEntity.size.Width &&
+                CheckDistanceBetweenObjectsService.FindDistance_Y_BetweenTwoObjects(enemy, needEntity) <= needEntity.size.Height)
+            {
+                if (action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat) enemy.Hit(objects);
+                else if (action == ActionType.KeepMovingToElly) enemy.Heal(objects);
             }
         }
 
@@ -163,6 +223,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
             }
 
             var list_of_founded_entities = findingBehaviourList[findBehaveList_on].Update(objects, enemy);
+            found_ellies = findingBehaviourList[findBehaveList_on].UpdateEllies(objects, enemy);
 
             if (list_of_founded_entities.Count == 0 || 
                 (list_of_founded_entities.Count == 1 && list_of_founded_entities[0] == null))
@@ -187,6 +248,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
         }
 
 
+
         // Слежка за показателем здоровья
 
         private double? health;
@@ -195,8 +257,24 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
         {
             if (health != null)
             {
-                if (enemy.health < health) 
+                if (enemy.health < health)
+                {
                     findingBehaviourList[findBehaveList_on].activateForcedType();
+
+                    if (enemy.health <= enemy.maxHealth / 2)
+                    {
+                        var healing_combat = combatBehaviourList.Where(x => x.behaviorType == BehaviorTypes.Healing);
+
+                        if (healing_combat.Count() > 0)
+                        {
+                            combatBehaveList_on = combatBehaviourList.IndexOf(healing_combat.First());
+
+                            foreach (var item in combatBehaviourList)
+                                item.restartUnit();
+                        }
+
+                    }
+                }
             }
 
             health = enemy.health;

@@ -12,6 +12,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
         public EnemyAnimation activeAnimation { get; protected set; }
 
         protected BehaviorControl enemy_behavior;
+        protected int standartHeal_enemy = 10;
+
+
+        // Threads
 
         public override void Draw(Graphics g)
         {
@@ -24,6 +28,24 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
             base.Draw(g);
         }
+
+        public void updateBehavior(in List<ParentObject> objects)
+        {
+            if (isDead) return;
+
+            enemy_behavior?.update(this, objects); // Enemy behavior
+        }
+
+        public override void updateProperties()
+        {
+            if (isDead)
+            {
+                setAnimation(Dead);
+                return;
+            }
+        }
+
+        // Actions
 
         public override void Jump()
         {
@@ -47,20 +69,29 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             return false;
         }
 
-        public void updateBehavior(in List<ParentObject> objects) {
-            if (isDead) return;
-
-            enemy_behavior?.update(this, objects); // Enemy behavior
-        }
-
-        public override void updateProperties() 
+        public override bool Heal(in List<ParentObject> objects, int standartHeal = 0)
         {
-            if (isDead)
+            if (base.Heal(objects, standartHeal_enemy))
             {
-                setAnimation(Dead);
-                return;
+                setAnimation(Healing);
+                return true;
             }
+            else
+                return false;
         }
+
+        public override bool Shoot(in List<ParentObject> objects)
+        {
+            if (base.Shoot(objects))
+            {
+                setAnimation(Shooting);
+                return true;
+            }
+            else
+                return false;
+        }
+
+        // Animation Set
 
         public void setAnimation(EnemyAnimationTypes type) // Animations SET
             => activeAnimation = animations.Find(x => x.type == type);

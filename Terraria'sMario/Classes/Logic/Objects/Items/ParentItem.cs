@@ -17,8 +17,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
             if (isLayOnTheGround)
             {
                 coords = new Point(0, 0);
-                isLayOnTheGround = false;
-                isHaveCollision = false;
+                isToDestroy = true;
                 return this;
             }
             return null;
@@ -29,8 +28,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
             if (!isLayOnTheGround)
             {
                 this.coords = coords;
-                isLayOnTheGround = true;
-                isHaveCollision = true;
+                isToDestroy = false;
                 return this;
             }
             return null;

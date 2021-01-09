@@ -8,6 +8,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
 {
     enum EnemyAnimationTypes
     {
-        Standing, Walking, Running, Hitting, Dead, Jumping
+        Standing, Walking, Running, Dead, Jumping, 
+        
+        Hitting, Healing, Shooting
     }
 }

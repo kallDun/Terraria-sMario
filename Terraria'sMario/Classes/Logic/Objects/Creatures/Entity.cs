@@ -36,11 +36,21 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         {
             if (!resistancesEffects.Contains(effect.effectType))
             {
-                effects.Add(effect);
+                var eff = effects.Where(x => effect.effectType == x.effectType);
+                if (eff.Count() > 0)
+                {
+                    eff.First().addDuration(effect.duration);
+                }
+                else
+                {
+                    effects.Add(effect);
+                }
             }
         }
 
         // Damage and Health System
+
+        public bool isFullHealth() => health == maxHealth;
 
         public bool isDead { get; private set; } = false;
 
@@ -63,39 +73,74 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (health > maxHealth) health = maxHealth;
         }
 
-        // Hit System
+        // Hit & Weapon System
 
         public float baseCloseDamage { get; protected set; } = 5;
-        public float baseTimerHitMax { get; protected set; } = 1.5f; // in seconds
-        public int rangeOfMeleeHit { get; protected set; } = 15;
+        public double baseTimerHitMax { get; protected set; } = 1.5; // in seconds
+        public int damage_heal_ActionRadius { get; protected set; } = 15;
         public Weapon weaponInHand { get; protected set; }
 
         public virtual bool Hit(in List<ParentObject> objects)
         {
             if (!isReadyToHit) return false;
 
-            if (weaponInHand != null)
+            if (weaponInHand != null && weaponInHand.canMeleeDamage)
             {
-                if (weaponInHand.canShoot)
-                {
-                    newObjects.Concat(weaponInHand.Shoot());
-                    restartHitTimer();
-                    return true;
-                }
-                else
-                {
-                    weaponInHand.MakeMeleeDamage(objects, this);
-                    restartHitTimer();
-                    return true;
-                }
+                weaponInHand.MakeMeleeDamage(objects, this);
+                restartHitTimer();
+                return true;
             }
             else
             {
-                CheckEntityService.getNearEntity(objects, this, rangeOfMeleeHit)?.getDamage(baseCloseDamage);
+                CheckEntityService.getNearEntity(objects, this, damage_heal_ActionRadius)?.getDamage(baseCloseDamage);
                 restartHitTimer();
                 return true;
             }
         }
+
+        public virtual bool Shoot(in List<ParentObject> objects)
+        {
+            if (!isReadyToHit) return false;
+
+            if (weaponInHand != null && weaponInHand.canShoot)
+            {
+                newObjects.Concat(weaponInHand.Shoot());
+                restartHitTimer();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public virtual bool Heal(in List<ParentObject> objects, int standartHeal = 0)
+        {
+            if (!isReadyToHit) return false;
+
+            if (weaponInHand != null && weaponInHand.canHeal)
+            {
+                weaponInHand.MakeHealing(objects, this);
+                restartHitTimer();
+                return true;
+            }
+            else
+            {
+                if (standartHeal != 0)
+                {
+                    if (!isFullHealth()) getCure(standartHeal);
+                    else
+                    {
+                        CheckEntityService.getNearEntity(objects, this, damage_heal_ActionRadius, isEnemy: false)
+                            ?.getCure(standartHeal);
+                    }
+
+                    restartHitTimer();
+                    return true;
+                }
+                else
+                    return false;
+            }
+        }
+
 
         private Stopwatch timerHitNow = new Stopwatch(); // HIT TIMER
         public bool isReadyToHit { get; protected set; } = true;

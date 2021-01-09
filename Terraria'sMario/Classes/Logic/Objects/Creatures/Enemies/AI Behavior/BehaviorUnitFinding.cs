@@ -52,6 +52,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
         }
 
 
+        public List<Entity> UpdateEllies(List<ParentObject> objects, Enemy enemy) =>
+            CheckEntityService.searchAllEntities(objects, enemy, radius, isEverywhere: true, isEnemy: false);
+
+
         // Усиленный тип поиска в случае нанесения урона
 
         private double forcedType_seconds_Max = 5;
@@ -91,5 +95,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             behaviorType = BehaviorTypes.SearchingEverywhere;
             radius = 15;
         }
+
     }
 }

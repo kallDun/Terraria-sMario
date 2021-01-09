@@ -12,29 +12,33 @@ namespace Terraria_sMario.Classes.Logic.Services
 {
     static class CheckEntityService
     {
-        public static Entity getNearEntity(in List<ParentObject> objects, Entity entity, int rangeOfMeleeHit)
+        private const int overheadDistance = 50;
+
+        public static Entity getNearEntity(in List<ParentObject> objects, Entity entity, int rangeOfMeleeHit, bool isEnemy = true)
         {
-            var list = getAllNearEntities(objects, entity, rangeOfMeleeHit);
+            var list = getAllNearEntities(objects, entity, rangeOfMeleeHit, isEnemy);
             return list.Count > 0 ? list.First() : null;
         }
 
-        public static List<Entity> getAllNearEntities(List<ParentObject> objects, Entity entity, int rangeOfMeleeHit)
+        public static List<Entity> getAllNearEntities(List<ParentObject> objects, Entity entity, int rangeOfMeleeHit, bool isEnemy = true)
         {
-            var coord = new Point(entity.coords.X, entity.coords.Y);
-            var size = new Size(entity.size.Width + rangeOfMeleeHit, entity.size.Height);
+            var coord = new Point(entity.coords.X, entity.coords.Y - overheadDistance);
+            var size = new Size(entity.size.Width + rangeOfMeleeHit, entity.size.Height + overheadDistance);
             if (!entity.isTurnToRight) coord.Offset(-rangeOfMeleeHit, 0);
             var entityObject = new AbstractObject(coord, size);
 
-            return getListOfFoundedEntities(objects, entity, entityObject);
+            return getListOfFoundedEntities(objects, entity, entityObject, isEnemy);
         }
 
-        public static List<Entity> getListOfFoundedEntities(List<ParentObject> objects, Entity entity, AbstractObject entityObject)
+        private static List<Entity> getListOfFoundedEntities(List<ParentObject> objects, Entity entity, AbstractObject entityObject, bool isEnemy)
         {
+            var predicate = isEnemy ? getEnemyTargetPredicate(entity) : getAllyTargetPredicate(entity);
+
             var entities = new List<Entity> { };
 
             foreach (var obj in objects)
             {
-                if (getTargetPredicate(entity)(obj) && obj != entity)
+                if (predicate(obj) && obj != entity)
                 {
                     if (entityObject.coords.X + entityObject.size.Width > obj.coords.X &&
                         entityObject.coords.X < obj.coords.X + obj.size.Width &&
@@ -49,17 +53,7 @@ namespace Terraria_sMario.Classes.Logic.Services
             return entities;
         }
 
-        private static Predicate<ParentObject> getTargetPredicate(Entity entity)
-            => delegate (ParentObject obj)
-            {
-                return
-                (entity is Player) ? obj is Enemy :
-                (entity is Enemy) ? obj is Player :
-                false;
-            };
-
-
-        public static List<Entity> searchAllEntities(List<ParentObject> objects, Entity entity, int radius, bool isEverywhere)
+        public static List<Entity> searchAllEntities(List<ParentObject> objects, Entity entity, int radius, bool isEverywhere, bool isEnemy = true)
         {
             Point coord;
             Size size;
@@ -81,13 +75,33 @@ namespace Terraria_sMario.Classes.Logic.Services
             var entityObject = new AbstractObject(coord, size);
 
 
-            return getListOfFoundedEntities(objects, entity, entityObject);
+            return getListOfFoundedEntities(objects, entity, entityObject, isEnemy);
         }
 
-        public static Entity searchTheNearestEntity(List<ParentObject> objects, Entity entity, int radius, bool isEverywhere)
+        public static Entity searchTheNearestEntity(List<ParentObject> objects, Entity entity, int radius, bool isEverywhere, bool isEnemy = true)
         {
             var list = searchAllEntities(objects, entity, radius, isEverywhere);
             return list.Count > 0 ? list.First() : null;
         }
+
+
+
+        private static Predicate<ParentObject> getEnemyTargetPredicate(Entity entity)
+            => delegate (ParentObject obj)
+            {
+                return
+                (entity is Player) ? obj is Enemy :
+                (entity is Enemy) ? obj is Player :
+                false;
+            };
+
+        private static Predicate<ParentObject> getAllyTargetPredicate(Entity entity)
+            => delegate (ParentObject obj)
+            {
+                return
+                (entity is Player) ? obj is Player :
+                (entity is Enemy) ? obj is Enemy :
+                false;
+            };
     }
 }

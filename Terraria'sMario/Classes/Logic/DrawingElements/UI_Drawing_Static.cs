@@ -31,7 +31,7 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
                 coord.Offset(15, 0);
             }  
 
-            for (int i = 0; i < Math.Floor((maxHealth - Health) / 10.0); i++)
+            for (int i = 0; i < (int) Math.Floor((maxHealth - Health) / 10.0); i++)
             {
                 g.DrawImage(UI.Health_empty, coord);
                 coord.Offset(15, 0);

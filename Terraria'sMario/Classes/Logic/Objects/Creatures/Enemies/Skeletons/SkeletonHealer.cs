@@ -1,39 +1,40 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Features;
-using Terraria_sMario.Images;
 using static Terraria_sMario.Images.Mobs_res;
 
-namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
+namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
 {
-    class Skeleton : Enemy
+    class SkeletonHealer : Enemy
     {
-        public Skeleton(int X, int Y)
+        public SkeletonHealer(int X, int Y)
         {
             coords = new Point(X, Y);
             size = new Size(45, 90);
-            maxHealth = 30;
+            maxHealth = 20;
             health = maxHealth;
             jumpHeight = -14;
-            resistancesEffects.Add(EffectTypes.Poisoning);
+            baseCloseDamage = 7;
+            baseTimerHitMax = 1.5;
+            damage_heal_ActionRadius = 30;
+            standartHeal_enemy = 8;
             resistancesEffects.Add(EffectTypes.Curse);
             resistancesEffects.Add(EffectTypes.Blessing);
 
             enemy_behavior = new BehaviorControl(
                 new List<BehaviorUnitMoving> {
-                    new BehaviorUnitMoving(BehaviorTypes.Walking, 6, radius: 10),
-                    new BehaviorUnitMoving(BehaviorTypes.Standing, 3)
+                    new BehaviorUnitMoving(BehaviorTypes.Walking, duration: 8, radius: 12),
+                    new BehaviorUnitMoving(BehaviorTypes.Standing, duration: 2)
                 },
                 new List<BehaviorUnitFinding>
                 {
-                    new BehaviorUnitFinding(BehaviorTypes.SearchingInFrontOfView, false, duration: 15, radius: 2)
+                    new BehaviorUnitFinding(BehaviorTypes.SearchingInFrontOfView, searchEveryone: false, duration: 30, radius: 15)
                 },
                 new List<BehaviorUnitCombat>
                 {
-                    new BehaviorUnitCombat(BehaviorTypes.Hitting, duration: 30)
+                    new BehaviorUnitCombat(BehaviorTypes.Healing, duration: 15, healingDistance: 150)
                 }
                 );
 
@@ -48,7 +49,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Standing),
 
-                new EnemyAnimation(new List<Image>{ 
+                new EnemyAnimation(new List<Image>{
                     Skeleton_walking_3,
                     Skeleton_walking_2, Skeleton_walking_4,
                     Skeleton_walking_2 }, EnemyAnimationTypes.Running, skipFrames: 1),

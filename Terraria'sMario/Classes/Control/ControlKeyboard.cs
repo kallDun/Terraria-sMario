@@ -13,7 +13,9 @@ namespace Terraria_sMario.Classes.Control
         public bool isWentLeft_player1 { get; private set; } = false;
         public bool isJumped_player1 { get; private set; } = false;
         public bool isHitting_player1 { get; private set; } = false;
-        
+        public bool isHealing_player1 { get; private set; } = false;
+        public bool isShooting_player1 { get; private set; } = false;
+
 
 
         public void KeyPress(KeyEventArgs e)
@@ -22,8 +24,11 @@ namespace Terraria_sMario.Classes.Control
             if (checkOnPressedRight(e)) isWentRight_player1 = true;
             if (checkOnPressedSpace(e)) isJumped_player1 = true;
             if (checkOnPressedE(e)) isHitting_player1 = true;
+            if (checkOnPressedQ(e)) isHealing_player1 = true;
+            if (checkOnPressedR(e)) isShooting_player1 = true;
             isPressedShift_player1 = checkOnPressedShift(e);
         }
+
 
         public void KeyUp(KeyEventArgs e)
         {
@@ -31,20 +36,17 @@ namespace Terraria_sMario.Classes.Control
             if (checkOnPressedRight(e)) isWentRight_player1 = false;
             if (checkOnPressedSpace(e)) isJumped_player1 = false;
             if (checkOnPressedE(e)) isHitting_player1 = false;
+            if (checkOnPressedQ(e)) isHealing_player1 = false;
+            if (checkOnPressedR(e)) isShooting_player1 = false;
             isPressedShift_player1 = checkOnPressedShift(e);
         }
 
+        
+
         public void updateMove(List<Player> players, in List<ParentObject> objects)
         {
-            if (isWentRight_player1) 
-                players[0].moveRightOrLeft(objects, 1, isPressedShift_player1);
-            if (isWentLeft_player1)
-                players[0].moveRightOrLeft(objects, -1, isPressedShift_player1);
-            if (isJumped_player1)
-                players[0].Jump();
-            if (isHitting_player1)
-                players[0].Hit(objects);
-
+            players[0].controlPlayer(objects, isWentRight_player1, isWentLeft_player1, isPressedShift_player1,
+                isJumped_player1, isHitting_player1, isHealing_player1, isShooting_player1);
         }
 
         private bool checkOnPressedSpace(KeyEventArgs e)
@@ -63,7 +65,14 @@ namespace Terraria_sMario.Classes.Control
         {
             return (e.KeyCode == Keys.E);
         }
-
+        private bool checkOnPressedQ(KeyEventArgs e)
+        {
+            return e.KeyCode == Keys.Q;
+        }
+        private bool checkOnPressedR(KeyEventArgs e)
+        {
+            return e.KeyCode == Keys.R;
+        }
         private bool checkOnPressedShift(KeyEventArgs e)
         {
             return (e.Shift);

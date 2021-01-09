@@ -16,6 +16,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
 
         public void restartUnit() => durationNow = duration;
 
+        public void turnOffUnit() => durationNow = 0;
+
         public bool isActiveUnit() => (durationNow > 0);
     }
 }

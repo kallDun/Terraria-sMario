@@ -17,14 +17,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             health = maxHealth;
             jumpHeight = -20;
             speed = 5;
+            baseCloseDamage = 6;
+            damage_heal_ActionRadius = 30;
+            baseTimerHitMax = 1.5;
             uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.All);
 
 
-            effects.Add(new Effect(EffectTypes.Curse, 10)); // temporary ---------
-            effects.Add(new Effect(EffectTypes.Fire, 20));  // -------------------
-            getDamage(15); // ------------------------------------------- for tests
+            getEffect(new Effect(EffectTypes.Curse, 10)); // temporary ---------
+            getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------
+            getEffect(new Effect(EffectTypes.Fire, 40));  // -------------------
+            getDamage(15f); // ----------------------------------------- for tests
 
-
+            
             drawingImage = sherif_image;
             animations = new List<PlayerAnimation>
             {
