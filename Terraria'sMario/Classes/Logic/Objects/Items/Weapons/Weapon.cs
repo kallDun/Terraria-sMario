@@ -19,6 +19,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
         //  Для ближнего оружия
         public bool canMeleeDamage { get; protected set; } = false;
         public bool canSplashDamage { get; protected set; }
+        public int ClosePushing { get; protected set; }
 
         // Для ближнего и дальнего оружия
         public float damage { get; protected set; }
@@ -43,7 +44,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
                 List<Entity> entities = CheckEntityService.getAllNearEntities(objects, self, actionRadius);
                 foreach (var entity in entities)
                 {
-                    HitEntity(entity);
+                    HitEntity(entity, objects);
                 }
                 return entities.Count > 0;
             }
@@ -52,7 +53,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
                 var entity = CheckEntityService.getNearEntity(objects, self, actionRadius);
                 if (entity != null)
                 {
-                    HitEntity(entity);
+                    HitEntity(entity, objects);
 
                     return true;
                 }
@@ -107,7 +108,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         private void HealEntity(Entity entity) => entity?.getCure(healing);
 
-        private void HitEntity(Entity entity)
+        private void HitEntity(Entity entity, in List<ParentObject> objects)
         {
             entity?.getDamage(damage);
             foreach (var effect in getting_weapon_effects)

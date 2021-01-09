@@ -67,6 +67,7 @@
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonHealer.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonSwordsman.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Turtle.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Players\InventorySystem\Inventory.cs" />
     <Compile Include="Classes\Logic\Objects\Items\ParentItem.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\Hero.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\Player.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Classes\Logic\Objects\Features\Effect.cs" />
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw.cs" />
     <Compile Include="Classes\Logic\Objects\Features\EffectTypes.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Potions\Potion.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Weapon.cs" />
     <Compile Include="Classes\Logic\Objects\ParentObject.cs" />
     <Compile Include="Classes\Logic\Parameters.cs" />
@@ -259,5 +261,6 @@
   <ItemGroup>
     <None Include="Resources\sherif_beat_5.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

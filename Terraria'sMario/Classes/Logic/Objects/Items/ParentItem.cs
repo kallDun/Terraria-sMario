@@ -10,7 +10,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
     class ParentItem : ParentObject
     {
         protected bool isLayOnTheGround = true;
-        public Image smallImage { get; protected set; }
+        public Image smallImage_inInventory { get; protected set; }
+
+        public string Name { get; protected set; } = "Standart_Name_Item";
+        public string Description { get; protected set; }
+
 
         public ParentItem takeItem()
         {

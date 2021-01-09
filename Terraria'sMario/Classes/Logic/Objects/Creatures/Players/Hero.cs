@@ -25,8 +25,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
 
             getEffect(new Effect(EffectTypes.Curse, 10)); // temporary ---------
             getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------
-            getEffect(new Effect(EffectTypes.Fire, 40));  // -------------------
-            getDamage(15f); // ----------------------------------------- for tests
+            getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------
 
             
             drawingImage = sherif_image;

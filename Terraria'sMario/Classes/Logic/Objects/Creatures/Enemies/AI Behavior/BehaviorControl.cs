@@ -49,6 +49,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
             if (isFindEnemy)
             {
                 CombatSystem(enemy, objects);
+                findingBehaviourList[findBehaveList_on].activateForcedType();
             }
             else
             {

@@ -92,7 +92,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
             else
             {
-                CheckEntityService.getNearEntity(objects, this, damage_heal_ActionRadius)?.getDamage(baseCloseDamage);
+                CheckEntityService.getNearEntity(objects, this, damage_heal_ActionRadius)
+                    ?.getDamage(baseCloseDamage);
+
                 restartHitTimer();
                 return true;
             }

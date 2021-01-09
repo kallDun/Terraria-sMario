@@ -11,6 +11,8 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
 
         public static void DrawHealth(Graphics g, Point coord, float health, float maxHealth)
         {
+            int count_of_hearts = 0;
+
             int Health = (int) Math.Round(health);
             int fullHeart = Health / 10;
             int restHeart = Health % 10;
@@ -19,6 +21,7 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             {
                 g.DrawImage(UI.Health_full, coord);
                 coord.Offset(15, 0);
+                count_of_hearts++;
             }
 
             var image = restHeart >= 7 ? UI.Health_withoutThird :
@@ -29,9 +32,10 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             {
                 g.DrawImage(image, coord);
                 coord.Offset(15, 0);
+                count_of_hearts++;
             }  
 
-            for (int i = 0; i < (int) Math.Floor((maxHealth - Health) / 10.0); i++)
+            for (int i = 0; i < (int)Math.Floor(maxHealth / 10.0) - count_of_hearts; i++)
             {
                 g.DrawImage(UI.Health_empty, coord);
                 coord.Offset(15, 0);
