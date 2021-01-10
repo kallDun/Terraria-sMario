@@ -271,5 +271,20 @@
   <ItemGroup>
     <None Include="Resources\Cell_outline_var2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Health_withoutHalf_big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Health_withoutThird_big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Health_empty_big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Health_full_big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Health_withLastThird_big.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

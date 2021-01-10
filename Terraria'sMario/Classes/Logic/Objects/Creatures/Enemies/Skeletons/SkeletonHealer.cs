@@ -45,14 +45,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
                 new EnemyAnimation(new List<Image>{
                     Skeleton_walking_3,
                     Skeleton_walking_2, Skeleton_walking_4,
-                    Skeleton_walking_2 }, EnemyAnimationTypes.Walking, skipFrames: 3),
+                    Skeleton_walking_2 }, EnemyAnimationTypes.Walking, skipFrames: 6),
 
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Standing),
 
                 new EnemyAnimation(new List<Image>{
                     Skeleton_walking_3,
                     Skeleton_walking_2, Skeleton_walking_4,
-                    Skeleton_walking_2 }, EnemyAnimationTypes.Running, skipFrames: 1),
+                    Skeleton_walking_2 }, EnemyAnimationTypes.Running, skipFrames: 2),
 
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Jumping),
                 new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Hitting),

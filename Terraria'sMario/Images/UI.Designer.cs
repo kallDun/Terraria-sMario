@@ -133,9 +133,29 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Health_empty_big {
+            get {
+                object obj = ResourceManager.GetObject("Health_empty_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Health_full {
             get {
                 object obj = ResourceManager.GetObject("Health_full", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Health_full_big {
+            get {
+                object obj = ResourceManager.GetObject("Health_full_big", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,6 +173,16 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Health_withLastThird_big {
+            get {
+                object obj = ResourceManager.GetObject("Health_withLastThird_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Health_withoutHalf {
             get {
                 object obj = ResourceManager.GetObject("Health_withoutHalf", resourceCulture);
@@ -163,9 +193,29 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Health_withoutHalf_big {
+            get {
+                object obj = ResourceManager.GetObject("Health_withoutHalf_big", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Health_withoutThird {
             get {
                 object obj = ResourceManager.GetObject("Health_withoutThird", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Health_withoutThird_big {
+            get {
+                object obj = ResourceManager.GetObject("Health_withoutThird_big", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

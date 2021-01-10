@@ -18,16 +18,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         private Point coords;
 
+        private Cell active_cell;
         private Cell[] inventory_cells = new Cell[11] {
             new Cell(17, 163), new Cell(71, 163), new Cell(125, 163), 
             new Cell(180, 163), new Cell(237, 163), new Cell(293, 163),
             new Cell(350, 163), new Cell(407, 163), new Cell(465, 163),
             new Cell(26, 225), new Cell(95, 225) };
 
-        private Point health_coord = new Point(18, 58);
+        private Point health_coord = new Point(16, 58);
+        private Point name_coord = new Point(14, 8);
+        private Point coinsCount_coord = new Point(220, 45);
 
 
-        private Cell active_cell;
         private int countOfCoins = 0;
 
 
@@ -52,19 +54,30 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public void Draw(Graphics g)
         {
+            // Draw cells
             g.DrawImage(drawingImage, coords);
             foreach (var cell in inventory_cells)
             {
                 cell.Draw(g, coords);
             }
 
-            // Draw HP
-            UI_Drawing_Static.DrawHealth(g, new Point(health_coord.X + coords.X, health_coord.Y + coords.Y),
-                player.health, player.maxHealth, 10, false);
-
             // Draw active cell
             if (active_cell != null)
                 g.DrawImage(UI.Cell_outline_var2, new Point(coords.X + active_cell.coords.X, coords.Y + active_cell.coords.Y));
+
+            // Draw HP
+            UI_Drawing_Static.DrawHealth(g, new Point(health_coord.X + coords.X, health_coord.Y + coords.Y),
+                player.health, player.maxHealth, 7, false, true);
+
+            // Draw Name
+            UI_Drawing_Static.DrawString(g, new Point(name_coord.X + coords.X, name_coord.Y + coords.Y),
+                player.Name, Brushes.White, 24);
+
+            // Coins Count
+            UI_Drawing_Static.DrawString(g, new Point(coinsCount_coord.X + coords.X, coinsCount_coord.Y + coords.Y),
+                countOfCoins.ToString(), Brushes.Yellow, 24, 
+                new RectangleF(coinsCount_coord.X + coords.X, coinsCount_coord.Y + coords.Y, 70, 25));
+
         }
 
         public void Update()

@@ -76,8 +76,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
                 {
                     if (distanceToElly == null)
                     {
-                        durationNow = 0;
-                        return ActionType.Retreat;
+                        if (distanceToEntity != null)
+                        {
+                            durationNow = 0;
+                            return ActionType.Retreat;
+                        }
+                        else return ActionType.None;
                     }
 
                     if (distanceToElly > range)

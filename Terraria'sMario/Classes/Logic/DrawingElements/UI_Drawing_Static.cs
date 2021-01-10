@@ -10,11 +10,18 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
     {
 
         public static void DrawHealth(Graphics g, Point coord, float health, 
-            float maxHealth, int heartsInRow, bool y_dir = true) // y_dir = true is up, false is down 
+            float maxHealth, int heartsInRow, bool y_dir = true, bool isBig = false) // y_dir = true is up, false is down 
         {
+            Image imageHealth_full = isBig ? UI.Health_full_big : UI.Health_full;
+            Image imageHealth_withoutThird = isBig ? UI.Health_withoutThird_big : UI.Health_withoutThird;
+            Image imageHealth_withoutHalf = isBig ? UI.Health_withoutHalf_big : UI.Health_withoutHalf;
+            Image imageHealth_withLastThird = isBig ? UI.Health_withLastThird_big : UI.Health_withLastThird;
+            Image imageHealth_empty = isBig ? UI.Health_empty_big : UI.Health_empty;
+            int basicOffset = isBig ? 30 : 15;
+
             Point start_coord = coord;
             int count_of_hearts = 0;
-            int y_offset = y_dir? -15 : 15;
+            int y_offset = y_dir? -basicOffset : basicOffset;
 
             int Health = (int) Math.Round(health);
             int fullHeart = Health / 10;
@@ -22,37 +29,37 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
 
             for (int i = 0; i < fullHeart; i++)
             {
-                g.DrawImage(UI.Health_full, coord);
-                coord.Offset(15, 0);
+                g.DrawImage(imageHealth_full, coord);
+                coord.Offset(basicOffset, 0);
                 count_of_hearts++;
 
                 if (count_of_hearts % heartsInRow == 0)
-                    coord = new Point(start_coord.X, start_coord.Y + y_offset);
+                    coord = new Point(start_coord.X, start_coord.Y + (count_of_hearts / heartsInRow) * y_offset);
             }
 
-            var image = restHeart >= 7 ? UI.Health_withoutThird :
-                restHeart >= 5 ? UI.Health_withoutHalf :
-                restHeart >= 3 ? UI.Health_withLastThird : null;
+            var image = restHeart >= 7 ? imageHealth_withoutThird :
+                restHeart >= 5 ? imageHealth_withoutHalf :
+                restHeart >= 3 ? imageHealth_withLastThird : null;
             
             if (image != null)
             {
                 g.DrawImage(image, coord);
-                coord.Offset(15, 0);
+                coord.Offset(basicOffset, 0);
                 count_of_hearts++;
 
                 if (count_of_hearts % heartsInRow == 0)
-                    coord = new Point(start_coord.X, start_coord.Y + y_offset);
+                    coord = new Point(start_coord.X, start_coord.Y + (count_of_hearts / heartsInRow) * y_offset);
             }
 
             var count = (int)Math.Floor(maxHealth / 10.0) - count_of_hearts;
             for (int i = 0; i < count; i++)
             {
-                g.DrawImage(UI.Health_empty, coord);
-                coord.Offset(15, 0);
+                g.DrawImage(imageHealth_empty, coord);
+                coord.Offset(basicOffset, 0);
                 count_of_hearts++;
 
                 if (count_of_hearts % heartsInRow == 0)
-                    coord = new Point(start_coord.X, start_coord.Y + y_offset);
+                    coord = new Point(start_coord.X, start_coord.Y + (count_of_hearts / heartsInRow) * y_offset);
             }
         }
 
@@ -92,12 +99,26 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             DrawString(g, coord, damage.ToString(), Brushes.Red, 12);
         }
 
-        public static void DrawString(Graphics g, Point coord, string str, Brush brush, float fontsize = 14)
+        public static void DrawString(Graphics g, Point coord, string str, Brush brush, float fontsize = 14, RectangleF? rect = null)
         {
-            g.DrawString(
+            if (rect == null)
+            {
+                g.DrawString(
                 str,
-                new Font("Calibri", fontsize, FontStyle.Bold),
+                new Font("Calibri", fontsize, FontStyle.Bold, GraphicsUnit.Point),
                 brush, coord);
+            }
+            else
+            {
+                StringFormat stringFormat = new StringFormat();
+                stringFormat.Alignment = StringAlignment.Center;
+                stringFormat.LineAlignment = StringAlignment.Center;
+
+                g.DrawString(
+                str,
+                new Font("Calibri", fontsize, FontStyle.Bold, GraphicsUnit.Point),
+                brush, (RectangleF) rect, stringFormat);
+            }
         }
 
         private static Image getEffectImage(EffectTypes effect)

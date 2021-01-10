@@ -48,7 +48,7 @@
             // 
             // draw
             // 
-            this.draw.Interval = 40;
+            this.draw.Interval = 16;
             this.draw.Tick += new System.EventHandler(this.draw_Tick);
             // 
             // update
@@ -58,7 +58,7 @@
             // 
             // checkCamera
             // 
-            this.checkCamera.Interval = 40;
+            this.checkCamera.Interval = 16;
             this.checkCamera.Tick += new System.EventHandler(this.checkCamera_Tick);
             // 
             // checkField

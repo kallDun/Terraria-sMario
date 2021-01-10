@@ -123,6 +123,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
                     DrawEffects(g);
                     DrawResistEffects(g);
                     break;
+
+                case UI_Entity_Draw_Type.OnlyNameAndDamage:
+                    DrawName(g);
+                    DrawDamage(g);
+                    break;
             }
         }
 
