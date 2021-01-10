@@ -13,7 +13,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             this.Name = Name;
             coords = new Point(X, Y);
             size = new Size(55, 100);
-            maxHealth = 210;
+            maxHealth = 50;
             health = maxHealth;
             jumpHeight = -20;
             speed = 5;
@@ -23,11 +23,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.OnlyNameAndDamage);
             inventory = new InventorySystem.Inventory(PlayerNumber, this);
 
-            getEffect(new Effect(EffectTypes.Curse, 10)); // temporary ---------
+            resistancesEffects.Add(EffectTypes.Ice); // -------------- for tests
+            resistancesEffects.Add(EffectTypes.Stunning); // -------------------
+            resistancesEffects.Add(EffectTypes.Poisoning); // ------------------
+            getEffect(new Effect(EffectTypes.Curse, 10)); // -------------------
             getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------
-            getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------
+            getEffect(new Effect(EffectTypes.Fire, 20));  // temporary ---------
 
-            
+
             drawingImage = sherif_image;
             animations = new List<PlayerAnimation>
             {

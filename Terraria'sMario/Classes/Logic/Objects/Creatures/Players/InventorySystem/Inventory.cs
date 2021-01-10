@@ -28,6 +28,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point health_coord = new Point(16, 58);
         private Point name_coord = new Point(14, 8);
         private Point coinsCount_coord = new Point(220, 45);
+        private Point effects_coord = new Point(300, 52);
+        private Point resistance_coord = new Point(300, 106);
 
 
         private int countOfCoins = 0;
@@ -78,6 +80,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 countOfCoins.ToString(), Brushes.Yellow, 24, 
                 new RectangleF(coinsCount_coord.X + coords.X, coinsCount_coord.Y + coords.Y, 70, 25));
 
+            // Draw effects
+            UI_Drawing_Static.DrawEffects(g, new Point(coords.X + effects_coord.X, coords.Y + effects_coord.Y), 
+                player.effects, true);
+
+            // Draw resistance effects
+            UI_Drawing_Static.DrawResistanceEffects(g, new Point(coords.X + resistance_coord.X, coords.Y + resistance_coord.Y),
+                player.resistancesEffects, true);
         }
 
         public void Update()

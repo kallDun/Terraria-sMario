@@ -63,26 +63,34 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             }
         }
 
-        public static void DrawEffects(Graphics g, Point coord, List<Effect> effects)
+        public static void DrawEffects(Graphics g, Point coord, List<Effect> effects, bool isToRight = false) // true is to down
         {
             for (int i = 0; i < effects.Count; i++)
             {
-                var newPoint = new Point(coord.X, coord.Y + i * 22);
+                Point newPoint;
+                if (!isToRight)
+                    newPoint = new Point(coord.X, coord.Y + i * 22);
+                else
+                    newPoint = new Point(coord.X + i * 30, coord.Y);
 
                 g.DrawImage(getEffectImage(effects[i].effectType), newPoint);
 
-                newPoint.Offset(6, 8);
+                newPoint.Offset(10, 2);
                 DrawString(
                     g, newPoint, 
-                    effects[i].getIntDurability().ToString(), Brushes.DarkBlue, fontsize: 10);
+                    effects[i].getIntDurability().ToString(), Brushes.OrangeRed, fontsize: 10);
             }
         }
 
-        public static void DrawResistanceEffects(Graphics g, Point coord, List<EffectTypes> effects)
+        public static void DrawResistanceEffects(Graphics g, Point coord, List<EffectTypes> effects, bool isToRight = false) // true is to down
         {
             for (int i = 0; i < effects.Count; i++)
             {
-                var newPoint = new Point(coord.X, coord.Y + i * 15);
+                Point newPoint;
+                if (!isToRight)
+                    newPoint = new Point(coord.X, coord.Y + i * 15);
+                else
+                    newPoint = new Point(coord.X + i * 30, coord.Y);
 
                 g.DrawImage(UI.Resistance, newPoint);
 
