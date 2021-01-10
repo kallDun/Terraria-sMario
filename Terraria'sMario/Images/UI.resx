@@ -121,6 +121,12 @@
   <data name="Bless" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bless.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cell_outline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cell_outline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cell_outline_var2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cell_outline_var2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Curse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Curse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,6 +153,9 @@
   </data>
   <data name="Ice" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Inventory_player1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Inventory_player1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Poison" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Poison.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

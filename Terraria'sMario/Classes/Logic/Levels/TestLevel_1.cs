@@ -12,7 +12,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public TestLevel_1 ()
         {
-            var player = new Hero(480, 100, "Player_1");
+            var player = new Hero(480, 100, "Player_1", 1);
             levelObjects.Add(player);
             players.Add(player);
 

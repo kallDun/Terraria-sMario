@@ -45,7 +45,7 @@ namespace Terraria_sMario.Classes.Control
 
         public void updateMove(List<Player> players, in List<ParentObject> objects)
         {
-            players[0].controlPlayer(objects, isWentRight_player1, isWentLeft_player1, isPressedShift_player1,
+            players[0].controlPlayerPressed(objects, isWentRight_player1, isWentLeft_player1, isPressedShift_player1,
                 isJumped_player1, isHitting_player1, isHealing_player1, isShooting_player1);
         }
 

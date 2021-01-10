@@ -73,6 +73,26 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cell_outline {
+            get {
+                object obj = ResourceManager.GetObject("Cell_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cell_outline_var2 {
+            get {
+                object obj = ResourceManager.GetObject("Cell_outline_var2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Curse {
             get {
                 object obj = ResourceManager.GetObject("Curse", resourceCulture);
@@ -156,6 +176,16 @@ namespace Terraria_sMario.Images {
         internal static System.Drawing.Bitmap Ice {
             get {
                 object obj = ResourceManager.GetObject("Ice", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Inventory_player1 {
+            get {
+                object obj = ResourceManager.GetObject("Inventory_player1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

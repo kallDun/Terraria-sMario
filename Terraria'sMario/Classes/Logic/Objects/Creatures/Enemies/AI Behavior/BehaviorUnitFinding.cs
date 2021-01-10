@@ -93,7 +93,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             forcedType_seconds_Now = 0;
             durationNow = 0;
             behaviorType = BehaviorTypes.SearchingEverywhere;
-            radius = 15;
+            radius = 12 * Parameters.blockSize;
         }
 
     }

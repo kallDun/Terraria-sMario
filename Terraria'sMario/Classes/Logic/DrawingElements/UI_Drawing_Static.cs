@@ -9,9 +9,12 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
     static class UI_Drawing_Static
     {
 
-        public static void DrawHealth(Graphics g, Point coord, float health, float maxHealth)
+        public static void DrawHealth(Graphics g, Point coord, float health, 
+            float maxHealth, int heartsInRow, bool y_dir = true) // y_dir = true is up, false is down 
         {
+            Point start_coord = coord;
             int count_of_hearts = 0;
+            int y_offset = y_dir? -15 : 15;
 
             int Health = (int) Math.Round(health);
             int fullHeart = Health / 10;
@@ -22,6 +25,9 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
                 g.DrawImage(UI.Health_full, coord);
                 coord.Offset(15, 0);
                 count_of_hearts++;
+
+                if (count_of_hearts % heartsInRow == 0)
+                    coord = new Point(start_coord.X, start_coord.Y + y_offset);
             }
 
             var image = restHeart >= 7 ? UI.Health_withoutThird :
@@ -33,12 +39,20 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
                 g.DrawImage(image, coord);
                 coord.Offset(15, 0);
                 count_of_hearts++;
-            }  
 
-            for (int i = 0; i < (int)Math.Floor(maxHealth / 10.0) - count_of_hearts; i++)
+                if (count_of_hearts % heartsInRow == 0)
+                    coord = new Point(start_coord.X, start_coord.Y + y_offset);
+            }
+
+            var count = (int)Math.Floor(maxHealth / 10.0) - count_of_hearts;
+            for (int i = 0; i < count; i++)
             {
                 g.DrawImage(UI.Health_empty, coord);
                 coord.Offset(15, 0);
+                count_of_hearts++;
+
+                if (count_of_hearts % heartsInRow == 0)
+                    coord = new Point(start_coord.X, start_coord.Y + y_offset);
             }
         }
 

@@ -54,10 +54,19 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
 
         public void updateCoords(Point coords, Size size)
         {
-            name_coord = new Point(coords.X - 10, coords.Y - 36);
-            health_coord = new Point(coords.X - 10, coords.Y - 16);
-            effects_coord = new Point(coords.X + size.Width - 10, coords.Y + 20);
-            resistEffects_coord = new Point(coords.X - 10, coords.Y + 0);
+            if (type == UI_Entity_Draw_Type.WithoutName || 
+                type == UI_Entity_Draw_Type.WithoutNameAndHP)
+            {
+                health_coord = new Point(coords.X - 10, coords.Y - 15);
+            }
+            else
+            {
+                health_coord = new Point(coords.X - 10, coords.Y - 32);
+            }
+            
+            name_coord = new Point(coords.X - 10, coords.Y - 22);
+            effects_coord = new Point(coords.X + size.Width, coords.Y + 20);
+            resistEffects_coord = new Point(coords.X - 15, coords.Y + 0);
             damage_coord = new Point(coords.X + size.Width, coords.Y);
         }
 
@@ -119,7 +128,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
 
         private void DrawName(Graphics g) => UI_Drawing_Static.DrawString(g, name_coord, name, Brushes.Black);
 
-        private void DrawHealth(Graphics g) => UI_Drawing_Static.DrawHealth(g, health_coord, health, maxHealth);
+        private void DrawHealth(Graphics g) => UI_Drawing_Static.DrawHealth(g, health_coord, health, maxHealth, 5);
 
         private void DrawEffects(Graphics g) => UI_Drawing_Static.DrawEffects(g, effects_coord, effects);
 

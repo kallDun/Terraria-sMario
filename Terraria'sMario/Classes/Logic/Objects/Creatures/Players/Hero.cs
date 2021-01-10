@@ -8,12 +8,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
 {
     class Hero : Player
     {
-        public Hero(int X, int Y, string Name)
+        public Hero(int X, int Y, string Name, int PlayerNumber)
         {
             this.Name = Name;
             coords = new Point(X, Y);
             size = new Size(55, 100);
-            maxHealth = 50;
+            maxHealth = 210;
             health = maxHealth;
             jumpHeight = -20;
             speed = 5;
@@ -21,7 +21,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             damage_heal_ActionRadius = 30;
             baseTimerHitMax = 1.5;
             uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.All);
-
+            inventory = new InventorySystem.Inventory(PlayerNumber, this);
 
             getEffect(new Effect(EffectTypes.Curse, 10)); // temporary ---------
             getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.PlayerAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
@@ -9,6 +10,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
     {
         public List<PlayerAnimation> animations { get; protected set; }
         public PlayerAnimation activeAnimation { get; protected set; }
+        protected Inventory inventory;
 
         // Threads
 
@@ -21,6 +23,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             else
                 activeAnimation.Draw(g, coords, isTurnToRight);
 
+            inventory.Draw(g);
             base.Draw(g);
         }
 
@@ -40,7 +43,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         }
 
-        public void controlPlayer(in List<ParentObject> objects, 
+        public void controlPlayerPressed(in List<ParentObject> objects, 
             bool isWentRight, bool isWentLeft, bool isPressedShift,
             bool isJumped, bool isHitting, bool isHealing, bool isShooting)
         {

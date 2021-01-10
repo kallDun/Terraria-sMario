@@ -18,6 +18,9 @@ namespace Terraria_sMario.Classes.Logic
         public static readonly int fieldHeight = 14;
         public static readonly int blockSize = 50;
 
-        public static readonly Point centerPosition = new Point(480, 250);
+        public static readonly Point centerPosition = new Point(610, 250);
+        public static readonly Point inventoryPlayer1_Position = new Point(0, 415);
+        public static readonly Point inventoryPlayer2_Position = new Point(0, 415);
+        
     }
 }
