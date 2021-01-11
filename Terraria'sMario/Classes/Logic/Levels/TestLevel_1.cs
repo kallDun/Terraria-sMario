@@ -40,6 +40,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
             fillFieldWithGrass(height_3, width_2, width_3);
             fillFieldWithGrass(height_4, width_3, width_4);
             fillFieldWithGrass(height_5, width_4, width_5);
+            BuildBrickHouse(1050, 500, BuildingTypes.Medium);
         }
 
         

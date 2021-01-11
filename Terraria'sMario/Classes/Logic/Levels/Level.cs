@@ -10,6 +10,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
+using Terraria_sMario.Classes.Logic.Services;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
 namespace Terraria_sMario.Classes.Logic.Levels
@@ -128,6 +129,101 @@ namespace Terraria_sMario.Classes.Logic.Levels
             }
         }
 
-        
+        protected void BuildBrickHouse(int X, int Y, BuildingTypes type)
+        {
+            int wall_height = 0;
+            int roof_height = 0;
+            int floor_width = 0;
+            var coord = new Point(X, Y);
+            if (type == BuildingTypes.Large)
+            {
+                RemovingBlocks(X, Y, 9, 9);
+                wall_height = 2;
+                roof_height = 4;
+                floor_width = 8;
+            }
+            else if (type == BuildingTypes.Medium)
+            {
+                RemovingBlocks(X, Y, 7, 9);
+                wall_height = 1;
+                roof_height = 3;
+                floor_width = 6;
+            }
+            else if (type == BuildingTypes.Small)
+            {
+                RemovingBlocks(X, Y, 5, 9);
+                wall_height = 1;
+                roof_height = 2;
+                floor_width = 4;
+            }
+            coord.Offset(0, -3 * blockSize);
+            levelObjects.Add(new BrickBlock(coord));
+            for (int i = 0; i < wall_height; i++)
+            {
+                coord.Offset(0, -1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+            for (int i = 0; i < roof_height; i++)
+            {
+                coord.Offset(1 * blockSize, -1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+            for (int i = 0; i < roof_height; i++)
+            {
+                coord.Offset(1 * blockSize, 1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+            for (int i = 0; i < wall_height; i++)
+            {
+                coord.Offset(0, 1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+            coord.Offset(0, 3 * blockSize);
+            levelObjects.Add(new BrickBlock(coord));
+            for (int i = 0; i < floor_width; i++)
+            {
+                coord.Offset(-1 * blockSize, 0);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+            if (type == BuildingTypes.Large)
+            {
+                coord.Offset(3 * blockSize, -1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+                coord.Offset(1 * blockSize, -1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+                coord.Offset(0, 1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+                coord.Offset(1 * blockSize, 0);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+            else if (type == BuildingTypes.Medium)
+            {
+                coord.Offset(2 * blockSize, -1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+                coord.Offset(1 * blockSize, -1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+                coord.Offset(0, 1 * blockSize);
+                levelObjects.Add(new BrickBlock(coord));
+                coord.Offset(1 * blockSize, 0);
+                levelObjects.Add(new BrickBlock(coord));
+            }
+        }
+
+        protected void RemovingBlocks(int X, int Y, int width, int height)
+        {
+            var area = new AbstractObject(new Point(X, Y - height * blockSize), new Size(width * blockSize, (height + 1) * blockSize));
+            for (int i = levelObjects.Count - 1 ; i >= 0; i--)
+            {
+                if (IntersectionService.isBlockIntersectBlock(area, new GrassBlock(20, 12), levelObjects[i]))
+                {
+                    if (levelObjects[i] is StaticBlockObject)
+                    {
+                        levelObjects.Remove(levelObjects[i]);
+                    }
+                }
+            }
+        }
+
+
     }
 }

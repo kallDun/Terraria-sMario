@@ -13,7 +13,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
         {
             this.Name = Name;
             coords = new Point(X, Y);
-            size = new Size(55, 100);
+            size = new Size(50, 100);
             maxHealth = 50;
             health = maxHealth;
             jumpHeight = -20;
