@@ -2,6 +2,7 @@
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Features;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords;
 using static Terraria_sMario.Images.Players_res;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
@@ -23,7 +24,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.OnlyNameAndDamage);
             inventory = new InventorySystem.Inventory(PlayerNumber, this);
 
-            resistancesEffects.Add(EffectTypes.Ice); // -------------- for tests
+
+            inventory.takeToWeapons(new Basic_Sword()); // ----------- for tests
+            resistancesEffects.Add(EffectTypes.Ice); // ------------------------
             resistancesEffects.Add(EffectTypes.Stunning); // -------------------
             resistancesEffects.Add(EffectTypes.Poisoning); // ------------------
             getEffect(new Effect(EffectTypes.Curse, 10)); // -------------------

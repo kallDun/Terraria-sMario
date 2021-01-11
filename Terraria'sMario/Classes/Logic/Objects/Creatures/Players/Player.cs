@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.PlayerAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
@@ -29,6 +31,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public override void updateProperties()
         {
+            weaponInHand = inventory.inventory_cells.Last().item as Weapon;
+            inventory.Update();
+
             if (isDead)
             {
                 setAnimation(Dead);

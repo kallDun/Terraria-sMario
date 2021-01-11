@@ -18,7 +18,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public void Draw(Graphics g, Point tableCoord)
         {
-            
+            if (item != null)
+            {
+                g.DrawImage(item.smallImage_inInventory, new Point(tableCoord.X + coords.X, tableCoord.Y + coords.Y));
+            }
         }
 
         public void Update()

@@ -69,8 +69,21 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (healing < 0 || isDead) return;
             if (Effect.isEffectInList(effects, EffectTypes.Blessing)) healing *= 2;
             if (Effect.isEffectInList(effects, EffectTypes.Curse)) healing /= 2;
-            health += healing;
-            if (health > maxHealth) health = maxHealth;
+
+            if (Effect.isEffectInList(effects, EffectTypes.Fire))
+            {
+                effects.Remove(effects.Where(x => x.effectType == EffectTypes.Fire).First());
+            }
+            else
+            if (Effect.isEffectInList(effects, EffectTypes.Poisoning))
+            {
+                effects.Remove(effects.Where(x => x.effectType == EffectTypes.Poisoning).First());
+            }
+            else
+            {
+                health += healing;
+                if (health > maxHealth) health = maxHealth;
+            }            
         }
 
         // Hit & Weapon System
@@ -144,7 +157,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         }
 
 
-        private Stopwatch timerHitNow = new Stopwatch(); // HIT TIMER
+        public Stopwatch timerHitNow { get; protected set; } = new Stopwatch(); // HIT TIMER
         public bool isReadyToHit { get; protected set; } = true;
 
         public void updateTimerForHit()

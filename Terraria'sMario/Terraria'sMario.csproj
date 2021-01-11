@@ -84,6 +84,7 @@
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw.cs" />
     <Compile Include="Classes\Logic\Objects\Features\EffectTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Potions\Potion.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Weapons\Swords\Basic_Sword.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Weapon.cs" />
     <Compile Include="Classes\Logic\Objects\ParentObject.cs" />
     <Compile Include="Classes\Logic\Parameters.cs" />
@@ -96,6 +97,11 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Images\Items_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Items_res.resx</DependentUpon>
     </Compile>
     <Compile Include="Images\Mobs_res.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -121,6 +127,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Items_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Items_res.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\Mobs_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -285,6 +295,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Health_withLastThird_big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Basic Sword Inventory.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,8 +18,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         private Point coords;
 
-        private Cell active_cell;
-        private Cell[] inventory_cells = new Cell[11] {
+        public Cell active_cell { get; private set; }
+        public Cell[] inventory_cells { get; private set; } = new Cell[11] {
             new Cell(17, 163), new Cell(71, 163), new Cell(125, 163), 
             new Cell(180, 163), new Cell(237, 163), new Cell(293, 163),
             new Cell(350, 163), new Cell(407, 163), new Cell(465, 163),
@@ -30,6 +30,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point coinsCount_coord = new Point(220, 45);
         private Point effects_coord = new Point(300, 52);
         private Point resistance_coord = new Point(300, 106);
+        private Point reloadWeaponSec_coord = new Point(134, 212);
 
 
         private int countOfCoins = 0;
@@ -86,7 +87,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
             // Draw resistance effects
             UI_Drawing_Static.DrawResistanceEffects(g, new Point(coords.X + resistance_coord.X, coords.Y + resistance_coord.Y),
-                player.resistancesEffects, true);
+                player.resistancesEffects, true, false);
+
+            // Draw reload weapon seconds
+            var seconds_max = (inventory_cells[10].item == null) ? player.baseTimerHitMax :
+                (inventory_cells[10].item as Weapon).timerHitMax;
+            var secondsToHit = seconds_max - (player.timerHitNow.ElapsedMilliseconds / 1000.0);
+            if (secondsToHit < 0 || secondsToHit == seconds_max) secondsToHit = 0;
+
+            UI_Drawing_Static.DrawString(g, new Point(reloadWeaponSec_coord.X + coords.X, reloadWeaponSec_coord.Y + coords.Y),
+                secondsToHit == 0 ? "0" : string.Format("{0:0.0}", secondsToHit),
+                secondsToHit == 0 ? Brushes.Green : Brushes.Red,
+                12);
         }
 
         public void Update()
@@ -99,6 +111,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
 
         // Controls
+
+        public void takeToWeapons(ParentItem item) // temporary void
+            => inventory_cells[10].item = item;
+
+
 
         public bool tryToTakeItemToInventory(ParentItem item)
         {

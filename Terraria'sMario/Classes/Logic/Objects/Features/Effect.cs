@@ -8,6 +8,8 @@ namespace Terraria_sMario.Classes.Logic.Objects
 {
     class Effect
     {
+        private Effect effect;
+
         public EffectTypes effectType { get; private set; }
         public double duration { get; private set; }
 
@@ -17,6 +19,12 @@ namespace Terraria_sMario.Classes.Logic.Objects
         {
             this.effectType = effectType;
             this.duration = durability;
+        }
+
+        public Effect(Effect effect)
+        {
+            this.effectType = effect.effectType;
+            this.duration = effect.duration;
         }
 
         public bool isExist() => duration > 0;

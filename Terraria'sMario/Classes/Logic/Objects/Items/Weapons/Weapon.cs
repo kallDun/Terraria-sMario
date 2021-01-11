@@ -113,7 +113,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
             entity?.getDamage(damage);
             foreach (var effect in getting_weapon_effects)
             {
-                entity?.getEffect(effect);
+                entity?.getEffect(new Effect(effect));
             }
         }
     }
