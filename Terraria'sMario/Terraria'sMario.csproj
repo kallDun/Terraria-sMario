@@ -72,6 +72,9 @@
     <Compile Include="Classes\Logic\Objects\Creatures\Players\InventorySystem\Cell.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\InventorySystem\Inventory.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Static Blocks\BrickBlock.cs" />
+    <Compile Include="Classes\Logic\Objects\Environment\Transparent Blocks\LadderBlock.cs" />
+    <Compile Include="Classes\Logic\Objects\Environment\Transparent Blocks\Translucent Blocks\TranslucentBlockObject.cs" />
+    <Compile Include="Classes\Logic\Objects\Environment\Transparent Blocks\TransparentBlockObject.cs" />
     <Compile Include="Classes\Logic\Objects\Items\ParentItem.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\Hero.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Players\Player.cs" />
@@ -304,5 +307,9 @@
   <ItemGroup>
     <None Include="Resources\Basic Sword Inventory.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ladder.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
