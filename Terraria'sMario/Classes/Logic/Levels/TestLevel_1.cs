@@ -4,6 +4,7 @@ using Terraria_sMario.Classes.Logic.Levels.LevelBuilding;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
 namespace Terraria_sMario.Classes.Logic.Levels
@@ -17,11 +18,15 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(player);
             players.Add(player);
 
+
             var skelet = new SkeletonBasic(1100, 100);
             levelObjects.Add(skelet);
 
             var skelet2 = new SkeletonHealer(1400, 100);
             levelObjects.Add(skelet2);
+
+            var item = new Basic_Sword(520, 250);
+            levelObjects.Add(item);
 
             fieldSize = new Size(100, 100);
 

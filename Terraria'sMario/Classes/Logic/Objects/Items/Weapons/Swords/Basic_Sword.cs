@@ -10,8 +10,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
     class Basic_Sword : Weapon
     {
 
-        public Basic_Sword()
+        public Basic_Sword(int X = 0, int Y = 0)
         {
+            coords = new System.Drawing.Point(X, Y);
+            size = new System.Drawing.Size(40, 40);
+
             Name = "Базовый меч";
             Description = "Этот меч сгодиться разве чтобы салаты крошить на Новый год.";
 
@@ -27,8 +30,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 
             opportunUseCount = 10;
 
-            smallImage_inInventory = Items_res.Basic_Sword_Inventory;
             drawingImage = Items_res.Basic_Sword_Inventory;
+            smallImage_inInventory = Items_res.Basic_Sword_Inventory;
+            
         }
 
     }

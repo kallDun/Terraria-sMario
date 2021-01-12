@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 
 namespace Terraria_sMario.Classes.Logic.Services
 {
@@ -28,6 +29,8 @@ namespace Terraria_sMario.Classes.Logic.Services
             if (!ourLastBlock.isHaveCollision || !otherBlock.isHaveCollision) return false;
             if (ourLastBlock is Player && otherBlock is Player) return false;
             if (ourLastBlock is Enemy && otherBlock is Enemy) return false;
+            if ((ourLastBlock is Entity && otherBlock is ParentItem) || 
+                    (ourLastBlock is ParentItem && otherBlock is Entity)) return false;
 
             return 
                 ourBlock.coords.X + ourBlock.size.Width > otherBlock.coords.X &&

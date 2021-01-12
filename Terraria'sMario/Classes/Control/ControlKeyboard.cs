@@ -35,7 +35,9 @@ namespace Terraria_sMario.Classes.Control
                 iskeyDown__Inv_end: e.KeyCode == Keys.D4,
                 iskeyDown__Inv_changePosToWeapon: e.KeyCode == Keys.C,
                 iskeyDown__Inv_changePosToOtherActive: e.KeyCode == Keys.V,
-                iskeyDown__Inv_useActive: e.KeyCode == Keys.F
+                iskeyDown__Inv_useActive: e.KeyCode == Keys.F,
+                iskeyDown__Inv_takeItem: e.KeyCode == Keys.G,
+                iskeyDown__Inv_dropItem: e.KeyCode == Keys.H
                 );
         }
 

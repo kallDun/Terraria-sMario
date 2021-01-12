@@ -157,7 +157,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
         }
 
-
         public Stopwatch timerHitNow { get; protected set; } = new Stopwatch(); // HIT TIMER
         public bool isReadyToHit { get; protected set; } = true;
 
@@ -222,41 +221,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         // Gravitation
 
-        protected double acceler = 0;
+        protected GravitationService gravitationService = new GravitationService();
 
         public void updateGravitation(in List<ParentObject> objects) 
         {
-            if (canFly) return;
-
-            int offsetY = (int) Math.Round(acceler);
-
-            do
-            {
-                var testCoords = new Point(coords.X, coords.Y + offsetY);
-
-                if (!IntersectionService.isBlockIntersectSomething
-                (new AbstractObject(testCoords, size),
-                this,
-                objects))
-                {
-                    coords = testCoords;
-                    offsetY = 0;
-                    acceler += 1.5;
-                }
-                else
-                {
-                    acceler = 0;
-                    offsetY = offsetY > 0 ? offsetY - 1 : offsetY + 1;
-                }
-
-            } while (offsetY != 0);
+            if (!canFly) gravitationService.updateGravitation(this, objects);
         }
 
         // Moving System
 
         public virtual void Jump() 
         {
-            if (acceler == 0) acceler = jumpHeight;
+            if (gravitationService.acceler == 0) gravitationService.acceler = jumpHeight;
         }
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 

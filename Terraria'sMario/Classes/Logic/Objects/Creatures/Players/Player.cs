@@ -4,11 +4,12 @@ using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
+using Terraria_sMario.Classes.Logic.Services;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.PlayerAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
-    class Player : Entity
+    abstract class Player : Entity
     {
         public List<PlayerAnimation> animations { get; protected set; }
         public PlayerAnimation activeAnimation { get; protected set; }
@@ -52,7 +53,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public void controlPlayerKeysDown(in List<ParentObject> objects, 
             bool iskeyDown__Inv_right, bool iskeyDown__Inv_left, bool iskeyDown__Inv_start, bool iskeyDown__Inv_end,
-            bool iskeyDown__Inv_changePosToWeapon, bool iskeyDown__Inv_changePosToOtherActive, bool iskeyDown__Inv_useActive)
+            bool iskeyDown__Inv_changePosToWeapon, bool iskeyDown__Inv_changePosToOtherActive, bool iskeyDown__Inv_useActive,
+            bool iskeyDown__Inv_takeItem, bool iskeyDown__Inv_dropItem)
         {
             if (iskeyDown__Inv_right) inventory.takeRightCell();
             if (iskeyDown__Inv_left) inventory.takeLeftCell();
@@ -62,6 +64,30 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (iskeyDown__Inv_changePosToOtherActive) inventory.setActiveCellToBaseActiveSlot();
             if (iskeyDown__Inv_useActive) inventory.useCell();
 
+
+            if (iskeyDown__Inv_takeItem)
+            {
+                var item = CheckItemService.getNearItem(objects, this);
+                if (item != null && inventory.tryToTakeItemToInventory(item)) 
+                    item.takeItem();
+            }
+
+            if (iskeyDown__Inv_dropItem)
+            {
+                var item = inventory.active_cell.item;
+                if (item != null)
+                {
+                    var newCoord = new Point(coords.X + 50, coords.Y);
+
+                    if (!IntersectionService.isBlockIntersectSomething(new AbstractObject(newCoord, item.size),
+                        item, objects))
+                    {
+                        inventory.dropItemFromActiveCell();
+                        item.dropItem(newCoord);
+                        newObjects.Add(item);
+                    }
+                }
+            }
         }
 
         public void controlPlayerKeysPressed(in List<ParentObject> objects, 

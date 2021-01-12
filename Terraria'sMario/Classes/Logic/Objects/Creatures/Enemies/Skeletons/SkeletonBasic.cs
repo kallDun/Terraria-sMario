@@ -30,7 +30,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
                 },
                 new List<BehaviorUnitFinding>
                 {
-                    new BehaviorUnitFinding(BehaviorTypes.SearchingInFrontOfView, searchEveryone: false, duration: 30, radius: 10)
+                    new BehaviorUnitFinding(BehaviorTypes.SearchingInFrontOfView, searchEveryone: false, duration: 30, radius: 6)
                 },
                 new List<BehaviorUnitCombat>
                 {

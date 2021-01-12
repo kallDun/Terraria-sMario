@@ -8,6 +8,7 @@ using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Services;
@@ -38,6 +39,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             foreach (var item in objectsInTheView)
             {
+                if (item is ParentItem) item.Draw(g);
+            }
+
+            foreach (var item in objectsInTheView)
+            {
                 if (item is Entity && !(item is Player)) item.Draw(g);
             }
 
@@ -64,9 +70,24 @@ namespace Terraria_sMario.Classes.Logic.Levels
                         (item as Enemy).updateBehavior(objectsInTheView);
                     }
                 } 
+
+                if (item is ParentItem)
+                {
+                    (item as ParentItem).updateGravitation(objectsInTheView);
+                }
             }
 
             controlKeyboard.updateMove(players, objectsInTheView);
+
+            // Destroy check
+            foreach (var item in objectsInTheView)
+            {
+                if (item.isToDestroy)
+                {
+                    levelObjects.Remove(item);
+                }
+            }
+
         }
 
         public void KeepMainObjectInTheCenter()
@@ -111,7 +132,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
         public void KeyboardListenerPressed(KeyEventArgs e) => controlKeyboard.KeyPress(e, players, objectsInTheView);
 
         public void KeyboardListenerReleased(KeyEventArgs e) => controlKeyboard.KeyUp(e);
-
 
     }
 }

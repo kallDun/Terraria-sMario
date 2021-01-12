@@ -6,7 +6,7 @@ using static Terraria_sMario.Classes.Logic.Objects.Features.EnemyAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
-    class Enemy : Entity
+    abstract class Enemy : Entity
     {
         public List<EnemyAnimation> animations { get; protected set; }
         public EnemyAnimation activeAnimation { get; protected set; }

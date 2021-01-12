@@ -4,40 +4,29 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
 {
     class ParentItem : ParentObject
     {
-        protected bool isLayOnTheGround = true;
         public Image smallImage_inInventory { get; protected set; }
-
 
         public int opportunUseCount { get; protected set; } = -1; //  -1 and less -> is infinity
         public string Name { get; protected set; } = "Standart_Name_Item";
         public string Description { get; protected set; } = "Some information";
 
-
         public ParentItem takeItem()
         {
-            if (isLayOnTheGround)
-            {
-                coords = new Point(0, 0);
-                isToDestroy = true;
-                return this;
-            }
-            return null;
+            isToDestroy = true;
+            return this;
         }
 
         public ParentItem dropItem(Point coords)
         {
-            if (!isLayOnTheGround)
-            {
-                this.coords = coords;
-                isToDestroy = false;
-                return this;
-            }
-            return null;
+            this.coords = coords;
+            isToDestroy = false;
+            return this;
         }
 
         public virtual void Use()
@@ -48,7 +37,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
         public override void Draw(Graphics g)
         {
             if (!isRendered) return;
-            if (!isLayOnTheGround) return;
 
             g.DrawImage(drawingImage, coords);
         }
@@ -57,5 +45,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
         {
 
         }
+
+        // Gravitation
+
+        protected GravitationService gravitationService = new GravitationService();
+
+        public void updateGravitation(List<ParentObject> objects) =>
+            gravitationService.updateGravitation(this, objects);
+
     }
 }

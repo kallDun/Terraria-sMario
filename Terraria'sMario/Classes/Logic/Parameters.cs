@@ -20,7 +20,7 @@ namespace Terraria_sMario.Classes.Logic
 
         public static readonly Point centerPosition = new Point(610, 250);
         public static readonly Point inventoryPlayer1_Position = new Point(0, 415);
-        public static readonly Point inventoryPlayer2_Position = new Point(0, 415);
+        public static readonly Point inventoryPlayer2_Position = new Point(775, 415);
         
     }
 }

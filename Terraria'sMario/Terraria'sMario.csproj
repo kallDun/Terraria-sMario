@@ -93,6 +93,8 @@
     <Compile Include="Classes\Logic\Parameters.cs" />
     <Compile Include="Classes\Logic\Services\CheckDistanceBetweenObjectsService.cs" />
     <Compile Include="Classes\Logic\Services\CheckEntityService.cs" />
+    <Compile Include="Classes\Logic\Services\CheckItemService.cs" />
+    <Compile Include="Classes\Logic\Services\GravitationService.cs" />
     <Compile Include="Classes\Logic\Services\IntersectionService.cs" />
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw_Type.cs" />
     <Compile Include="Form1.cs">

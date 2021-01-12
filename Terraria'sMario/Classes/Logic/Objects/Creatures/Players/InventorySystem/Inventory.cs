@@ -214,12 +214,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         }
 
 
-
+        public void dropItemFromActiveCell() => active_cell.item = null;
         public bool tryToTakeItemToInventory(ParentItem item)
         {
             for (int i = 0; i < inventory_cells.Length; i++)
             {
-                if (inventory_cells[i].item != null)
+                if (inventory_cells[i].item == null)
                 {
                     if (i == 10 && !(item is Weapon)) return false;
                     if (i == 9 && (item is Weapon)) return false;

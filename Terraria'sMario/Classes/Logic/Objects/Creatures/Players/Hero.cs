@@ -30,8 +30,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             resistancesEffects.Add(EffectTypes.Stunning); // -------------------
             resistancesEffects.Add(EffectTypes.Poisoning); // ------------------
             getEffect(new Effect(EffectTypes.Curse, 10)); // -------------------
-            getEffect(new Effect(EffectTypes.Fire, 20));  // -------------------
-            getEffect(new Effect(EffectTypes.Fire, 20));  // temporary ---------
+            getEffect(new Effect(EffectTypes.Fire, 5));  // -------------------
+            getEffect(new Effect(EffectTypes.Fire, 5));  // temporary ---------
 
 
             drawingImage = sherif_image;
