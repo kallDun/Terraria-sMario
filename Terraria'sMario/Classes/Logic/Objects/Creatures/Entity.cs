@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Features;
@@ -181,7 +182,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         protected List<ParentObject> newObjects = new List<ParentObject> { }; //-------------------------
         public List<ParentObject> updateWorld() // ----------------------------- add new objects to world
         {
-            var list = newObjects;
+            var list = new List<ParentObject>(newObjects);
             newObjects.Clear();
             return list;
         }
@@ -206,6 +207,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                     break;
                 }
             }
+
+            // update Weapon
+            if (weaponInHand?.opportunUseCount == 0) weaponInHand = null;
+
+            // update Statements
+            if (Effect.isEffectInList(effects, EffectTypes.Fire)) getDamage(1.0f / Parameters.fps);
         }
 
         public override void Draw(Graphics g)

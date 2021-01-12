@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.DrawingElements;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
+using Terraria_sMario.Classes.Logic.Objects.Items.Potions;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Images;
 
@@ -31,6 +32,21 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point effects_coord = new Point(300, 52);
         private Point resistance_coord = new Point(300, 106);
         private Point reloadWeaponSec_coord = new Point(134, 212);
+
+        // weapon stats coords
+        private Point weaponStat_name__coord = new Point(198, 220);
+        private Point weaponStat_description__coord = new Point(162, 246);
+        private Point weaponStat_damage__coord = new Point(352, 217);
+        private Point weaponStat_range__coord = new Point(416, 217);
+        private Point weaponStat_splash__coord = new Point(479, 216);
+        private Point weaponStat_effects__coord = new Point(339, 233);
+        private Point weaponStat_resist__coord = new Point(412, 231);
+        private Point weaponStat_reload__coord = new Point(482, 231);
+        private Point weaponStat_shootDM__coord = new Point(357, 243);
+        private Point weaponStat_heal__coord = new Point(410, 243);
+        private Point weaponStat_bullets__coord = new Point(482, 243);
+        private Point weaponStat_shield__coord = new Point(477, 255);
+        private Point weaponStat_type__coord = new Point(332, 255);
 
 
         private int countOfCoins = 0;
@@ -77,7 +93,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 player.Name, Brushes.White, 24);
 
             // Coins Count
-            UI_Drawing_Static.DrawString(g, new Point(coinsCount_coord.X + coords.X, coinsCount_coord.Y + coords.Y),
+            UI_Drawing_Static.DrawString(g,
                 countOfCoins.ToString(), Brushes.Yellow, 24, 
                 new RectangleF(coinsCount_coord.X + coords.X, coinsCount_coord.Y + coords.Y, 70, 25));
 
@@ -99,6 +115,83 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 secondsToHit == 0 ? "0" : string.Format("{0:0.0}", secondsToHit),
                 secondsToHit == 0 ? Brushes.Green : Brushes.Red,
                 12);
+
+            //-------------------------- Draw weapons statistic
+            var item = active_cell.item;
+            if (item != null)
+            {
+                // name:
+                UI_Drawing_Static.DrawString(g, new Point(weaponStat_name__coord.X + coords.X, weaponStat_name__coord.Y + coords.Y),
+                    item.Name, Brushes.DarkOrange, 8);
+                // description :
+                UI_Drawing_Static.DrawString(g,
+                    item.Description, Brushes.DarkOrange, 6f, 
+                    new RectangleF(
+                        new PointF(weaponStat_description__coord.X + coords.X, weaponStat_description__coord.Y + coords.Y),
+                        new SizeF(125, 20)), true);
+
+
+                string type_str = "";
+
+                if (item is Weapon)
+                {
+                    if ((item as Weapon).canHeal || (item as Weapon).canMeleeDamage)
+                    {
+                        // splash:
+                        UI_Drawing_Static.DrawString(g, new Point(weaponStat_splash__coord.X + coords.X, weaponStat_splash__coord.Y + coords.Y),
+                        (item as Weapon).canSplash ? "+" : "-",
+                        Brushes.DarkOrange, 12);
+
+                        // range:
+                        UI_Drawing_Static.DrawString(g, new Point(weaponStat_range__coord.X + coords.X, weaponStat_range__coord.Y + coords.Y),
+                        string.Format("{0: 0.0}",(item as Weapon).actionRadius / Parameters.blockSize),
+                        Brushes.DarkOrange, 10);
+                    }
+                    if ((item as Weapon).canMeleeDamage)
+                    {
+                        // damage:
+                        UI_Drawing_Static.DrawString(g, new Point(weaponStat_damage__coord.X + coords.X, weaponStat_damage__coord.Y + coords.Y),
+                        (item as Weapon).damage.ToString(), Brushes.DarkOrange, 10);
+                    }
+                    if ((item as Weapon).canShoot)
+                    {
+                        // shoot damage:
+                        UI_Drawing_Static.DrawString(g, new Point(weaponStat_shootDM__coord.X + coords.X, weaponStat_shootDM__coord.Y + coords.Y),
+                        (item as Weapon).shoot_damage.ToString(), Brushes.DarkOrange, 10);
+
+                        // bullets:
+                        UI_Drawing_Static.DrawString(g, new Point(weaponStat_bullets__coord.X + coords.X, weaponStat_bullets__coord.Y + coords.Y),
+                        (item as Weapon).bulletCount.ToString(), Brushes.DarkOrange, 10);
+                    }
+                    if ((item as Weapon).canHeal)
+                    {
+                        // heal
+                        UI_Drawing_Static.DrawString(g, new Point(weaponStat_heal__coord.X + coords.X, weaponStat_heal__coord.Y + coords.Y),
+                        (item as Weapon).healing.ToString(), Brushes.DarkOrange, 10);
+                    }
+
+                    // effects:
+                    UI_Drawing_Static.DrawEffects(g, new Point(coords.X + weaponStat_effects__coord.X, coords.Y + weaponStat_effects__coord.Y),
+                    (item as Weapon).getting_weapon_effects, isToRight: true, distance: 16);
+
+                    // reload:
+                    UI_Drawing_Static.DrawString(g, new Point(weaponStat_reload__coord.X + coords.X, weaponStat_reload__coord.Y + coords.Y),
+                    (item as Weapon).timerHitMax.ToString(), Brushes.DarkOrange, 10);
+
+                    type_str = item.opportunUseCount > 0 ? $"Weapon [{item.opportunUseCount}]" : "Weapon";
+                }
+                else
+                if (item is Potion)
+                {
+                    type_str = item.opportunUseCount > 0 ? $"Potion [{item.opportunUseCount}]" : "Potion";
+                }
+
+                // type:
+                UI_Drawing_Static.DrawString(g, new Point(weaponStat_type__coord.X + coords.X, weaponStat_type__coord.Y + coords.Y),
+                type_str, Brushes.DarkTurquoise, 10);
+
+                }
+            
         }
 
         public void Update()

@@ -1,5 +1,6 @@
 ﻿
 using System.Drawing;
+using Terraria_sMario.Classes.Logic.Levels.LevelBuilding;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
@@ -24,6 +25,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             fieldSize = new Size(100, 100);
 
+            int height_down = fieldSize.Height;
             int height_1 = 8;
             int height_2 = 7;
             int height_3 = 8;
@@ -35,12 +37,12 @@ namespace Terraria_sMario.Classes.Logic.Levels
             int width_4 = 40;
             int width_5 = 60;
 
-            fillFieldWithGrass(height_1, 0, width_1);
-            fillFieldWithGrass(height_2, width_1, width_2);
-            fillFieldWithGrass(height_3, width_2, width_3);
-            fillFieldWithGrass(height_4, width_3, width_4);
-            fillFieldWithGrass(height_5, width_4, width_5);
-            BuildBrickHouse(1050, 500, BuildingTypes.Medium);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_1, 0, width_1);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_2, width_1, width_2);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_3, width_2, width_3);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3, width_4);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4, width_5);
+            BuildingStatic.BuildBrickHouse(levelObjects, 1450, 500, BuildingTypes.Large);
         }
 
         

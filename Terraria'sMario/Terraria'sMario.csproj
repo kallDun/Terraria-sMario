@@ -49,7 +49,8 @@
     <Compile Include="Classes\Control\ControlKeyboard.cs" />
     <Compile Include="Classes\Gameplay.cs" />
     <Compile Include="Classes\Logic\DrawingElements\UI_Drawing_Static.cs" />
-    <Compile Include="Classes\Logic\Levels\BuildingTypes.cs" />
+    <Compile Include="Classes\Logic\Levels\LevelBuilding\BuildingStatic.cs" />
+    <Compile Include="Classes\Logic\Levels\LevelBuilding\BuildingTypes.cs" />
     <Compile Include="Classes\Logic\Levels\Level.cs" />
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
     <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />

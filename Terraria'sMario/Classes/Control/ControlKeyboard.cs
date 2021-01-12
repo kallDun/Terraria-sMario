@@ -18,7 +18,7 @@ namespace Terraria_sMario.Classes.Control
 
 
 
-        public void KeyPress(KeyEventArgs e)
+        public void KeyPress(KeyEventArgs e, List<Player> players)
         {
             if (checkOnPressedLeft(e)) isWentLeft_player1 = true;
             if (checkOnPressedRight(e)) isWentRight_player1 = true;

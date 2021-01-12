@@ -135,7 +135,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
 
         private void DrawHealth(Graphics g) => UI_Drawing_Static.DrawHealth(g, health_coord, health, maxHealth, 5);
 
-        private void DrawEffects(Graphics g) => UI_Drawing_Static.DrawEffects(g, effects_coord, effects);
+        private void DrawEffects(Graphics g) => UI_Drawing_Static.DrawEffects(g, effects_coord, effects, false, 22);
 
         private void DrawResistEffects(Graphics g) => UI_Drawing_Static.DrawResistanceEffects(g, resistEffects_coord, resistancesEffects);
         

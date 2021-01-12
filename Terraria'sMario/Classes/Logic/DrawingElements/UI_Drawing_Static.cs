@@ -63,15 +63,15 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             }
         }
 
-        public static void DrawEffects(Graphics g, Point coord, List<Effect> effects, bool isToRight = false) // true is to down
+        public static void DrawEffects(Graphics g, Point coord, List<Effect> effects, bool isToRight = false, int distance = 30) // true is to down
         {
             for (int i = 0; i < effects.Count; i++)
             {
                 Point newPoint;
                 if (!isToRight)
-                    newPoint = new Point(coord.X, coord.Y + i * 22);
+                    newPoint = new Point(coord.X, coord.Y + i * distance);
                 else
-                    newPoint = new Point(coord.X + i * 30, coord.Y);
+                    newPoint = new Point(coord.X + i * distance, coord.Y);
 
                 g.DrawImage(getEffectImage(effects[i].effectType), newPoint);
 
@@ -107,27 +107,34 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             DrawString(g, coord, damage.ToString(), Brushes.Red, 12);
         }
 
-        public static void DrawString(Graphics g, Point coord, string str, Brush brush, float fontsize = 14, RectangleF? rect = null)
+        public static void DrawString(Graphics g, Point coord, string str, Brush brush, float fontsize = 14)
         {
-            if (rect == null)
+            g.DrawString(
+            str,
+            new Font("Calibri", fontsize, FontStyle.Bold, GraphicsUnit.Point),
+            brush, coord);
+        }
+
+        public static void DrawString(Graphics g, string str, Brush brush, float fontsize, RectangleF rect, bool isDivide = false)
+        {
+            StringFormat stringFormat = new StringFormat();
+            if (isDivide)
             {
-                g.DrawString(
-                str,
-                new Font("Calibri", fontsize, FontStyle.Bold, GraphicsUnit.Point),
-                brush, coord);
+                stringFormat.Alignment = StringAlignment.Near;
+                stringFormat.LineAlignment = StringAlignment.Far;
             }
             else
             {
-                StringFormat stringFormat = new StringFormat();
                 stringFormat.Alignment = StringAlignment.Center;
                 stringFormat.LineAlignment = StringAlignment.Center;
-
-                g.DrawString(
-                str,
-                new Font("Calibri", fontsize, FontStyle.Bold, GraphicsUnit.Point),
-                brush, (RectangleF) rect, stringFormat);
             }
+
+            g.DrawString(
+            str,
+            new Font("Calibri", fontsize, FontStyle.Bold, GraphicsUnit.Point),
+            brush, rect, stringFormat);
         }
+
 
         private static Image getEffectImage(EffectTypes effect)
         {
