@@ -25,11 +25,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
             canHeal = true;
             healing = 2.5f;
 
+            opportunUseCount = 10;
+
             smallImage_inInventory = Items_res.Basic_Sword_Inventory;
             drawingImage = Items_res.Basic_Sword_Inventory;
-
-
-
         }
 
     }

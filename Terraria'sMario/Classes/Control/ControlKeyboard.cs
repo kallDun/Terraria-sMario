@@ -18,7 +18,7 @@ namespace Terraria_sMario.Classes.Control
 
 
 
-        public void KeyPress(KeyEventArgs e, List<Player> players)
+        public void KeyPress(KeyEventArgs e, List<Player> players, in List<ParentObject> objects)
         {
             if (checkOnPressedLeft(e)) isWentLeft_player1 = true;
             if (checkOnPressedRight(e)) isWentRight_player1 = true;
@@ -27,6 +27,16 @@ namespace Terraria_sMario.Classes.Control
             if (checkOnPressedQ(e)) isHealing_player1 = true;
             if (checkOnPressedR(e)) isShooting_player1 = true;
             isPressedShift_player1 = checkOnPressedShift(e);
+
+            players[0].controlPlayerKeysDown(objects, 
+                iskeyDown__Inv_right: e.KeyCode == Keys.D2,
+                iskeyDown__Inv_left: e.KeyCode == Keys.D1,
+                iskeyDown__Inv_start: e.KeyCode == Keys.D3,
+                iskeyDown__Inv_end: e.KeyCode == Keys.D4,
+                iskeyDown__Inv_changePosToWeapon: e.KeyCode == Keys.C,
+                iskeyDown__Inv_changePosToOtherActive: e.KeyCode == Keys.V,
+                iskeyDown__Inv_useActive: e.KeyCode == Keys.F
+                );
         }
 
 
@@ -45,7 +55,7 @@ namespace Terraria_sMario.Classes.Control
 
         public void updateMove(List<Player> players, in List<ParentObject> objects)
         {
-            players[0].controlPlayerPressed(objects, isWentRight_player1, isWentLeft_player1, isPressedShift_player1,
+            players[0].controlPlayerKeysPressed(objects, isWentRight_player1, isWentLeft_player1, isPressedShift_player1,
                 isJumped_player1, isHitting_player1, isHealing_player1, isShooting_player1);
         }
 

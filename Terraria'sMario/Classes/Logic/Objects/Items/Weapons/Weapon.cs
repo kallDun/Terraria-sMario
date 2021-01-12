@@ -106,8 +106,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
         }
 
 
-
-
         private void HealEntity(Entity entity) => entity?.getCure(healing);
 
         private void HitEntity(Entity entity, in List<ParentObject> objects)

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Images;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem
@@ -29,6 +30,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             if (item?.opportunUseCount == 0) item = null;
         }
 
-        public void Use() => item?.Use();
+        public void Use() 
+        { 
+            if (item != null && !(item is Weapon))
+            {
+                item.Use();
+            } 
+        }
     }
 }

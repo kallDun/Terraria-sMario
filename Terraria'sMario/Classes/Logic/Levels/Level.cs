@@ -108,7 +108,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         private ControlKeyboard controlKeyboard = new ControlKeyboard();
 
-        public void KeyboardListenerPressed(KeyEventArgs e) => controlKeyboard.KeyPress(e, players);
+        public void KeyboardListenerPressed(KeyEventArgs e) => controlKeyboard.KeyPress(e, players, objectsInTheView);
 
         public void KeyboardListenerReleased(KeyEventArgs e) => controlKeyboard.KeyUp(e);
 

@@ -48,7 +48,23 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         }
 
-        public void controlPlayerPressed(in List<ParentObject> objects, 
+        // Control
+
+        public void controlPlayerKeysDown(in List<ParentObject> objects, 
+            bool iskeyDown__Inv_right, bool iskeyDown__Inv_left, bool iskeyDown__Inv_start, bool iskeyDown__Inv_end,
+            bool iskeyDown__Inv_changePosToWeapon, bool iskeyDown__Inv_changePosToOtherActive, bool iskeyDown__Inv_useActive)
+        {
+            if (iskeyDown__Inv_right) inventory.takeRightCell();
+            if (iskeyDown__Inv_left) inventory.takeLeftCell();
+            if (iskeyDown__Inv_start) inventory.goToFirstCell();
+            if (iskeyDown__Inv_end) inventory.goToActiveWeaponCell();
+            if (iskeyDown__Inv_changePosToWeapon) inventory.setActiveCellToWeaponActiveSlot();
+            if (iskeyDown__Inv_changePosToOtherActive) inventory.setActiveCellToBaseActiveSlot();
+            if (iskeyDown__Inv_useActive) inventory.useCell();
+
+        }
+
+        public void controlPlayerKeysPressed(in List<ParentObject> objects, 
             bool isWentRight, bool isWentLeft, bool isPressedShift,
             bool isJumped, bool isHitting, bool isHealing, bool isShooting)
         {
@@ -113,9 +129,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
             else
                 return false;
-        }
+        }        
 
-        
 
         public void setAnimation(PlayerAnimationTypes type) // Animations SET
         {

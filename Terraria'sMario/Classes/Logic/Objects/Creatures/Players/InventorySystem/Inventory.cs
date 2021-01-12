@@ -21,7 +21,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public Cell active_cell { get; private set; }
         public Cell[] inventory_cells { get; private set; } = new Cell[11] {
-            new Cell(17, 163), new Cell(71, 163), new Cell(125, 163), 
+            new Cell(17, 163), new Cell(71, 163), new Cell(125, 163),
             new Cell(180, 163), new Cell(237, 163), new Cell(293, 163),
             new Cell(350, 163), new Cell(407, 163), new Cell(465, 163),
             new Cell(26, 225), new Cell(95, 225) };
@@ -94,11 +94,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
             // Coins Count
             UI_Drawing_Static.DrawString(g,
-                countOfCoins.ToString(), Brushes.Yellow, 24, 
+                countOfCoins.ToString(), Brushes.Yellow, 24,
                 new RectangleF(coinsCount_coord.X + coords.X, coinsCount_coord.Y + coords.Y, 70, 25));
 
             // Draw effects
-            UI_Drawing_Static.DrawEffects(g, new Point(coords.X + effects_coord.X, coords.Y + effects_coord.Y), 
+            UI_Drawing_Static.DrawEffects(g, new Point(coords.X + effects_coord.X, coords.Y + effects_coord.Y),
                 player.effects, true);
 
             // Draw resistance effects
@@ -125,7 +125,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                     item.Name, Brushes.DarkOrange, 8);
                 // description :
                 UI_Drawing_Static.DrawString(g,
-                    item.Description, Brushes.DarkOrange, 6f, 
+                    item.Description, Brushes.DarkOrange, 6f,
                     new RectangleF(
                         new PointF(weaponStat_description__coord.X + coords.X, weaponStat_description__coord.Y + coords.Y),
                         new SizeF(125, 20)), true);
@@ -144,7 +144,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
                         // range:
                         UI_Drawing_Static.DrawString(g, new Point(weaponStat_range__coord.X + coords.X, weaponStat_range__coord.Y + coords.Y),
-                        string.Format("{0: 0.0}",(item as Weapon).actionRadius / Parameters.blockSize),
+                        string.Format("{0: 0.0}", (item as Weapon).actionRadius / Parameters.blockSize),
                         Brushes.DarkOrange, 10);
                     }
                     if ((item as Weapon).canMeleeDamage)
@@ -190,8 +190,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 UI_Drawing_Static.DrawString(g, new Point(weaponStat_type__coord.X + coords.X, weaponStat_type__coord.Y + coords.Y),
                 type_str, Brushes.DarkTurquoise, 10);
 
-                }
-            
+            }
+
         }
 
         public void Update()
@@ -206,7 +206,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         // Controls
 
         public void takeToWeapons(ParentItem item) // temporary void
-            => inventory_cells[10].item = item;
+        { 
+            if (item != null && item is Weapon)
+            {
+                inventory_cells[10].item = item;
+            }
+        }
 
 
 
@@ -231,22 +236,22 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         {
             if (active_cell != inventory_cells[9] && active_cell != inventory_cells[10])
             {
-                if (active_cell.item is Weapon) return;
+                if (active_cell.item != null && active_cell.item is Weapon) return;
 
-                var temporary_cell = active_cell;
-                active_cell = inventory_cells[9];
-                inventory_cells[9] = temporary_cell;
+                var temporary_cell = active_cell.item;
+                active_cell.item = inventory_cells[9].item;
+                inventory_cells[9].item = temporary_cell;
             }
         }
         public void setActiveCellToWeaponActiveSlot()
         {
             if (active_cell != inventory_cells[9] && active_cell != inventory_cells[10])
             {
-                if (!(active_cell.item is Weapon)) return;
+                if (active_cell.item != null && !(active_cell.item is Weapon)) return;
 
-                var temporary_cell = active_cell;
-                active_cell = inventory_cells[9];
-                inventory_cells[9] = temporary_cell;
+                var temporary_cell = active_cell.item;
+                active_cell.item = inventory_cells[10].item;
+                inventory_cells[10].item = temporary_cell;
             }
         }
 
@@ -256,14 +261,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         public void takeLeftCell()
         {
             active_cell =
-                active_cell != inventory_cells.First() ?
+                active_cell == inventory_cells.First() ?
                 inventory_cells[inventory_cells.Length - 1] :
                 inventory_cells[Array.IndexOf(inventory_cells, active_cell) - 1];
         }
         public void takeRightCell()
         {
             active_cell =
-                active_cell != inventory_cells.Last() ?
+                active_cell == inventory_cells.Last() ?
                 inventory_cells[0] :
                 inventory_cells[Array.IndexOf(inventory_cells, active_cell) + 1];
         }
