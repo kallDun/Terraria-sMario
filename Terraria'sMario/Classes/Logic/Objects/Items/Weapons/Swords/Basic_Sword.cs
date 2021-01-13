@@ -16,7 +16,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
             size = new System.Drawing.Size(40, 40);
 
             Name = "Базовый меч";
-            Description = "Этот меч сгодиться разве чтобы салаты крошить на Новый год.";
+            Description = "Этот меч сгодиться разве чтобы салаты на Новый год крошить .";
 
             damage = 10;
             canMeleeDamage = true;

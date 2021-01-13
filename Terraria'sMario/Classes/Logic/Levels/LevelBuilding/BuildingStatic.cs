@@ -155,11 +155,11 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
             }
             else if (type == BuildingTypes.Medium)
             {
-                floor = 3;
+                floor = 4;
             }
             else if (type == BuildingTypes.Small)
             {
-                floor = 2;
+                floor = 3;
             }
 
             coord.Offset(3 * blockSize, 1 * blockSize);
@@ -168,7 +168,7 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                 coord.Offset(0, -1 * blockSize);
                 levelObjects.Add(new LadderBlock(coord));
             }
-            coord.Offset(-3 * blockSize, (floor - 1) * 5 * blockSize + 3);
+            coord.Offset(-3 * blockSize, (floor - 1) * 5 * blockSize);
 
             //first floor
             coord.Offset(0, -3 * blockSize);
@@ -223,11 +223,12 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                 coord.Offset(0, 1 * blockSize);
                 levelObjects.Add(new ConcreteBlock(coord));
             }
+            coord.Offset(0, 2 * blockSize);
 
             // another floors
-            for (int j = 0; j < floor; j++)
+            for (int j = 0; j < floor - 2; j++)
             {
-                coord.Offset(-8 * blockSize, -2 * blockSize);
+                coord.Offset(-8 * blockSize, -4 * blockSize);
                 for (int i = 0; i < 5; i++)
                 {
                     coord.Offset(0, -1 * blockSize);
@@ -250,6 +251,8 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                     levelObjects.Add(new ConcreteBlock(coord));
                 }
             }
+            coord.Offset(-5 * blockSize, -4 * blockSize);
+            levelObjects.Add(new ConcreteBlock(coord));
         }
 
         private static void RemoveBlocks(List<ParentObject> levelObjects, int X, int Y, int width, int height)

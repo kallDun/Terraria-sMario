@@ -47,7 +47,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
             // Items & Coins
             foreach (var item in objectsInTheView)
             {
-                if (item is ParentItem || item is Coin) item.Draw(g);
+                if (item is ParentItem || item is Coin || item is Sword) item.Draw(g);
             }
             // NPC's
             foreach (var item in objectsInTheView)
