@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
@@ -6,28 +7,23 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 
 namespace Terraria_sMario.Classes.Logic.Services
 {
-    static class CheckItemService
+    static class CheckNearObjectByPredicationService
     {
-        private const int search_X_Area = 10;
 
-        public static ParentItem getNearItem(in List<ParentObject> objects, Entity ourObject)
+        public static ParentObject getNearObject(in List<ParentObject> objects, ParentObject ourObject, Predicate<ParentObject> predicate)
         {
-            var coords = ourObject.coords;
-            var size = new Size(ourObject.size.Width + search_X_Area, ourObject.size.Height);
-            if (!ourObject.isTurnToRight) coords.Offset(0, -search_X_Area);
-
-            AbstractObject areaObject = new AbstractObject(coords, size);
+            AbstractObject areaObject = new AbstractObject(ourObject.coords, ourObject.size);
 
             foreach (var obj in objects)
             {
-                if (obj is ParentItem)
+                if (predicate(obj))
                 {
                     if (areaObject.coords.X + areaObject.size.Width > obj.coords.X &&
                         areaObject.coords.X < obj.coords.X + obj.size.Width &&
                         areaObject.coords.Y + areaObject.size.Height > obj.coords.Y &&
                         areaObject.coords.Y < obj.coords.Y + obj.size.Height)
                     {
-                        return obj as ParentItem;
+                        return obj;
                     }
                 }
             }

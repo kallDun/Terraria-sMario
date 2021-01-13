@@ -225,7 +225,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public void updateGravitation(in List<ParentObject> objects) 
         {
-            if (!canFly) gravitationService.updateGravitation(this, objects);
+            if (!canFly)
+            {
+                gravitationService.updateGravitation(this, objects);
+
+                
+            }
         }
 
         // Moving System
@@ -261,7 +266,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             return 0;
         }
 
-        public virtual int moveUpOrDown(int offsetY, in List<ParentObject> objects)
+        public virtual int moveUpOrDown(int offsetY, in List<ParentObject> objects, int direction)
         {
             if (!canFly) return 0;
 

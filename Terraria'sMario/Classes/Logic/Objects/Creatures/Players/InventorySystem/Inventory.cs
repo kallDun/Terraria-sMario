@@ -49,7 +49,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point weaponStat_type__coord = new Point(332, 255);
 
 
-        private int countOfCoins = 0;
+        public int countOfCoins = 0;
 
 
         public Inventory(int playerNumber, Player player)

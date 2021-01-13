@@ -20,10 +20,11 @@ namespace Terraria_sMario.Classes.Logic.Objects
 
         public abstract void Draw(Graphics g);
 
-        abstract public void updateProperties();
+        abstract public void updateProperties(in List<ParentObject> objects);
 
         public void offsetPositionX_Y(int offSetX, int offSetY) => 
             coords = new Point(coords.X + offSetX, coords.Y + offSetY); // change position method 
         public void setNewCoords(Point coords) => this.coords = coords;
+
     }
 }

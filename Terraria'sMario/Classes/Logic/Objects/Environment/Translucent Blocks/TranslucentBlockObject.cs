@@ -8,7 +8,7 @@ using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.Translucent_Blocks
 {
-    class TranslucentBlockObject : TransparentBlockObject
+    class TranslucentBlockObject : ParentObject
     {
         protected Image transparentImage;
         public bool isPlayerIn = false;
@@ -19,10 +19,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.T
 
             g.DrawImage(isPlayerIn? transparentImage : drawingImage,
                 coords);
+            
 
         }
 
-        public override void updateProperties()
+        public override void updateProperties(in List<ParentObject> objects)
         {
             isPlayerIn = false;
         }

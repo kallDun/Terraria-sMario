@@ -20,7 +20,7 @@ namespace Terraria_sMario.Classes.Logic.Objects
             
         }
 
-        public override void updateProperties()
+        public override void updateProperties(in List<ParentObject> objects)
         {
             
         }

@@ -11,6 +11,8 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Services;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
@@ -32,6 +34,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public void Draw(Graphics g)
         {
+
             foreach (var item in objectsInTheView)
             { 
                 if (item is StaticBlockObject) item.Draw(g);
@@ -39,7 +42,17 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             foreach (var item in objectsInTheView)
             {
-                if (item is ParentItem) item.Draw(g);
+                if (item is TransparentBlockObject) item.Draw(g);
+            }
+
+            foreach (var item in objectsInTheView)
+            {
+                if (item is TranslucentBlockObject) item.Draw(g);
+            }
+
+            foreach (var item in objectsInTheView)
+            {
+                if (item is ParentItem || item is Coin) item.Draw(g);
             }
 
             foreach (var item in objectsInTheView)
@@ -51,29 +64,20 @@ namespace Terraria_sMario.Classes.Logic.Levels
             {
                 player.Draw(g);
             }
+
         }
 
         public void Update()
         {
             foreach (var item in objectsInTheView)
             {
-                item.updateProperties();
+                item.updateProperties(objectsInTheView);
 
                 if (item is Entity)
                 {
                     (item as Entity).update();
                     (item as Entity).updateGravitation(objectsInTheView);
                     levelObjects = levelObjects.Concat((item as Entity).updateWorld()).ToList();
-
-                    if (item is Enemy)
-                    {
-                        (item as Enemy).updateBehavior(objectsInTheView);
-                    }
-                } 
-
-                if (item is ParentItem)
-                {
-                    (item as ParentItem).updateGravitation(objectsInTheView);
                 }
             }
 
@@ -106,9 +110,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
             foreach (var obj in levelObjects)
             {
                 if (obj.coords.X >= -8 * blockSize &&
-                    obj.coords.X <= (fieldWidth + 8) * blockSize &&
-                    obj.coords.Y >= -4 * blockSize &&
-                    obj.coords.Y <= (fieldHeight + 4) * blockSize)
+                obj.coords.X <= (fieldWidth + 8) * blockSize &&
+                obj.coords.Y >= -4 * blockSize &&
+                obj.coords.Y <= (fieldHeight + 4) * blockSize)
                 {
                     objectsInTheView.Add(obj);
                 }

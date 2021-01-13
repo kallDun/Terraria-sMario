@@ -41,17 +41,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
             g.DrawImage(drawingImage, coords);
         }
 
-        public override void updateProperties()
-        {
-
-        }
-
         // Gravitation
 
         protected GravitationService gravitationService = new GravitationService();
 
-        public void updateGravitation(List<ParentObject> objects) =>
+        public override void updateProperties(in List<ParentObject> objects)
+        {
             gravitationService.updateGravitation(this, objects);
-
+        }
     }
 }

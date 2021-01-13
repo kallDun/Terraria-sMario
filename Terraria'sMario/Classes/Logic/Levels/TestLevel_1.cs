@@ -1,6 +1,7 @@
 ﻿
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Levels.LevelBuilding;
+using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
@@ -18,7 +19,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(player);
             players.Add(player);
 
-
             var skelet = new SkeletonBasic(1100, 100);
             levelObjects.Add(skelet);
 
@@ -27,6 +27,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
+
+            var coin = new Coin(1750, 350);
+            levelObjects.Add(coin);
 
             fieldSize = new Size(100, 100);
 
@@ -47,7 +50,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_3, width_2, width_3);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3, width_4);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4, width_5);
-            BuildingStatic.BuildBrickHouse(levelObjects, 1450, 500, BuildingTypes.Large);
+            BuildingStatic.BlockOfFlats(levelObjects, 1450, 400, BuildingTypes.Large);
         }
 
         

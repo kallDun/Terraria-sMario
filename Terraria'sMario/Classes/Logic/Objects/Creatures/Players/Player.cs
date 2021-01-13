@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Classes.Logic.Services;
@@ -30,7 +32,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             base.Draw(g);
         }
 
-        public override void updateProperties()
+        public override void updateProperties(in List<ParentObject> objects)
         {
             weaponInHand = inventory.inventory_cells.Last().item as Weapon;
             inventory.Update();
@@ -48,6 +50,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
 
         }
+
 
         // Control
 
@@ -67,9 +70,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
             if (iskeyDown__Inv_takeItem)
             {
-                var item = CheckItemService.getNearItem(objects, this);
-                if (item != null && inventory.tryToTakeItemToInventory(item)) 
-                    item.takeItem();
+                Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is ParentItem; };
+
+                var item = CheckNearObjectByPredicationService.getNearObject(objects, this, predicate);
+                if (item != null && inventory.tryToTakeItemToInventory(item as ParentItem)) 
+                    (item as ParentItem).takeItem();
             }
 
             if (iskeyDown__Inv_dropItem)
@@ -155,8 +160,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
             else
                 return false;
-        }        
+        }
 
+        public void addCoin() => inventory.countOfCoins++;
 
         public void setAnimation(PlayerAnimationTypes type) // Animations SET
         {

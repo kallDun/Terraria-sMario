@@ -29,20 +29,15 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             base.Draw(g);
         }
 
-        public void updateBehavior(in List<ParentObject> objects)
-        {
-            if (isDead) return;
-
-            enemy_behavior?.update(this, objects); // Enemy behavior
-        }
-
-        public override void updateProperties()
+        public override void updateProperties(in List<ParentObject> objects)
         {
             if (isDead)
             {
                 setAnimation(Dead);
                 return;
             }
+
+            enemy_behavior?.update(this, objects); // Enemy behavior
         }
 
         // Actions

@@ -18,7 +18,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks
 
         }
 
-        public override void updateProperties()
+        public override void updateProperties(in List<ParentObject> objects)
         {
 
         }

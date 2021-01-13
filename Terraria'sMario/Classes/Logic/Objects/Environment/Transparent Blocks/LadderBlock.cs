@@ -15,7 +15,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks
         {
             this.coords = coords;
             size = new Size(Parameters.blockSize, Parameters.blockSize);
-            drawingImage = StaticBlocks_res.brick;
+            drawingImage = StaticBlocks_res.Ladder;
         }
 
         public LadderBlock(int X, int Y)
