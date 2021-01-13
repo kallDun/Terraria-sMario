@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
@@ -23,6 +24,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
         private int findBehaveList_on = 0;
         private List<Entity> found_enemies = new List<Entity> { }; // Враги
         private List<Entity> found_ellies = new List<Entity> { }; // Союзники
+        private LadderBlock near_ladder;
+        private bool usingLadder = false;
         private bool isFindEnemy = false;
         private double found_seconds_now = 0;
         private double found_seconds_max = 10;
@@ -153,21 +156,28 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                 action == ActionType.KeepMovingToElly ||
                 action == ActionType.Retreat)
             {
-                var needEntity = action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat ?
+                Entity needEntity = action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat ?
                     closestEnemy : closestElly;
+
+                var isLadder = (usingLadder && near_ladder != null ||
+                    (near_ladder != null &&
+                    CheckDistanceBetweenObjectsService.FindDistance_Y_BetweenTwoObjects(enemy, needEntity) >= 3 * Parameters.blockSize
+                    && action != ActionType.Retreat));
 
                 if (isJump)
                 {
                     EnemyJump(enemy, objects);
-
                     CombatAttackUp(enemy, objects, action, needEntity);
                 }
                 else
                 {
-                    bool isRight = needEntity.coords.X > enemy.coords.X;
+                    bool isRight = isLadder ?
+                        near_ladder.coords.X + 7 > enemy.coords.X :
+                        needEntity.coords.X > enemy.coords.X;
+                        
                     int direction = isRight ? 1 : -1;
 
-                    if (action == ActionType.Retreat)
+                    if (!isLadder && action == ActionType.Retreat)
                     {
                         direction = isRight ? -1 : 1; // Идет в обратную от персонажа сторону
                     }
@@ -179,10 +189,24 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                     }
                     else
                     {
-                        lastMove = enemy.moveRightOrLeft(objects, direction, 
-                            run: (action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat));
+                        lastMove = enemy.moveRightOrLeft(objects, direction,
+                            run: (!isLadder && (action == ActionType.KeepMovingToEnemy || action == ActionType.Retreat)));
 
                         CombatAttackUp(enemy, objects, action, needEntity);
+                    }
+
+                    if (isLadder)
+                    {
+                        Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is LadderBlock; };
+                        var ladder = CheckNearObjectByPredicationService.getNearObject(objects, enemy, predicate);
+
+                        if (ladder != null &&
+                            (ladder.coords.X - enemy.coords.X) < -2 && (ladder.coords.X - enemy.coords.X) > -15)
+                        {
+                            enemy.Jump();
+                            usingLadder = action != ActionType.Retreat &&
+                                (CheckDistanceBetweenObjectsService.FindDistance_Y_BetweenTwoObjects(enemy, needEntity) >= 5);
+                        }
                     }
                 }
             }
@@ -225,6 +249,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
 
             var list_of_founded_entities = findingBehaviourList[findBehaveList_on].Update(objects, enemy);
             found_ellies = findingBehaviourList[findBehaveList_on].UpdateEllies(objects, enemy);
+            near_ladder = findingBehaviourList[findBehaveList_on].UpdateLadder(objects, enemy);
 
             if (list_of_founded_entities.Count == 0 || 
                 (list_of_founded_entities.Count == 1 && list_of_founded_entities[0] == null))

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
@@ -55,6 +57,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
         public List<Entity> UpdateEllies(List<ParentObject> objects, Enemy enemy) =>
             CheckEntityService.searchAllEntities(objects, enemy, 20 * Parameters.blockSize, isEverywhere: true, isEnemy: false);
 
+        public LadderBlock UpdateLadder(List<ParentObject> objects, Enemy enemy)
+        {
+            var radius = 8 * Parameters.blockSize;
+
+            Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is LadderBlock; };
+            var coords = new Point(enemy.coords.X - radius / 2, enemy.coords.Y);
+            var size = new Size(enemy.size.Width + radius, enemy.size.Height);
+            var ladder = CheckNearObjectByPredicationService.getNearObject(objects, new AbstractObject(coords, size), predicate);
+            
+            if (ladder != null) return ladder as LadderBlock;
+            else return null;
+        }
 
         // Усиленный тип поиска в случае нанесения урона
 
@@ -96,5 +110,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             radius = 12 * Parameters.blockSize;
         }
 
+        
     }
 }

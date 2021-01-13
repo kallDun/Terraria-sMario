@@ -13,22 +13,22 @@ namespace Terraria_sMario.Classes.Logic.Services
     static class IntersectionService
     {
 
-        public static bool isBlockIntersectSomething(in ParentObject ourNewBlock, in ParentObject ourLastBlock, in List<ParentObject> blocks) 
+        public static bool isBlockIntersectSomething(in ParentObject ourNewBlock, in ParentObject ourLastBlock, in List<ParentObject> blocks, bool useRules = true) 
         {
             foreach (var block in blocks)
             {
                 if (block != ourLastBlock)
                 {
-                    if (isBlockIntersectBlock(ourNewBlock, ourLastBlock, block)) 
+                    if (isBlockIntersectBlock(ourNewBlock, ourLastBlock, block, useRules)) 
                         return true;
                 }
             }
             return false;
         }
 
-        public static bool isBlockIntersectBlock(in ParentObject ourBlock, in ParentObject ourLastBlock, in ParentObject otherBlock)
+        public static bool isBlockIntersectBlock(in ParentObject ourBlock, in ParentObject ourLastBlock, in ParentObject otherBlock, bool useRules = true)
         {
-            if (Rules(ourLastBlock, otherBlock)) return false;
+            if (useRules && Rules(ourLastBlock, otherBlock)) return false;
 
             return 
                 ourBlock.coords.X + ourBlock.size.Width > otherBlock.coords.X &&
@@ -40,10 +40,13 @@ namespace Terraria_sMario.Classes.Logic.Services
         private static bool Rules(in ParentObject ourLastBlock, in ParentObject otherBlock)
         {
             if (!ourLastBlock.isHaveCollision || !otherBlock.isHaveCollision) return true;
+
             if (ourLastBlock is Player && otherBlock is Player) return true;
             if (ourLastBlock is Enemy && otherBlock is Enemy) return true;
+
             if ((ourLastBlock is Entity && (otherBlock is ParentItem || otherBlock is Coin)) ||
                     ((ourLastBlock is ParentItem || ourLastBlock is Coin) && otherBlock is Entity)) return true;
+
             if (ourLastBlock is TransparentBlockObject || otherBlock is TransparentBlockObject) return true;
             if (ourLastBlock is TranslucentBlockObject || otherBlock is TranslucentBlockObject) return true;
 

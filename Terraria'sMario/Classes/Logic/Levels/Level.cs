@@ -34,35 +34,35 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public void Draw(Graphics g)
         {
-
+            // Static blocks
             foreach (var item in objectsInTheView)
             { 
                 if (item is StaticBlockObject) item.Draw(g);
             }
-
+            // Transparent Blocks
             foreach (var item in objectsInTheView)
             {
                 if (item is TransparentBlockObject) item.Draw(g);
             }
-
-            foreach (var item in objectsInTheView)
-            {
-                if (item is TranslucentBlockObject) item.Draw(g);
-            }
-
+            // Items & Coins
             foreach (var item in objectsInTheView)
             {
                 if (item is ParentItem || item is Coin) item.Draw(g);
             }
-
+            // NPC's
             foreach (var item in objectsInTheView)
             {
                 if (item is Entity && !(item is Player)) item.Draw(g);
             }
-
+            // Players
             foreach (var player in players)
             {
                 player.Draw(g);
+            }
+            // Translucent objects
+            foreach (var item in objectsInTheView)
+            {
+                if (item is TranslucentBlockObject) item.Draw(g);
             }
 
         }

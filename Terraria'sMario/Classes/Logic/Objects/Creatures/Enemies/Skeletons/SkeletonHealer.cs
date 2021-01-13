@@ -12,7 +12,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
         public SkeletonHealer(int X, int Y)
         {
             coords = new Point(X, Y);
-            size = new Size(45, 90);
+            size = new Size(40, 90);
             maxHealth = 20;
             health = maxHealth;
             jumpHeight = -14;

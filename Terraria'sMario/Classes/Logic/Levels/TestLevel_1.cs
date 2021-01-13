@@ -5,6 +5,7 @@ using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
@@ -19,11 +20,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(player);
             players.Add(player);
 
-            var skelet = new SkeletonBasic(1100, 100);
+            /*var skelet = new SkeletonBasic(1100, 100);
             levelObjects.Add(skelet);
 
             var skelet2 = new SkeletonHealer(1400, 100);
-            levelObjects.Add(skelet2);
+            levelObjects.Add(skelet2);*/
 
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
@@ -50,7 +51,13 @@ namespace Terraria_sMario.Classes.Logic.Levels
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_3, width_2, width_3);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3, width_4);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4, width_5);
-            BuildingStatic.BlockOfFlats(levelObjects, 1450, 400, BuildingTypes.Large);
+
+
+
+            BuildingStatic.BuildBrickHouse(levelObjects, 1700, 450, BuildingTypes.Medium);
+
+            BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 400, BuildingTypes.Large);
+
         }
 
         

@@ -74,6 +74,7 @@
     <Compile Include="Classes\Logic\Objects\Creatures\Players\InventorySystem\Inventory.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Static Blocks\BrickBlock.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Static Blocks\ConcreteBlock.cs" />
+    <Compile Include="Classes\Logic\Objects\Environment\Translucent Blocks\WoodTranslucentBlock.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Transparent Blocks\LadderBlock.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Translucent Blocks\TranslucentBlockObject.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Transparent Blocks\TransparentBlockObject.cs" />
@@ -128,6 +129,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StaticBlocks_res.resx</DependentUpon>
     </Compile>
+    <Compile Include="Images\TranslucentBlocks_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TranslucentBlocks_res.resx</DependentUpon>
+    </Compile>
     <Compile Include="Images\UI.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +159,10 @@
     <EmbeddedResource Include="Images\StaticBlocks_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StaticBlocks_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\TranslucentBlocks_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TranslucentBlocks_res.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\UI.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -317,6 +327,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Coin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wood_80%25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wood_35%25.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
