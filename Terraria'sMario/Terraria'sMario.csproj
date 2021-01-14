@@ -54,6 +54,7 @@
     <Compile Include="Classes\Logic\Levels\Level.cs" />
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
     <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Potions\SmallHealing_Potion.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\Basic_arrow.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\BulletConstructor.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\BulletParent.cs" />
@@ -347,6 +348,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmallHealPotion_Inventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SmallHealPotion.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

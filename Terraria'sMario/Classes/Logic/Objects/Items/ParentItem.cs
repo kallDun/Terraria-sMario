@@ -29,7 +29,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
             return this;
         }
 
-        public virtual void Use()
+        public virtual void Use(in Entity entity)
         {
             opportunUseCount--;
         }

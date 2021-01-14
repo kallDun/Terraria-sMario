@@ -255,7 +255,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             }
         }
 
-        public void useCell() => active_cell.Use();
+        public void useActiveCell() => active_cell.Use(player);
         public void goToFirstCell() => active_cell = inventory_cells[0];
         public void goToActiveWeaponCell() => active_cell = inventory_cells[10];
         public void takeLeftCell()
@@ -271,6 +271,16 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 active_cell == inventory_cells.Last() ?
                 inventory_cells[0] :
                 inventory_cells[Array.IndexOf(inventory_cells, active_cell) + 1];
+        }
+
+        public bool TryToUseBaseActiveSlot() 
+        {
+            if (inventory_cells[9] != null)
+            {
+                inventory_cells[9].Use(player);
+                return true;
+            }
+            else return false;            
         }
     }
 }

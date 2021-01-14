@@ -59,13 +59,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             bool iskeyDown__Inv_changePosToWeapon, bool iskeyDown__Inv_changePosToOtherActive, bool iskeyDown__Inv_useActive,
             bool iskeyDown__Inv_takeItem, bool iskeyDown__Inv_dropItem)
         {
+            if (isDead) return;
             if (iskeyDown__Inv_right) inventory.takeRightCell();
             if (iskeyDown__Inv_left) inventory.takeLeftCell();
             if (iskeyDown__Inv_start) inventory.goToFirstCell();
             if (iskeyDown__Inv_end) inventory.goToActiveWeaponCell();
             if (iskeyDown__Inv_changePosToWeapon) inventory.setActiveCellToWeaponActiveSlot();
             if (iskeyDown__Inv_changePosToOtherActive) inventory.setActiveCellToBaseActiveSlot();
-            if (iskeyDown__Inv_useActive) inventory.useCell();
+            if (iskeyDown__Inv_useActive) inventory.useActiveCell();
 
 
             if (iskeyDown__Inv_takeItem)
@@ -82,7 +83,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 var item = inventory.active_cell.item;
                 if (item != null)
                 {
-                    var newCoord = new Point(coords.X + 50, coords.Y);
+                    var newCoord = new Point(coords.X + (isTurnToRight ? 50 : -50), coords.Y);
 
                     if (!IntersectionService.isBlockIntersectSomething(new AbstractObject(newCoord, item.size),
                         item, objects))
@@ -159,7 +160,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 return true;
             }
             else
-                return false;
+            {
+                if (inventory.TryToUseBaseActiveSlot())
+                {
+                    setAnimation(Healing);
+                    return true;
+                }
+                else return false;
+            } 
         }
 
         public void addCoin() => inventory.countOfCoins++;

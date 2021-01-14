@@ -40,7 +40,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         public bool MakeMeleeDamage(in List<ParentObject> objects, in Entity self)
         {
-            Use();
+            Use(self);
             if (canSplash)
             {
                 List<Entity> entities = CheckEntityService.getAllNearEntities(objects, self, actionRadius);
@@ -66,7 +66,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         public bool MakeHealing(in List<ParentObject> objects, in Entity self)
         {
-            Use();
+            Use(self);
             if (canSplash)
             {
                 List<Entity> allies = CheckEntityService.getAllNearEntities(objects, self, actionRadius, isEnemy: false);
@@ -103,7 +103,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         public List<BulletParent> Shoot(in Entity self)
         {
-            Use();
+            Use(self);
             var list = new List<BulletParent> { };
 
             for (int i = 0; i < bulletCount; i++)

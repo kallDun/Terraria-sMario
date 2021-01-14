@@ -30,11 +30,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             if (item?.opportunUseCount == 0) item = null;
         }
 
-        public void Use() 
+        public void Use(in Entity entity) 
         { 
             if (item != null && !(item is Weapon))
             {
-                item.Use();
+                item.Use(entity);
             } 
         }
     }

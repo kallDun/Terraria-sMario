@@ -218,6 +218,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
             // update Statements
             if (Effect.isEffectInList(effects, EffectTypes.Fire)) getDamage(1.0f / Parameters.fps);
+            if (Effect.isEffectInList(effects, EffectTypes.Blessing)) getCure(0.5f / Parameters.fps);
+
         }
 
         public override void Draw(Graphics g)
