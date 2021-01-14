@@ -54,6 +54,8 @@
     <Compile Include="Classes\Logic\Levels\Level.cs" />
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
     <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityWeaponAnimation.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\EntityTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Potions\SmallHealing_Potion.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\Basic_arrow.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\BulletConstructor.cs" />
@@ -62,8 +64,8 @@
     <Compile Include="Classes\Logic\Objects\Sword.cs" />
     <Compile Include="Classes\Logic\Objects\Coin.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\ParentAnimation.cs" />
-    <Compile Include="Classes\Logic\Objects\Creatures\Animations\PlayerAnimation.cs" />
-    <Compile Include="Classes\Logic\Objects\Creatures\Animations\PlayerAnimationTypes.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityAnimation.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityAnimationTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorControl.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorUnitCombat.cs" />
@@ -90,8 +92,6 @@
     <Compile Include="Classes\Logic\Objects\Creatures\Entity.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Mushroom.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Enemy.cs" />
-    <Compile Include="Classes\Logic\Objects\Creatures\Animations\EnemyAnimation.cs" />
-    <Compile Include="Classes\Logic\Objects\Creatures\Animations\EnemyAnimationTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Static Blocks\DirtBlock.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Static Blocks\GrassBlock.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Static Blocks\StaticBlockObject.cs" />
@@ -115,6 +115,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Images\EnemiesWithWeapons_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnemiesWithWeapons_res.resx</DependentUpon>
+    </Compile>
     <Compile Include="Images\Items_res.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -124,6 +129,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Mobs_res.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Images\PlayersWithWeapons_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PlayersWithWeapons_res.resx</DependentUpon>
     </Compile>
     <Compile Include="Images\Players_res.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -150,6 +160,10 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Images\EnemiesWithWeapons_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnemiesWithWeapons_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Images\Items_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Items_res.Designer.cs</LastGenOutput>
@@ -157,6 +171,10 @@
     <EmbeddedResource Include="Images\Mobs_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Mobs_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\PlayersWithWeapons_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PlayersWithWeapons_res.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\Players_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>

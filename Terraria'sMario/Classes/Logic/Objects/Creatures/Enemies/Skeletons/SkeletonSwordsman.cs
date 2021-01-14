@@ -8,7 +8,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
     class SkeletonSwordsman : Enemy
     {
+        public SkeletonSwordsman()
+        {
+            Name = "Skeleton Swordsman";
+            EntityType = EntityTypes.Skeleton;
 
+
+        }
 
     }
 }

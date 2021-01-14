@@ -1,19 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
+using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 using Terraria_sMario.Classes.Logic.Objects.Features;
-using static Terraria_sMario.Classes.Logic.Objects.Features.EnemyAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
     abstract class Enemy : Entity
     {
-        public List<EnemyAnimation> animations { get; protected set; }
-        public EnemyAnimation activeAnimation { get; protected set; }
-
         protected BehaviorControl enemy_behavior;
         protected int standartHeal_enemy = 10;
-
 
         // Threads
 
@@ -86,9 +83,5 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
                 return false;
         }
 
-        // Animation Set
-
-        public void setAnimation(EnemyAnimationTypes type) // Animations SET
-            => activeAnimation = animations.Find(x => x.type == type);
     }
 }

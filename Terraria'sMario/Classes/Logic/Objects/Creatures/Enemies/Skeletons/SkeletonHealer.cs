@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Features;
@@ -11,6 +12,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
     {
         public SkeletonHealer(int X, int Y)
         {
+            Name = "Skeleton Healer";
+            EntityType = EntityTypes.Skeleton;
+
             coords = new Point(X, Y);
             size = new Size(40, 90);
             maxHealth = 20;
@@ -40,23 +44,23 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
 
             uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.WithoutName);
             drawingImage = Skeleton_image;
-            animations = new List<EnemyAnimation>
+            animations = new List<EntityAnimation>
             {
-                new EnemyAnimation(new List<Image>{
+                new EntityAnimation(new List<Image>{
                     Skeleton_walking_3,
                     Skeleton_walking_2, Skeleton_walking_4,
-                    Skeleton_walking_2 }, EnemyAnimationTypes.Walking, skipFrames: 6),
+                    Skeleton_walking_2 }, EntityAnimationTypes.Walking, skipFrames: 6),
 
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Standing),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Standing),
 
-                new EnemyAnimation(new List<Image>{
+                new EntityAnimation(new List<Image>{
                     Skeleton_walking_3,
                     Skeleton_walking_2, Skeleton_walking_4,
-                    Skeleton_walking_2 }, EnemyAnimationTypes.Running, skipFrames: 2),
+                    Skeleton_walking_2 }, EntityAnimationTypes.Running, skipFrames: 2),
 
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Jumping),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Hitting),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Dead)
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Jumping),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Hitting),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Dead)
             };
         }
     }

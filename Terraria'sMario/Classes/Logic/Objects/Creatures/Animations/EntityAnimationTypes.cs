@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
 {
-    enum PlayerAnimationTypes
+    enum EntityAnimationTypes
     {
         Standing, Walking, Running, Sitting, Dead, Jumping,
         

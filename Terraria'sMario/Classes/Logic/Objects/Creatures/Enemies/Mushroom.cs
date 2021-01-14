@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Features;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
@@ -12,6 +13,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
     {
         public Mushroom(int X, int Y)
         {
+            Name = "Mushroom";
+            EntityType = EntityTypes.Mushroom;
+
             coords = new Point(X, Y);
             size = new Size(40, 50);
             maxHealth = 20;
@@ -22,14 +26,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
             //drawingImage = Resources.mushroom_image;  <== needs to add
 
-            animations = new List<EnemyAnimation> 
+            animations = new List<EntityAnimation> 
             {
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Walking),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Standing),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Running),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Jumping),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Hitting),
-                new EnemyAnimation(new List<Image>{ /*animation pictures*/ }, EnemyAnimationTypes.Dead)            
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Walking),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Standing),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Running),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Jumping),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Hitting),
+                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Dead)            
             };
         }
         

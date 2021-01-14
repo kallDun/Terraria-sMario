@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Images;
+using static Terraria_sMario.Classes.Logic.Objects.Creatures.EntityTypes;
+using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 {
@@ -32,8 +32,20 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 
             drawingImage = Items_res.Sword;
             smallImage_inInventory = Items_res.Basic_Sword_Inventory;
-            
-        }
+
+            // animations
+
+            entityWeaponAnimations = new List<EntityWeaponAnimation> 
+            {
+                // for Hero
+                new EntityWeaponAnimation(Hero, new List<EntityAnimation>
+                {
+                    new EntityAnimation(new List<Image>{ }, Standing, skipFrames: 4),
+                    new EntityAnimation(new List<Image>{ }, Hitting, skipFrames: 4),
+                    new EntityAnimation(new List<Image>{ }, Healing, skipFrames: 4)
+                })
+            };
+    }
 
     }
 }

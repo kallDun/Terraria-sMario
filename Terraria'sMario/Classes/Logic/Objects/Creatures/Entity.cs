@@ -1,21 +1,21 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
-using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Features;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Classes.Logic.Services;
+using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
     abstract class Entity : ParentObject
     {
         // Fields
+
+        public EntityTypes EntityType { get; protected set; }
 
         public string Name { get; protected set; } = "Entity";
         public float health { get; protected set; }  
@@ -26,7 +26,34 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public bool canFly { get; protected set; } = false;
         public bool isTurnToRight { get; protected set; } = true;
 
+        // Drawing UI & Animations
+
         protected UI_Entity_Draw uI_Entity_Draw;
+        public List<EntityAnimation> animations { get; protected set; }
+        public EntityAnimation activeAnimation { get; protected set; }
+
+        public void setAnimation(EntityAnimationTypes type) // Animations SET
+        {
+            if (weaponInHand == null) setStandartAnimation(type);
+            else
+            {
+                var animObject = EntityWeaponAnimation.getAnimationsToEntity
+                    (weaponInHand.entityWeaponAnimations, EntityType);
+
+                if (animObject != null)
+                {
+                    activeAnimation = animObject.animations.Find(x => x.type == type);
+
+                    if (activeAnimation == null || activeAnimation.images.Count == 0) setStandartAnimation(type);
+                }
+                else setStandartAnimation(type);
+            }            
+        }
+
+        private void setStandartAnimation(EntityAnimationTypes type)
+        {
+            activeAnimation = animations.Find(x => x.type == type);
+        }
 
         // Effects System
 
@@ -246,7 +273,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (!Effect.isEffectInList(effects, EffectTypes.Stunning))
                 gravitationService.tryToJump(objects, this, jumpHeight);
         }
-            
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 
         {

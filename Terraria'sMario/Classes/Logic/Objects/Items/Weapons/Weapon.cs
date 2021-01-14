@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets;
 using Terraria_sMario.Classes.Logic.Services;
@@ -16,8 +17,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
         public int bulletCount { get; protected set; } = 1;
         public int shoot_damage { get; protected set; }
         public int shootRadius { get; protected set; }
-        public BulletParent bulletUnit { get; protected set; }
-        // экземпляр патрона для стрелкового оружия
+        public BulletParent bulletUnit { get; protected set; } // экземпляр патрона для стрелкового оружия
 
         //  Для ближнего оружия
         public float damage { get; protected set; }
@@ -26,16 +26,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
         // Для ближнего и дальнего оружия
         public List<Effect> getting_weapon_effects { get; protected set; } = new List<Effect> { };
 
-        // Для лечебного и ближнего оружия
-        public int actionRadius { get; protected set; }
-        public bool canSplash { get; protected set; }
-
         // Для лечебного оружия
         public float healing { get; protected set; }
         public bool canHeal { get; protected set; } = false;
 
+        // Для лечебного и ближнего оружия
+        public int actionRadius { get; protected set; }
+        public bool canSplash { get; protected set; }
+
         // Обязательные поля
         public double timerHitMax { get; protected set; }
+        public List<EntityWeaponAnimation> entityWeaponAnimations { get; protected set; }
+            = new List<EntityWeaponAnimation> { };  // анимации
 
 
         public bool MakeMeleeDamage(in List<ParentObject> objects, in Entity self)

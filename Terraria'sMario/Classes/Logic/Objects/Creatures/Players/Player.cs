@@ -7,14 +7,12 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Classes.Logic.Services;
-using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.PlayerAnimationTypes;
+using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 {
     abstract class Player : Entity
     {
-        public List<PlayerAnimation> animations { get; protected set; }
-        public PlayerAnimation activeAnimation { get; protected set; }
         protected Inventory inventory;
 
         // Threads
@@ -28,8 +26,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             else
                 activeAnimation.Draw(g, coords, isTurnToRight);
 
-            inventory.Draw(g);
             base.Draw(g);
+            inventory.Draw(g);
         }
 
         public override void updateProperties(in List<ParentObject> objects)
@@ -50,7 +48,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
 
         }
-
 
         // Control
 
@@ -160,6 +157,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 return true;
             }
             else
+            if (weaponInHand != null && !weaponInHand.canHeal)
             {
                 if (inventory.TryToUseBaseActiveSlot())
                 {
@@ -168,13 +166,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 }
                 else return false;
             } 
+            else return false;
         }
 
         public void addCoin() => inventory.countOfCoins++;
-
-        public void setAnimation(PlayerAnimationTypes type) // Animations SET
-        {
-            activeAnimation = animations.Find(x => x.type == type);
-        }
     }
 }

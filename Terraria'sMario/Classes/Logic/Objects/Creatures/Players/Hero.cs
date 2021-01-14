@@ -12,6 +12,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
         public Hero(int X, int Y, string Name, int PlayerNumber)
         {
             this.Name = Name;
+            EntityType = EntityTypes.Hero;
+
             coords = new Point(X, Y);
             size = new Size(45, 95);
             maxHealth = 50;
@@ -35,29 +37,29 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
 
 
             drawingImage = sherif_image;
-            animations = new List<PlayerAnimation>
+            animations = new List<EntityAnimation>
             {
-                new PlayerAnimation(new List<Image> {
+                new EntityAnimation(new List<Image> {
                     sherifwent1, sherifwent2,
                     sherifwent3, sherifwent4,
-                    sherifwent3, sherifwent2}, PlayerAnimationTypes.Walking, 6),
+                    sherifwent3, sherifwent2}, EntityAnimationTypes.Walking, 6),
 
-                new PlayerAnimation(new List<Image> { 
+                new EntityAnimation(new List<Image> { 
                     sherifwent1, sherifwent2,
                     sherifwent3, sherifwent4,
-                    sherifwent3, sherifwent2 }, PlayerAnimationTypes.Running, 4),
+                    sherifwent3, sherifwent2 }, EntityAnimationTypes.Running, 4),
 
-                new PlayerAnimation(new List<Image> {
+                new EntityAnimation(new List<Image> {
                     sherif_beat_5, 
                     sherif_beat_3, sherif_beat_2,
                     sherif_beat_1, sherif_beat_2,
-                    sherif_beat_3, sherif_beat_4 }, PlayerAnimationTypes.Hitting, 4),
+                    sherif_beat_3, sherif_beat_4 }, EntityAnimationTypes.Hitting, 4),
 
-                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Standing),
+                new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Standing),
 
-                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Jumping),
+                new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Jumping),
 
-                new PlayerAnimation(new List<Image> { /*animation pictures*/ }, PlayerAnimationTypes.Dead)
+                new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Dead)
             };
         }
 

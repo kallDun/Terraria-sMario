@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
 {
-    class PlayerAnimation : ParentAnimation
+    class EntityAnimation : ParentAnimation
     {
-        public PlayerAnimationTypes type { get; private set; }
+        public EntityAnimationTypes type { get; protected set; }
 
-        public PlayerAnimation(List<Image> images, PlayerAnimationTypes type, int skipFrames = 1)
+        public EntityAnimation(List<Image> images, EntityAnimationTypes type, int skipFrames = 1)
         {
             this.images = images;
             this.type = type;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Services;
@@ -47,7 +48,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
 
         public void update(Enemy enemy, in List<ParentObject> objects)
         {
-            if (lastMove == 0) enemy.setAnimation(Features.EnemyAnimationTypes.Standing);
+            if (lastMove == 0) enemy.setAnimation(EntityAnimationTypes.Standing);
 
             if (isFindEnemy)
             {
