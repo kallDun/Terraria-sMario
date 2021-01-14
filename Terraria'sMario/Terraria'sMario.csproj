@@ -373,5 +373,20 @@
   <ItemGroup>
     <None Include="Resources\SmallHealPotion.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

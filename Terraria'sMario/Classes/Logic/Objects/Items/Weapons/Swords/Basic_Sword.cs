@@ -4,6 +4,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Images;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.EntityTypes;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
+using static Terraria_sMario.Images.EnemiesWithWeapons_res;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 {
@@ -40,8 +41,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
                 // for Hero
                 new EntityWeaponAnimation(Hero, new List<EntityAnimation>
                 {
+                    new EntityAnimation(new List<Image>
+                    {   AnimationBeat_1, AnimationBeat_2, AnimationBeat_3, 
+                        AnimationBeat_4, AnimationBeat_5, 
+                        AnimationBeat_4, AnimationBeat_4,
+                        AnimationBeat_3, AnimationBeat_3, 
+                        AnimationBeat_2, AnimationBeat_2 }, Hitting, skipFrames: 2),
+
                     new EntityAnimation(new List<Image>{ }, Standing, skipFrames: 4),
-                    new EntityAnimation(new List<Image>{ }, Hitting, skipFrames: 4),
                     new EntityAnimation(new List<Image>{ }, Healing, skipFrames: 4)
                 })
             };
