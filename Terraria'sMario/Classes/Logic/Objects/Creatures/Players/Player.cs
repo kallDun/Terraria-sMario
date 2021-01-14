@@ -106,7 +106,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (isWentLeft)
                 moveRightOrLeft(objects, -1, isPressedShift);
             if (isJumped)
-                Jump();
+                Jump(objects);
             if (isHitting)
                 Hit(objects);
             if (isHealing)
@@ -123,9 +123,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             return base.moveRightOrLeft(objects, direction, run);
         }
 
-        public override void Jump()
+        public override void Jump(in List<ParentObject> objects)
         {
-            base.Jump();
+            base.Jump(objects);
             setAnimation(Jumping);
         }
 

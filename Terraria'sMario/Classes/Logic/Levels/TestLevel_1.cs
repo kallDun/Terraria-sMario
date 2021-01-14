@@ -18,11 +18,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(player);
             players.Add(player);
 
-            /*var skelet = new SkeletonBasic(1100, 100);
+            var skelet = new SkeletonBasic(900, 100);
             levelObjects.Add(skelet);
 
             var skelet2 = new SkeletonHealer(1400, 100);
-            levelObjects.Add(skelet2);*/
+            levelObjects.Add(skelet2);
 
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
@@ -30,8 +30,8 @@ namespace Terraria_sMario.Classes.Logic.Levels
             var coin = new Coin(1750, 350);
             levelObjects.Add(coin);
 
-            var sword = new Sword(580, 100);
-            levelObjects.Add(sword);
+            /*var sword = new Sword(580, 100);
+            levelObjects.Add(sword);*/
 
             fieldSize = new Size(100, 100);
 
@@ -47,15 +47,15 @@ namespace Terraria_sMario.Classes.Logic.Levels
             int width_4 = 40;
             int width_5 = 60;
 
-            BuildingStatic.fillFieldWithGrass   (levelObjects, height_down, height_1, 0,        width_1);
-            BuildingStatic.fillFieldWithGrass   (levelObjects, height_down, height_2, width_1,  width_2);
-            BuildingStatic.fillFieldWithGrass   (levelObjects, height_down, height_3, width_2,  width_3);
-            BuildingStatic.fillFieldWithGrass   (levelObjects, height_down, height_4, width_3,  width_4);
-            BuildingStatic.fillFieldWithGrass   (levelObjects, height_down, height_5, width_4,  width_5);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_1, 0,        width_1);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_2, width_1,  width_2);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_3, width_2,  width_3);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3,  width_4);
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4,  width_5);
 
-            BuildingStatic.BuildBrickHouse      (levelObjects, 1700, 450, BuildingTypes.Medium);
+            BuildingStatic.BuildBrickHouse(levelObjects, 1750, 500, BuildingTypes.Medium);
 
-            BuildingStatic.BuildBlockOfFlats    (levelObjects, 1100, 400, BuildingTypes.Large);
+            BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 450, BuildingTypes.Large);
         }
     }
 }

@@ -228,17 +228,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (!canFly)
             {
                 gravitationService.updateGravitation(this, objects);
-
-                
             }
         }
 
         // Moving System
 
-        public virtual void Jump() 
-        {
-            if (gravitationService.acceler == 0) gravitationService.acceler = jumpHeight;
-        }
+        public virtual void Jump(in List<ParentObject> objects) => 
+            gravitationService.tryToJump(objects, this, jumpHeight);
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 
         {

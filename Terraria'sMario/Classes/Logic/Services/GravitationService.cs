@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.Objects;
+using Terraria_sMario.Classes.Logic.Objects.Creatures;
+using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 
 namespace Terraria_sMario.Classes.Logic.Services
 {
     class GravitationService
     {
-        public double acceler = 0;
+        private double acceler = 0;
 
         public void updateGravitation(ParentObject self, in List<ParentObject> objects)
         {
@@ -74,6 +76,23 @@ namespace Terraria_sMario.Classes.Logic.Services
                 test_coord.Offset(0, -2);
             }
             self.setNewCoords(test_coord);
+        }
+
+        public void tryToJump(in List<ParentObject> objects, ParentObject self,  int jumpHeight)
+        {
+            Predicate<ParentObject> predicate = delegate (ParentObject obj) { 
+                return obj is LadderBlock; // jump ladder rule
+            };
+
+            var area = new AbstractObject(
+                self.coords,
+                new Size(self.size.Width, self.size.Height + 1));
+
+            if (IntersectionService.isBlockIntersectSomething(area, self, objects))
+                acceler = jumpHeight;
+
+            var blockDown = CheckNearObjectByPredicationService.getNearObject(objects, area, predicate);
+            if (blockDown != null) acceler = jumpHeight;
         }
     }
 }

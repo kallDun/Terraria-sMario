@@ -113,7 +113,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
 
         private void EnemyJump(Enemy enemy, List<ParentObject> objects)
         {
-            enemy.Jump();
+            enemy.Jump(objects);
             jump_seconds_now += (1.0 / Parameters.fps);
 
             if (jump_seconds_now >= jump_seconds_max)
@@ -161,7 +161,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
 
                 var isLadder = (usingLadder && near_ladder != null ||
                     (near_ladder != null &&
-                    CheckDistanceBetweenObjectsService.FindDistance_Y_BetweenTwoObjects(enemy, needEntity) >= 3 * Parameters.blockSize
+                    enemy.coords.Y - needEntity.coords.Y >= 3 * Parameters.blockSize
                     && action != ActionType.Retreat));
 
                 if (isJump)
@@ -203,7 +203,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                         if (ladder != null &&
                             (ladder.coords.X - enemy.coords.X) < -2 && (ladder.coords.X - enemy.coords.X) > -15)
                         {
-                            enemy.Jump();
+                            enemy.Jump(objects);
                             usingLadder = action != ActionType.Retreat &&
                                 (CheckDistanceBetweenObjectsService.FindDistance_Y_BetweenTwoObjects(enemy, needEntity) >= 5);
                         }
