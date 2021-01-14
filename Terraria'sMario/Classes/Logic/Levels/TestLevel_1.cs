@@ -5,6 +5,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
@@ -27,6 +28,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
 
+            var bow = new Basic_Bow(520, 100);
+            levelObjects.Add(bow);
+
             var coin = new Coin(1750, 350);
             levelObjects.Add(coin);
 
@@ -43,7 +47,7 @@ namespace Terraria_sMario.Classes.Logic.Levels
             int height_5 = 11;
             int width_1 = 7;
             int width_2 = 14;
-            int width_3 = 19;
+            int width_3 = 16;
             int width_4 = 40;
             int width_5 = 60;
 

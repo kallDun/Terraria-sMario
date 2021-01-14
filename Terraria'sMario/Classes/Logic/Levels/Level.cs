@@ -13,6 +13,7 @@ using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.Translucent_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets;
 using Terraria_sMario.Classes.Logic.Services;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
@@ -53,6 +54,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
             foreach (var item in objectsInTheView)
             {
                 if (item is Entity && !(item is Player)) item.Draw(g);
+            }
+            // Bullets
+            foreach (var item in objectsInTheView)
+            {
+                if (item is BulletParent) item.Draw(g);
             }
             // Players
             foreach (var player in players)

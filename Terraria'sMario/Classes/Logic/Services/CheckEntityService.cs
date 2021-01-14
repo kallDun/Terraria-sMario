@@ -84,7 +84,13 @@ namespace Terraria_sMario.Classes.Logic.Services
             return list.Count > 0 ? list.First() : null;
         }
 
+        public static Entity getShootedEntity(List<ParentObject> objects, Entity entity, AbstractObject bullet)
+        {
+            var list = getListOfFoundedEntities(objects, entity, bullet, true);
 
+            if (list.Count > 0) return list.First();
+            else return null;
+        }
 
         private static Predicate<ParentObject> getEnemyTargetPredicate(Entity entity)
             => delegate (ParentObject obj)

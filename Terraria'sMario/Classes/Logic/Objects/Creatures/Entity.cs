@@ -97,9 +97,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public virtual bool Hit(in List<ParentObject> objects)
         {
             if (!isReadyToHit) return false;
+            if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return false;
 
-            if (weaponInHand != null && weaponInHand.canMeleeDamage)
+            if (weaponInHand != null)
             {
+                if (!weaponInHand.canMeleeDamage) return false;
+
                 weaponInHand.MakeMeleeDamage(objects, this);
                 restartHitTimer();
                 return true;
@@ -117,10 +120,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public virtual bool Shoot(in List<ParentObject> objects)
         {
             if (!isReadyToHit) return false;
+            if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return false;
 
             if (weaponInHand != null && weaponInHand.canShoot)
             {
-                newObjects.Concat(weaponInHand.Shoot());
+                var bullets_list = weaponInHand.Shoot(this);
+                newObjects = newObjects.Concat(bullets_list).ToList();
                 restartHitTimer();
                 return true;
             }
@@ -131,6 +136,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public virtual bool Heal(in List<ParentObject> objects, int standartHeal = 0)
         {
             if (!isReadyToHit) return false;
+            if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return false;
 
             if (weaponInHand != null && weaponInHand.canHeal)
             {
@@ -233,12 +239,19 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         // Moving System
 
-        public virtual void Jump(in List<ParentObject> objects) => 
-            gravitationService.tryToJump(objects, this, jumpHeight);
+        public virtual void Jump(in List<ParentObject> objects) 
+        {
+            if (!Effect.isEffectInList(effects, EffectTypes.Stunning))
+                gravitationService.tryToJump(objects, this, jumpHeight);
+        }
+            
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 
         {
+            if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return 0;
+
             int offsetX = direction * (int) Math.Round(run ? speed * 1.5 : speed);
+            if (Effect.isEffectInList(effects, EffectTypes.Ice)) offsetX /= 2;
 
             while (offsetX != 0)
             {
@@ -265,6 +278,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public virtual int moveUpOrDown(int offsetY, in List<ParentObject> objects, int direction)
         {
             if (!canFly) return 0;
+            if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return 0;
+
+            if (Effect.isEffectInList(effects, EffectTypes.Ice)) offsetY /= 2;
 
             while (offsetY != 0)
             {

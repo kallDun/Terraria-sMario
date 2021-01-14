@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
+using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets;
 using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
@@ -12,16 +13,17 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         // Для дальнего оружия
         public bool canShoot { get; protected set; } = false;
-        public float shoot_damage { get; protected set; }
         public int bulletCount { get; protected set; } = 1;
+        public int shoot_damage { get; protected set; }
         public int shootRadius { get; protected set; }
+        public BulletParent bulletUnit { get; protected set; }
         // экземпляр патрона для стрелкового оружия
 
         //  Для ближнего оружия
+        public float damage { get; protected set; }
         public bool canMeleeDamage { get; protected set; } = false;
 
         // Для ближнего и дальнего оружия
-        public float damage { get; protected set; }
         public List<Effect> getting_weapon_effects { get; protected set; } = new List<Effect> { };
 
         // Для лечебного и ближнего оружия
@@ -99,10 +101,20 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
             }
         }
 
-        public List<ParentObject> Shoot() // EMPTY
+        public List<BulletParent> Shoot(in Entity self)
         {
             Use();
-            return new List<ParentObject> { }; // Возвращает список из выпущенных патронов
+            var list = new List<BulletParent> { };
+
+            for (int i = 0; i < bulletCount; i++)
+            { 
+                BulletParent bullet = new BulletConstructor(bulletUnit);
+                float angle = self.isTurnToRight ? 0 : 180;
+                bullet.Shoot(this, angle, self, offsetY: -i * 2);
+                list.Add(bullet);
+            }
+
+            return list; // Возвращает список из выпущенных патронов
         }
 
 
