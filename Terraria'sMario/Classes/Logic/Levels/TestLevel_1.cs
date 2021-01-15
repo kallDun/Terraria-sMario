@@ -20,11 +20,15 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(player);
             players.Add(player);
 
-            var skelet = new SkeletonBasic(900, 100);
-            levelObjects.Add(skelet);
 
-            var skelet2 = new SkeletonHealer(1400, 100);
+            /*var skelet2 = new SkeletonBasic(800, 100);
             levelObjects.Add(skelet2);
+
+            var skelet3 = new SkeletonHealer(1400, 100);
+            levelObjects.Add(skelet3);*/
+
+            var skelet = new SkeletonArcher(900, 100);
+            levelObjects.Add(skelet);
 
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
@@ -61,9 +65,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3,  width_4);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4,  width_5);
 
-            BuildingStatic.BuildBrickHouse(levelObjects, 1750, 500, BuildingTypes.Medium);
+            //BuildingStatic.BuildBrickHouse(levelObjects, 1750, 500, BuildingTypes.Medium);
 
-            BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 450, BuildingTypes.Large);
+            //BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 450, BuildingTypes.Large);
         }
     }
 }

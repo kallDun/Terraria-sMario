@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 
 namespace Terraria_sMario.Classes.Logic.Services
 {
@@ -58,6 +58,22 @@ namespace Terraria_sMario.Classes.Logic.Services
                 (otherObject.coords.X + otherObject.size.Width) - ourObject.coords.X;
 
             return Math.Abs(x_coords_gap);
+        }
+
+        public static float FindAngleBetweenTwoObjects(ParentObject ourObject, ParentObject otherObject)
+        {
+            var vect1 = new Vector(10, 0);
+            var vect2 = new Vector(otherObject.coords.X - ourObject.coords.X, otherObject.coords.Y - ourObject.coords.Y - 25);
+
+            double cos = (vect1.X * vect2.X + vect1.Y * vect2.Y) / 
+                (Math.Sqrt(Math.Pow(vect1.X, 2) + Math.Pow(vect1.Y, 2)) 
+                * Math.Sqrt(Math.Pow(vect2.X, 2) + Math.Pow(vect2.Y, 2)));
+
+            var angle = (float)((float)Math.Acos(cos) * 180 / Math.PI);
+
+            if (ourObject.coords.Y > otherObject.coords.Y)
+                return 360 - angle;
+            else return angle;
         }
 
     }

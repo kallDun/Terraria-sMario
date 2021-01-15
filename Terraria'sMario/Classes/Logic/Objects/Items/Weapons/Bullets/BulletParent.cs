@@ -27,9 +27,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets
         {
             damage = base_damage * weapon.shoot_damage;
             effects = effects.Concat(weapon.getting_weapon_effects).ToList();
-            maxDistance = weapon.shootRadius * Parameters.blockSize;
+            maxDistance = weapon.shootRadius;
             distanceNow = 0;
-            velocity = weapon.shootRadius * 2; 
+            velocity = weapon.shootRadius / Parameters.blockSize * 2; 
 
             this.angle = angle;
             this.owner = owner;
@@ -44,9 +44,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets
 
             var image = drawingImage;
 
-            if (angle > 0 && angle <= 90) image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            /*if (angle > 0 && angle <= 90) image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             if (angle > 90 && angle <= 180) image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            if (angle > 180 && angle <= 270) image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            if (angle > 180 && angle <= 270) image.RotateFlip(RotateFlipType.Rotate270FlipNone);*/
 
             g.DrawImage(image, coords);
         }
@@ -54,8 +54,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets
         public override void updateProperties(in List<ParentObject> objects)
         {
             var newCoords = new Point(
-                coords.X + velocity * (int) Math.Round(Math.Cos(angle * (Math.PI / 180))), 
-                coords.Y + velocity * (int) Math.Round(Math.Sin(angle * (Math.PI / 180))));
+                (int) Math.Round(coords.X + velocity * Math.Cos(angle * (Math.PI / 180.0))),
+                (int) Math.Round(coords.Y + velocity * Math.Sin(angle * (Math.PI / 180.0))));
 
             var bulletArea = new AbstractObject(newCoords, size);
             var enemy = CheckEntityService.getShootedEntity(objects, owner, bulletArea);

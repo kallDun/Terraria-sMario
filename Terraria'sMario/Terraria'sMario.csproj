@@ -44,6 +44,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Control\ControlKeyboard.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
     <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityWeaponAnimation.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonArcher.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Potions\SmallHealing_Potion.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\Basic_arrow.cs" />

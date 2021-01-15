@@ -135,7 +135,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
                 if (item is Weapon)
                 {
-                    if ((item as Weapon).canHeal || (item as Weapon).canMeleeDamage)
+                    if ((item as Weapon).canHeal || (item as Weapon).canMeleeHit)
                     {
                         // splash:
                         UI_Drawing_Static.DrawString(g, new Point(weaponStat_splash__coord.X + coords.X, weaponStat_splash__coord.Y + coords.Y),
@@ -147,7 +147,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                         string.Format("{0: 0.0}", (item as Weapon).actionRadius / Parameters.blockSize),
                         Brushes.DarkOrange, 10);
                     }
-                    if ((item as Weapon).canMeleeDamage)
+                    if ((item as Weapon).canMeleeHit)
                     {
                         // damage:
                         UI_Drawing_Static.DrawString(g, new Point(weaponStat_damage__coord.X + coords.X, weaponStat_damage__coord.Y + coords.Y),

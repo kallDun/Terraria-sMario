@@ -217,6 +217,20 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                 enemy.Hit(objects);
             }
             else
+            if (action == ActionType.Shoot)
+            {
+                if (closestEnemy != null)
+                {
+                    bool isRight = closestEnemy.coords.X > enemy.coords.X;
+                    int direction = isRight ? 1 : -1;
+                    lastMove = enemy.moveRightOrLeft(objects, direction);
+                }
+
+                var angle = CheckDistanceBetweenObjectsService.FindAngleBetweenTwoObjects(enemy, closestEnemy);
+
+                enemy.Shoot(objects, angle);
+            }
+            else
             if (action == ActionType.Heal)
             {
                 enemy.Heal(objects);

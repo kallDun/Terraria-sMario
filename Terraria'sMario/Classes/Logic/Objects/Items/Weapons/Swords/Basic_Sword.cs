@@ -13,14 +13,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 
         public Basic_Sword(int X = 0, int Y = 0)
         {
-            coords = new System.Drawing.Point(X, Y);
-            size = new System.Drawing.Size(50, 50);
+            coords = new Point(X, Y);
+            size = new Size(50, 50);
 
             Name = "Базовый меч";
             Description = "Этот меч сгодиться разве чтобы салаты на Новый год крошить .";
 
             damage = 10;
-            canMeleeDamage = true;
+            canMeleeHit = true;
             getting_weapon_effects.Add(new Effect(EffectTypes.Poisoning, 2));
             actionRadius = 1 * Parameters.blockSize;
             timerHitMax = 1.5;

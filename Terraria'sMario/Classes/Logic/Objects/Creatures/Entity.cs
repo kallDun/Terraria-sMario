@@ -128,7 +128,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
             if (weaponInHand != null)
             {
-                if (!weaponInHand.canMeleeDamage) return false;
+                if (!weaponInHand.canMeleeHit) return false;
 
                 weaponInHand.MakeMeleeDamage(objects, this);
                 restartHitTimer();
@@ -144,14 +144,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             }
         }
 
-        public virtual bool Shoot(in List<ParentObject> objects)
+        public virtual bool Shoot(in List<ParentObject> objects, float? angle = null)
         {
             if (!isReadyToHit) return false;
             if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return false;
 
             if (weaponInHand != null && weaponInHand.canShoot)
             {
-                var bullets_list = weaponInHand.Shoot(this);
+                var bullets_list = weaponInHand.Shoot(this, angle);
                 newObjects = newObjects.Concat(bullets_list).ToList();
                 restartHitTimer();
                 return true;

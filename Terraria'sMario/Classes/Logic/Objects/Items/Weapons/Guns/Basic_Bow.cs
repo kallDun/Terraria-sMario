@@ -24,7 +24,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns
             canShoot = true;
             bulletUnit = new Basic_arrow();
             bulletCount = 1;
-            shootRadius = 10;
+            shootRadius = 10 * Parameters.blockSize;
             shoot_damage = 5;
             timerHitMax = 2.5;
 

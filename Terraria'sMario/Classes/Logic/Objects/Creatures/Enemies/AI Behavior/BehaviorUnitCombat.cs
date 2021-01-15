@@ -26,6 +26,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
 
             if (behaviorType == BehaviorTypes.Hitting)
             {
+                if (entity.weaponInHand != null && !entity.weaponInHand.canMeleeHit)
+                {
+                    durationNow = 0;
+                    return ActionType.None;
+                }
+
                 if (distanceToEntity == null) return ActionType.None;
 
                 if (distanceToEntity > range)
@@ -36,6 +42,55 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
                     return ActionType.Hit;
             }
 
+            if (behaviorType == BehaviorTypes.Shooting)
+            {
+                if (entity.weaponInHand == null || !entity.weaponInHand.canShoot)
+                {
+                    durationNow = 0;
+                    return ActionType.None;
+                }
+
+                if (distanceToEntity == null) return ActionType.None;
+
+                var shooting_radius = entity.weaponInHand?.shootRadius;
+
+                if (distanceToEntity > shooting_radius - 40)
+                {
+                    return ActionType.KeepMovingToEnemy;
+                }
+                else
+                if (distanceToEntity < shooting_radius - 80)
+                {
+                    if (distanceToEntity < Parameters.blockSize)
+                    {
+                        if (last_distanceToEntity != null)
+                        {
+                            if (last_distanceToEntity < Parameters.blockSize)
+                            {
+                                last_distanceToEntity = distanceToEntity;
+                                return ActionType.Retreat;
+                            }
+                            else
+                            {
+                                last_distanceToEntity = distanceToEntity;
+                                return ActionType.Shoot;
+                            }
+                        }
+                        else
+                        {
+                            last_distanceToEntity = distanceToEntity;
+                            return ActionType.Shoot;
+                        }
+                    }
+                    else
+                    {
+                        last_distanceToEntity = distanceToEntity;
+                        return ActionType.Retreat;
+                    }  
+                }                    
+                else
+                    return ActionType.Shoot;
+            }
 
             if (behaviorType == BehaviorTypes.Healing)
             {

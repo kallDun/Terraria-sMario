@@ -21,7 +21,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         //  Для ближнего оружия
         public float damage { get; protected set; }
-        public bool canMeleeDamage { get; protected set; } = false;
+        public bool canMeleeHit { get; protected set; } = false;
 
         // Для ближнего и дальнего оружия
         public List<Effect> getting_weapon_effects { get; protected set; } = new List<Effect> { };
@@ -103,7 +103,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
             }
         }
 
-        public List<BulletParent> Shoot(in Entity self)
+        public List<BulletParent> Shoot(in Entity self, float? angle)
         {
             Use(self);
             var list = new List<BulletParent> { };
@@ -111,8 +111,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
             for (int i = 0; i < bulletCount; i++)
             { 
                 BulletParent bullet = new BulletConstructor(bulletUnit);
-                float angle = self.isTurnToRight ? 0 : 180;
-                bullet.Shoot(this, angle, self, offsetY: -i * 2);
+                if (angle == null) angle = self.isTurnToRight ? 0 : 180;
+                bullet.Shoot(this, (float)angle, self, offsetY: -i * 2);
                 list.Add(bullet);
             }
 

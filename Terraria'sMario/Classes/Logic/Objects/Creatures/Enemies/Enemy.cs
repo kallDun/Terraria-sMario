@@ -10,7 +10,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
     abstract class Enemy : Entity
     {
         protected BehaviorControl enemy_behavior;
-        protected int standartHeal_enemy = 10;
+        protected int standartHeal_enemy = 6;
 
         // Threads
 
@@ -72,9 +72,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
                 return false;
         }
 
-        public override bool Shoot(in List<ParentObject> objects)
+        public override bool Shoot(in List<ParentObject> objects, float? angle = null)
         {
-            if (base.Shoot(objects))
+            if (base.Shoot(objects, angle))
             {
                 setAnimation(Shooting);
                 return true;

@@ -138,9 +138,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 return false;
         }
 
-        public override bool Shoot(in List<ParentObject> objects)
+        public override bool Shoot(in List<ParentObject> objects, float? angle = null)
         {
-            if (base.Shoot(objects))
+            if (base.Shoot(objects, angle))
             {
                 setAnimation(Shooting);
                 return true;
