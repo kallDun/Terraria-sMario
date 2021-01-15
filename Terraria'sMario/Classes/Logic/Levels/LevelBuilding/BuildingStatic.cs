@@ -13,7 +13,6 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
 {
     static class BuildingStatic
     {
-
         public static void fillFieldWithGrass(List<ParentObject> levelObjects, int height, int height0, int width0, int width)
         {
             for (int i = width0; i < width; i++)
@@ -141,9 +140,9 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                     newCoord.Offset(blockSize, 0);
                 }
             }
-
         }
 
+        //Building Block of flats method
         public static void BuildBlockOfFlats(List<ParentObject> levelObjects, int X, int Y, BuildingTypes type)
         {
             int floor = 0;
@@ -155,13 +154,14 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
             }
             else if (type == BuildingTypes.Medium)
             {
+                RemoveBlocks(levelObjects, X, Y, 9, 21);
                 floor = 4;
             }
             else if (type == BuildingTypes.Small)
             {
+                RemoveBlocks(levelObjects, X, Y, 9, 16);
                 floor = 3;
             }
-
             coord.Offset(3 * blockSize, 1 * blockSize);
             for (int i = 0; i < (floor - 1) * 5; i++)
             {
@@ -253,6 +253,41 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
             }
             coord.Offset(-5 * blockSize, -4 * blockSize);
             levelObjects.Add(new ConcreteBlock(coord));
+            coord.Offset(-3 * blockSize, 6 * (floor - 1) * blockSize - (floor - 5) * blockSize);
+
+            // Translucent Coating
+            for (int k = 0; k < floor - 1 ; k++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    for (int i = 0; i < 7; i++)
+                    {
+                        coord.Offset(1 * blockSize, 0);
+                        levelObjects.Add(new WoodTranslucentBlock(coord));
+                    }
+                    coord.Offset(-7 * blockSize, -1 * blockSize);
+                }
+                coord.Offset(3 * blockSize, 0);
+                levelObjects.Add(new WoodTranslucentBlock(coord));
+                coord.Offset(-3 * blockSize, -1 * blockSize);
+            }
+            for (int j = 0; j < 4; j++)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    coord.Offset(1 * blockSize, 0);
+                    levelObjects.Add(new WoodTranslucentBlock(coord));
+                }
+                coord.Offset(-7 * blockSize, -1 * blockSize);
+            }
+            coord.Offset(0, 6 * (floor - 1) * blockSize - (floor - 5) * blockSize);
+            levelObjects.Add(new WoodTranslucentBlock(coord));
+            coord.Offset(0, -1 * blockSize);
+            levelObjects.Add(new WoodTranslucentBlock(coord));
+            coord.Offset(8 * blockSize, -4 * blockSize);
+            levelObjects.Add(new WoodTranslucentBlock(coord));
+            coord.Offset(0, -1 * blockSize);
+            levelObjects.Add(new WoodTranslucentBlock(coord));
         }
 
         private static void RemoveBlocks(List<ParentObject> levelObjects, int X, int Y, int width, int height)
