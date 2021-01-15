@@ -31,8 +31,6 @@ namespace Terraria_sMario.Classes.Logic.Objects
         public override void updateProperties(in List<ParentObject> objects)
         {
             gravitationService.updateGravitation(this, objects);
-
-
             if (canToGrab)
             {
                 Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is Player; };
