@@ -42,13 +42,43 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets
         {
             if (!isRendered) return;
 
-            var image = drawingImage;
-
-            /*if (angle > 0 && angle <= 90) image.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            if (angle > 90 && angle <= 180) image.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            if (angle > 180 && angle <= 270) image.RotateFlip(RotateFlipType.Rotate270FlipNone);*/
+            Bitmap image = rotateImage(new Bitmap(drawingImage), angle);
 
             g.DrawImage(image, coords);
+        }
+
+        private Bitmap rotateImage(Bitmap b, float angle)
+        {
+
+            int maxside = (int)(Math.Sqrt(b.Width * b.Width + b.Height * b.Height));
+
+            //create a new empty bitmap to hold rotated image
+
+            Bitmap returnBitmap = new Bitmap(maxside, maxside);
+
+            //make a graphics object from the empty bitmap
+
+            Graphics g = Graphics.FromImage(returnBitmap);
+
+
+            //move rotation point to center of image
+
+            g.TranslateTransform((float)b.Width / 2, (float)b.Height / 2);
+
+            //rotate
+
+            g.RotateTransform(angle);
+
+            //move image back
+
+            g.TranslateTransform(-(float)b.Width / 2, -(float)b.Height / 2);
+
+            //draw passed in image onto graphics object
+
+            g.DrawImage(b, new Point(0, 0));
+
+            return returnBitmap;
+
         }
 
         public override void updateProperties(in List<ParentObject> objects)
