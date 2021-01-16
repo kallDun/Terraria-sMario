@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets;
 using Terraria_sMario.Images;
 
@@ -18,8 +15,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns
             Name = "Базовый лук";
             Description = "Вы перепутали детский и боевой лук и теперь очень жалеете .";
 
-            
-            getting_weapon_effects.Add(new Effect(EffectTypes.Stunning, 1));
+            itemType = ItemTypes.Weapon;
+
+            getting_weapon_effects.Add(new Effect(EffectTypes.Ice, 2));
 
             canShoot = true;
             bulletUnit = new Basic_arrow();

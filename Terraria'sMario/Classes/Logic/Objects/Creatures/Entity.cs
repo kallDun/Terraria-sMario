@@ -82,7 +82,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public List<Effect> effects { get; protected set; } = new List<Effect> { };
         public List<EffectTypes> resistancesEffects { get; protected set; } = new List<EffectTypes> { };
 
-        public void getEffect(Effect effect)
+        public virtual void getEffect(Effect effect)
         {
             if (!resistancesEffects.Contains(effect.effectType))
             {
@@ -104,7 +104,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public bool isDead { get; private set; } = false;
 
-        public void getDamage(float damage)
+        public virtual void getDamage(float damage)
         {
             if (damage < 0 || isDead) return;
             if (Effect.isEffectInList(effects, EffectTypes.Poisoning)) damage *= 1.5f;

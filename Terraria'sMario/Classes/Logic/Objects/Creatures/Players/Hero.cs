@@ -30,12 +30,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
 
 
             inventory.takeToWeapons(new Basic_Sword()); // ----------- for tests
-            resistancesEffects.Add(EffectTypes.Ice); // ------------------------
             resistancesEffects.Add(EffectTypes.Stunning); // -------------------
-            resistancesEffects.Add(EffectTypes.Poisoning); // ------------------
-            getEffect(new Effect(EffectTypes.Curse, 10)); // -------------------
-            getEffect(new Effect(EffectTypes.Fire, 5));  // -------------------
-            getEffect(new Effect(EffectTypes.Fire, 5));  // temporary ---------
 
 
             // ----------------- Drawing elements

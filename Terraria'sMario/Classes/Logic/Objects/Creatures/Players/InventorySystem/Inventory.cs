@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.DrawingElements;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
+using Terraria_sMario.Classes.Logic.Objects.Items.Armor;
 using Terraria_sMario.Classes.Logic.Objects.Items.Potions;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Images;
@@ -14,12 +15,18 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 {
     class Inventory
     {
+        // fields
+
         private Player player;
         private Image drawingImage;
 
         private Point coords;
 
         public Cell active_cell { get; private set; }
+        public int countOfCoins = 0;
+
+        // coords
+
         public Cell[] inventory_cells { get; private set; } = new Cell[11] {
             new Cell(17, 163), new Cell(71, 163), new Cell(125, 163),
             new Cell(180, 163), new Cell(237, 163), new Cell(293, 163),
@@ -33,7 +40,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point resistance_coord = new Point(300, 106);
         private Point reloadWeaponSec_coord = new Point(134, 212);
 
-        // weapon stats coords
+        // item stats coords
         private Point weaponStat_name__coord = new Point(198, 220);
         private Point weaponStat_description__coord = new Point(162, 246);
         private Point weaponStat_damage__coord = new Point(352, 217);
@@ -49,9 +56,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point weaponStat_type__coord = new Point(332, 255);
 
 
-        public int countOfCoins = 0;
-
-
+        // constructor
         public Inventory(int playerNumber, Player player)
         {
             if (playerNumber == 1)
@@ -70,6 +75,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             active_cell = inventory_cells[10];
         }
 
+
+        // threads
 
         public void Draw(Graphics g)
         {
@@ -203,7 +210,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         }
 
 
-        // Controls
+        // Controls & Actions
 
         public void takeToWeapons(ParentItem item) // temporary void
         { 
@@ -255,7 +262,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             }
         }
 
-        public void useActiveCell() => active_cell.Use(player);
         public void goToFirstCell() => active_cell = inventory_cells[0];
         public void goToActiveWeaponCell() => active_cell = inventory_cells[10];
         public void takeLeftCell()
@@ -273,14 +279,35 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 inventory_cells[Array.IndexOf(inventory_cells, active_cell) + 1];
         }
 
-        public bool TryToUseBaseActiveSlot() 
+        public ItemTypes tryToUseActiveCell() => active_cell.Use(player);
+        public ItemTypes TryToUseBaseActiveSlot() => inventory_cells[9].Use(player);
+
+        // Armor Actions
+
+        public double tryToResistAttackWithActiveArmor()
         {
-            if (inventory_cells[9].item != null)
+            var item = inventory_cells[9].item;
+
+            if (item != null && item is Armor)
             {
-                inventory_cells[9].Use(player);
+                item.Use(player);
+                return (item as Armor).armor;
+            }
+            else return 0;
+        }
+
+        public bool tryToResistEffectWithActiveArmor(Effect effect)
+        {
+            var item = inventory_cells[9].item;
+
+            if (item != null && item is Armor &&
+                (item as Armor).resistanceEffects.Contains(effect.effectType))
+            {
+                item.Use(player);
                 return true;
             }
-            else return false;            
+            else 
+                return false;
         }
     }
 }

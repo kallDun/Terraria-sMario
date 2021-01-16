@@ -59,7 +59,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (iskeyDown__Inv_end) inventory.goToActiveWeaponCell();
             if (iskeyDown__Inv_changePosToWeapon) inventory.setActiveCellToWeaponActiveSlot();
             if (iskeyDown__Inv_changePosToOtherActive) inventory.setActiveCellToBaseActiveSlot();
-            if (iskeyDown__Inv_useActive) inventory.useActiveCell();
+            if (iskeyDown__Inv_useActive) inventory.tryToUseActiveCell();
 
 
             if (iskeyDown__Inv_takeItem)
@@ -156,7 +156,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             else
             if (weaponInHand != null && !weaponInHand.canHeal)
             {
-                if (inventory.TryToUseBaseActiveSlot())
+                if (inventory.TryToUseBaseActiveSlot() == ItemTypes.Potion)
                 {
                     setAnimation(Standing);
                     environment__anim.Add(EffectAnimationTypes.Heal);
@@ -168,5 +168,23 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         }
 
         public void addCoin() => inventory.countOfCoins++;
+
+        // Override
+
+        public override void getDamage(float damage)
+        {
+            if (damage <= 0) return;
+
+            damage -= (float) inventory.tryToResistAttackWithActiveArmor();
+            base.getDamage(damage);
+        }
+
+        public override void getEffect(Effect effect)
+        {
+            if (!inventory.tryToResistEffectWithActiveArmor(effect))
+            {
+                base.getEffect(effect);
+            }
+        }
     }
 }

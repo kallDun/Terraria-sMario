@@ -5,6 +5,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Items.Armor;
 using Terraria_sMario.Classes.Logic.Objects.Items.Bombs;
 using Terraria_sMario.Classes.Logic.Objects.Items.Potions;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns;
@@ -42,6 +43,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             var bomb = new StandartBomb(520, 100);
             levelObjects.Add(bomb);
+
+            var armor = new Basic_Armor(520, 100);
+            levelObjects.Add(armor);
 
             var coin = new Coin(1750, 350);
             levelObjects.Add(coin);

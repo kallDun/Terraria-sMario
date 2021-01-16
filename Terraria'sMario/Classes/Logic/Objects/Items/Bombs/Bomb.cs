@@ -31,7 +31,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
             if (isTimerStarted)
             {
                 UI_Drawing_Static.DrawString(g,
-                    new Point(coords.X + size.Width - 20, coords.Y - 10),
+                    new Point(coords.X + size.Width - 10, coords.Y - 10),
                     string.Format("{0 : 0.0}", timerMax - timerNow),
                     Brushes.Red, 16);
             }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Images;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Potions
@@ -16,6 +12,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Potions
             Description = "Восстановит тебе 10 здоровья.";
             coords = new Point(X, Y);
             size = new Size(40, 40);
+
+            itemType = ItemTypes.Potion;
 
             heal = 10;
             opportunUseCount = 1;

@@ -5,6 +5,7 @@ using Terraria_sMario.Images;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.EntityTypes;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 using static Terraria_sMario.Images.EnemiesWithWeapons_res;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 {
@@ -18,6 +19,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 
             Name = "Базовый меч";
             Description = "Этот меч сгодиться разве чтобы салаты на Новый год крошить .";
+
+            itemType = ItemTypes.Weapon;
 
             damage = 10;
             canMeleeHit = true;

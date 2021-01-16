@@ -73,6 +73,26 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Basic_Armor {
+            get {
+                object obj = ResourceManager.GetObject("Basic_Armor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Basic_Armor_Inventory {
+            get {
+                object obj = ResourceManager.GetObject("Basic_Armor_Inventory", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Basic_Bow_Inventory {
             get {
                 object obj = ResourceManager.GetObject("Basic_Bow_Inventory", resourceCulture);

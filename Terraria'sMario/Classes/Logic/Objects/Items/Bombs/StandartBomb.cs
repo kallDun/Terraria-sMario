@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Images;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
@@ -10,8 +11,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
             Name = "Обычная бомба";
             Description = "Взорвет врагов на 20 урона в радиусе 6 блоков .";
             coords = new Point(X, Y);
-            size = new Size(40, 40);
+            size = new Size(30, 40);
 
+            itemType = ItemTypes.Bomb;
             opportunUseCount = 1;
 
             damage = 20;

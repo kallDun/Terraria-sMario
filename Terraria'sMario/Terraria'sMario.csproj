@@ -65,8 +65,11 @@
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonArcher.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityStates.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityTypes.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Armor\Basic_Armor.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\ItemTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Background Blocks\BackgroundBlockObject.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Background Blocks\BackgroundBrickBlock.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Armor\Armor.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Bombs\Bomb.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Bombs\StandartBomb.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Potions\SmallHealing_Potion.cs" />
@@ -74,8 +77,7 @@
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\BulletConstructor.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\BulletParent.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Guns\Basic_Bow.cs" />
-    <Compile Include="Classes\Logic\Objects\Sword.cs" />
-    <Compile Include="Classes\Logic\Objects\Coin.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Coin.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\ParentAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityAnimationTypes.cs" />
@@ -478,6 +480,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Explosion_-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Basic_Armor_Inventory.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Basic Armor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
