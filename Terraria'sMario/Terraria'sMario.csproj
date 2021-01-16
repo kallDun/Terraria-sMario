@@ -58,6 +58,8 @@
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimationTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityWeaponAnimation.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Loot Drop System\ItemDropUnit.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Loot Drop System\LootSystem.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonArcher.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityStates.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityTypes.cs" />
@@ -423,5 +425,6 @@
   <ItemGroup>
     <None Include="Resources\Heal_Effect_6.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

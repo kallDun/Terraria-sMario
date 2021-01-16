@@ -5,11 +5,14 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 using Terraria_sMario.Classes.Logic.Objects.Features;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_System;
+using System.Linq;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
     abstract class Enemy : Entity
     {
+        protected LootSystem lootSystem = new LootSystem(new ItemDropUnit(numberOfCoins: 1, 100));
         protected BehaviorControl enemy_behavior;
         protected int standartHeal_enemy = 6;
 
@@ -29,7 +32,15 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
         public override void updateProperties(in List<ParentObject> objects)
         {
-            if (isDead) return;
+            if (isDead)
+            {
+                if (lootSystem != null)
+                    newObjects = newObjects
+                        .Concat(lootSystem.dropAll(X: coords.X, Y: coords.Y - 15))
+                        .ToList();
+                return;
+            }
+
             enemy_behavior?.update(this, objects); // Enemy behavior
         }
 

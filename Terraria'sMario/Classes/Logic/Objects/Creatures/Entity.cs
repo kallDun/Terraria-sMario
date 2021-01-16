@@ -27,6 +27,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public bool canFly { get; protected set; } = false;
         public bool isTurnToRight { get; protected set; } = true;
 
+        public bool isColisionWithOtherEntitiesOn { get; protected set; } = true;
+
         // Drawing UI & Animations
 
         protected UI_Entity_Draw uI_Entity_Draw;
@@ -283,6 +285,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 EntityState == EntityStates.Standing ? standing_size :
                 EntityState == EntityStates.Sitting ? sitting_size :
                 EntityState == EntityStates.Dead ? dead_size : standing_size;
+            isColisionWithOtherEntitiesOn =
+                EntityState == EntityStates.Standing ? true :
+                EntityState == EntityStates.Sitting ? true :
+                EntityState == EntityStates.Dead ? false : true;
 
             // check the end of Environment Animations
             for (int i = environment_effects_anim.Count - 1; i >= 0; i--)

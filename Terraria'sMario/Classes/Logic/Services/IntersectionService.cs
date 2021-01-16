@@ -67,6 +67,9 @@ namespace Terraria_sMario.Classes.Logic.Services
                     (ourBlock is Entity && otherBlock is BulletParent)) return true;
             if (ourBlock is BulletParent && otherBlock is BulletParent) return true;
 
+            if ((ourBlock is Entity && otherBlock is Entity) && 
+                (!(ourBlock as Entity).isColisionWithOtherEntitiesOn ||
+                !(otherBlock as Entity).isColisionWithOtherEntitiesOn)) return true;
 
             return false;
         }
