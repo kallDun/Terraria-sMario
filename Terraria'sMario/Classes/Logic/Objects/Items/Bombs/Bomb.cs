@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.DrawingElements;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Services;
@@ -22,6 +18,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
         protected int radius;
 
         private bool isTimerStarted = false;
+        private bool isExploded = false;
         private double timerNow = 0;
 
         private EffectAnimationControl environment__anim = new EffectAnimationControl();
@@ -29,7 +26,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
         public override void Draw(Graphics g)
         {
             // Draw object
-            base.Draw(g);
+            if (!isExploded) base.Draw(g);
 
             // Draw timer
             if (isTimerStarted)
@@ -57,11 +54,16 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
                     explode(objects);
                 }
             }
+            if (isExploded)
+            {
+                if (environment__anim.isEmpty()) 
+                    isToDestroy = true;
+            }
         }
 
         private void explode(in List<ParentObject> objects)
         {
-            var list = CheckEntityService.searchAllEntities(objects, entity, radius, true);
+            var list = CheckEntityService.searchAllEntities(objects, entity, this, radius, true);
 
             foreach (var item in list)
             {
@@ -73,8 +75,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
                 }
             }
 
-            isToDestroy = true;
-            //environment__anim.Add(EffectAnimationTypes.Explosion);
+            environment__anim.Add(EffectAnimationTypes.Explosion);
+
+            isTimerStarted = false;
+            isExploded = true;
         }
 
         public override void Use(in Entity entity)

@@ -44,7 +44,15 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
                     break;
 
                 case EffectAnimationTypes.Explosion:
-
+                    coord = new Point(-130, -160);
+                    images = new List<Image> {
+                        Explosion__5, Explosion__4,
+                        Explosion__3, Explosion__2,
+                        Explosion__2, 
+                        Explosion_1, Explosion_2,
+                        Explosion_3, Explosion_4,
+                        Explosion_5, Explosion_6};
+                    skipFrames = 4;
                     break;
 
                 case EffectAnimationTypes.BigExplosion:

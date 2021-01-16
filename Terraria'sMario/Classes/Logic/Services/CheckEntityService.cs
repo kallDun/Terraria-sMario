@@ -53,21 +53,21 @@ namespace Terraria_sMario.Classes.Logic.Services
             return entities;
         }
 
-        public static List<Entity> searchAllEntities(List<ParentObject> objects, Entity entity, int radius, bool isEverywhere, bool isEnemy = true)
+        public static List<Entity> searchAllEntities(List<ParentObject> objects, Entity entity, ParentObject obj, int radius, bool isEverywhere, bool isEnemy = true)
         {
             Point coord;
             Size size;
 
             if (isEverywhere)
             {
-                coord = new Point(entity.coords.X, entity.coords.Y);
-                size = new Size(entity.size.Width + radius * 2, entity.size.Height + radius * 2);
+                coord = new Point(obj.coords.X, obj.coords.Y);
+                size = new Size(obj.size.Width + radius * 2, obj.size.Height + radius * 2);
                 coord.Offset(-radius, -radius);
             }
             else
             {
-                coord = new Point(entity.coords.X, entity.coords.Y);
-                size = new Size(entity.size.Width + radius, entity.size.Height + radius * 2);
+                coord = new Point(obj.coords.X, obj.coords.Y);
+                size = new Size(obj.size.Width + radius, obj.size.Height + radius * 2);
                 coord.Offset(0, -radius);
                 if (!entity.isTurnToRight) coord.Offset(-radius, 0);
             }
@@ -80,7 +80,7 @@ namespace Terraria_sMario.Classes.Logic.Services
 
         public static Entity searchTheNearestEntity(List<ParentObject> objects, Entity entity, int radius, bool isEverywhere, bool isEnemy = true)
         {
-            var list = searchAllEntities(objects, entity, radius, isEverywhere);
+            var list = searchAllEntities(objects, entity, entity, radius, isEverywhere);
             return list.Count > 0 ? list.First() : null;
         }
 

@@ -31,7 +31,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             if (behaviorType == BehaviorTypes.SearchingInFrontOfView)
             {
                 if (searchEveryone)
-                    return CheckEntityService.searchAllEntities(objects, thisEntity, radius, false);
+                    return CheckEntityService.searchAllEntities(objects, thisEntity, thisEntity, radius, false);
                 else
                     return new List<Entity>
                     {
@@ -42,7 +42,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             if (behaviorType == BehaviorTypes.SearchingEverywhere)
             {
                 if (searchEveryone)
-                    return CheckEntityService.searchAllEntities(objects, thisEntity, radius, true);
+                    return CheckEntityService.searchAllEntities(objects, thisEntity, thisEntity, radius, true);
                 else
                     return new List<Entity>
                     {
@@ -55,7 +55,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
 
 
         public List<Entity> UpdateEllies(List<ParentObject> objects, Enemy enemy) =>
-            CheckEntityService.searchAllEntities(objects, enemy, 20 * Parameters.blockSize, isEverywhere: true, isEnemy: false);
+            CheckEntityService.searchAllEntities(objects, enemy, enemy, 20 * Parameters.blockSize, isEverywhere: true, isEnemy: false);
 
         public LadderBlock UpdateLadder(List<ParentObject> objects, Enemy enemy)
         {

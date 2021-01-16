@@ -27,5 +27,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Anim
         }
 
         public void Add(EffectAnimationTypes type) => environment_effects_anim.Add(new EffectAnimation(type));
+
+        public bool isEmpty() => environment_effects_anim.Count == 0;
     }
 }

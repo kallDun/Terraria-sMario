@@ -445,5 +445,38 @@
   <ItemGroup>
     <None Include="Resources\Bomb_InInventory.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Explosion_-4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
