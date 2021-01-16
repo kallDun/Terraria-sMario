@@ -5,6 +5,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Items.Bombs;
 using Terraria_sMario.Classes.Logic.Objects.Items.Potions;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords;
@@ -38,6 +39,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
             var potion_heal = new SmallHealing_Potion(520, 100);
             levelObjects.Add(potion_heal);
+
+            var bomb = new StandartBomb(520, 100);
+            levelObjects.Add(bomb);
 
             var coin = new Coin(1750, 350);
             levelObjects.Add(coin);

@@ -34,8 +34,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         protected UI_Entity_Draw uI_Entity_Draw;
         public List<EntityAnimation> animations { get; protected set; }
         public EntityAnimation activeAnimation { get; protected set; }
-        public List<EffectAnimation> environment_effects_anim { get; protected set; }
-            = new List<EffectAnimation> { };
+        public EffectAnimationControl environment__anim { get; protected set; }
+            = new EffectAnimationControl();
 
         public void setAnimation(EntityAnimationTypes type) // Animation SET
         {
@@ -240,8 +240,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         // Threads
 
-        protected List<ParentObject> newObjects = new List<ParentObject> { }; //-------------------------
-        public List<ParentObject> updateWorld() // ----------------------------- add new objects to world
+        public List<ParentObject> newObjects { get; protected set; } = new List<ParentObject> { }; //----------
+        public List<ParentObject> updateWorld() // ----------------------------------- add new objects to world
         {
             var list = new List<ParentObject>(newObjects);
             newObjects.Clear();
@@ -291,21 +291,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 EntityState == EntityStates.Dead ? false : true;
 
             // check the end of Environment Animations
-            for (int i = environment_effects_anim.Count - 1; i >= 0; i--)
-            {
-                if (environment_effects_anim[i].isLastFrame()) 
-                    environment_effects_anim.RemoveAt(i);
-            }
+            environment__anim.Update();
         }
 
         public override void Draw(Graphics g)
         {
             if (!isDead) uI_Entity_Draw.Draw(g, this);
 
-            foreach (var animat in environment_effects_anim)
-            {
-                animat.Draw(g, coords, true);
-            }
+            environment__anim.Draw(g, coords);
         }
 
         // Gravitation

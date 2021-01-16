@@ -28,8 +28,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 activeAnimation.Draw(g, coords, isTurnToRight);
 
             base.Draw(g);
-            inventory.Draw(g);
         }
+
+        public void DrawInventory(Graphics g) => inventory.Draw(g);
 
         public override void updateProperties(in List<ParentObject> objects)
         {
@@ -66,7 +67,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is ParentItem; };
 
                 var item = CheckNearObjectByPredicationService.getNearObject(objects, this, predicate);
-                if (item != null && inventory.tryToTakeItemToInventory(item as ParentItem)) 
+                if (item != null && (item as ParentItem).canGrab && inventory.tryToTakeItemToInventory(item as ParentItem)) 
                     (item as ParentItem).takeItem();
             }
 
@@ -149,7 +150,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (base.Heal(objects, standartHeal))
             {
                 setAnimation(Standing);
-                environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
+                environment__anim.Add(EffectAnimationTypes.Heal);
                 return true;
             }
             else
@@ -158,7 +159,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 if (inventory.TryToUseBaseActiveSlot())
                 {
                     setAnimation(Standing);
-                    environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
+                    environment__anim.Add(EffectAnimationTypes.Heal);
                     return true;
                 }
                 else return false;

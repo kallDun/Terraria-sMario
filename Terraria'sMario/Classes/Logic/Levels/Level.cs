@@ -71,7 +71,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
             {
                 if (item is TranslucentBlockObject) item.Draw(g);
             }
-
+            // Inventory
+            foreach (var player in players)
+            {
+                player.DrawInventory(g);
+            }
         }
 
         public void Update()

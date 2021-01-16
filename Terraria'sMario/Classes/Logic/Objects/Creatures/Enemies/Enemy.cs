@@ -73,7 +73,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             if (base.Heal(objects, standartHeal_enemy))
             {
                 setAnimation(Standing);
-                environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
+                environment__anim.Add(EffectAnimationTypes.Heal);
                 return true;
             }
             else

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.Services;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
@@ -13,6 +10,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
         public Image smallImage_inInventory { get; protected set; }
 
         public int opportunUseCount { get; protected set; } = -1; //  -1 and less -> is infinity
+        public bool canGrab { get; protected set; } = true;
         public string Name { get; protected set; } = "Standart_Name_Item";
         public string Description { get; protected set; } = "Some information";
 
