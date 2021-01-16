@@ -48,8 +48,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
                         AnimationBeat_3, AnimationBeat_3, 
                         AnimationBeat_2, AnimationBeat_2 }, Hitting, skipFrames: 2),
 
-                    new EntityAnimation(new List<Image>{ }, Standing, skipFrames: 4),
-                    new EntityAnimation(new List<Image>{ }, Healing, skipFrames: 4)
+                    new EntityAnimation(new List<Image>{ }, Standing, skipFrames: 4)
                 })
             };
     }

@@ -275,7 +275,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public bool TryToUseBaseActiveSlot() 
         {
-            if (inventory_cells[9] != null)
+            if (inventory_cells[9].item != null)
             {
                 inventory_cells[9].Use(player);
                 return true;

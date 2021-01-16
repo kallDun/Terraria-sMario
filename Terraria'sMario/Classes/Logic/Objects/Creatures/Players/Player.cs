@@ -148,7 +148,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         {
             if (base.Heal(objects, standartHeal))
             {
-                setAnimation(Healing);
+                setAnimation(Standing);
                 environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
                 return true;
             }
@@ -157,7 +157,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             {
                 if (inventory.TryToUseBaseActiveSlot())
                 {
-                    setAnimation(Healing);
+                    setAnimation(Standing);
                     environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
                     return true;
                 }
