@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.DrawingElements;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Items.Armor;
+using Terraria_sMario.Classes.Logic.Objects.Items.Bombs;
 using Terraria_sMario.Classes.Logic.Objects.Items.Potions;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Images;
@@ -109,8 +110,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 player.effects, true);
 
             // Draw resistance effects
+            var armor = inventory_cells[9].item;
+            var resistance_list_armor =
+                armor != null && armor is Armor ? (armor as Armor).resistanceEffects : new List<EffectTypes> { };
+            var resistances = player.resistancesEffects.Union(resistance_list_armor).ToList();
             UI_Drawing_Static.DrawResistanceEffects(g, new Point(coords.X + resistance_coord.X, coords.Y + resistance_coord.Y),
-                player.resistancesEffects, true, false);
+                resistances, true, 30, false);
 
             // Draw reload weapon seconds
             var seconds_max = (inventory_cells[10].item == null) ? player.baseTimerHitMax :
@@ -123,7 +128,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 secondsToHit == 0 ? Brushes.Green : Brushes.Red,
                 12);
 
-            //-------------------------- Draw weapons statistic
+            //-------------------------- Draw active item statistic
             var item = active_cell.item;
             if (item != null)
             {
@@ -138,8 +143,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                         new SizeF(125, 20)), true);
 
 
-                string type_str = "";
-
+                // ----------------------------------- Weapon
                 if (item is Weapon)
                 {
                     if ((item as Weapon).canHeal || (item as Weapon).canMeleeHit)
@@ -185,18 +189,50 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                     UI_Drawing_Static.DrawString(g, new Point(weaponStat_reload__coord.X + coords.X, weaponStat_reload__coord.Y + coords.Y),
                     (item as Weapon).timerHitMax.ToString(), Brushes.DarkOrange, 10);
 
-                    type_str = item.opportunUseCount > 0 ? $"Weapon [{item.opportunUseCount}]" : "Weapon";
                 }
-                else
-                if (item is Potion)
+                //------------------------------------ Potion
+                else if (item is Potion)
                 {
-                    type_str = item.opportunUseCount > 0 ? $"Potion [{item.opportunUseCount}]" : "Potion";
+                    // effects:
+                    UI_Drawing_Static.DrawEffects(g, new Point(coords.X + weaponStat_effects__coord.X, coords.Y + weaponStat_effects__coord.Y),
+                    (item as Potion).effects, isToRight: true, distance: 16);
+
+                    // heal
+                    UI_Drawing_Static.DrawString(g, new Point(weaponStat_heal__coord.X + coords.X, weaponStat_heal__coord.Y + coords.Y),
+                    (item as Potion).heal.ToString(), Brushes.DarkOrange, 10);
+
+                }
+                //------------------------------------ Bomb
+                else if (item is Bomb)
+                {
+                    // range:
+                    UI_Drawing_Static.DrawString(g, new Point(weaponStat_range__coord.X + coords.X, weaponStat_range__coord.Y + coords.Y),
+                    string.Format("{0: 0.0}", (item as Bomb).radius / Parameters.blockSize),
+                    Brushes.DarkOrange, 10);
+
+                    // damage:
+                    UI_Drawing_Static.DrawString(g, new Point(weaponStat_damage__coord.X + coords.X, weaponStat_damage__coord.Y + coords.Y),
+                    (item as Bomb).damage.ToString(), Brushes.DarkOrange, 10);
+
+                }
+                //------------------------------------ Armor
+                else if (item is Armor)
+                {
+
+                    // resistance effects:
+                    UI_Drawing_Static.DrawResistanceEffects(g, new Point(coords.X + weaponStat_resist__coord.X, coords.Y + weaponStat_resist__coord.Y),
+                    (item as Armor).resistanceEffects, isToRight: true, 9, withBorder: false);
+
+                    // armor:
+                    UI_Drawing_Static.DrawString(g, new Point(coords.X + weaponStat_shield__coord.X, coords.Y + weaponStat_shield__coord.Y),
+                    (item as Armor).armor.ToString(), Brushes.DarkOrange, 10);
+
                 }
 
-                // type:
+                //------------------------------------ Type:
                 UI_Drawing_Static.DrawString(g, new Point(weaponStat_type__coord.X + coords.X, weaponStat_type__coord.Y + coords.Y),
-                type_str, Brushes.DarkTurquoise, 10);
-
+                item.opportunUseCount > 0 ? $"{item.itemType} [{item.opportunUseCount}]" : $"{item.itemType}",
+                Brushes.DarkTurquoise, 10);
             }
 
         }

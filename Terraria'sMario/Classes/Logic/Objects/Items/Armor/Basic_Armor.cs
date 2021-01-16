@@ -23,6 +23,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Armor
 
             armor = 1;
             resistanceEffects.Add(EffectTypes.Fire);
+            resistanceEffects.Add(EffectTypes.Curse);
 
             drawingImage = Items_res.Basic_Armor;
             smallImage_inInventory = Items_res.Basic_Armor_Inventory;

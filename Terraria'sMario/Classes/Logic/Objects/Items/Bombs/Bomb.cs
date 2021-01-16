@@ -14,7 +14,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
         public List<Effect> effects { get; protected set; } = new List<Effect> { };
         public int damage { get; protected set; } = 0;
         protected double timerMax;
-        protected int radius;
+        public int radius { get; protected set; }
 
         private bool isTimerStarted = false;
         private bool isExploded = false;

@@ -82,15 +82,15 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             }
         }
 
-        public static void DrawResistanceEffects(Graphics g, Point coord, List<EffectTypes> effects, bool isToRight = false, bool withBorder = true) // true is to down
+        public static void DrawResistanceEffects(Graphics g, Point coord, List<EffectTypes> effects, bool isToRight = false, int distance = 30, bool withBorder = true) // true is to down
         {
             for (int i = 0; i < effects.Count; i++)
             {
                 Point newPoint;
                 if (!isToRight)
-                    newPoint = new Point(coord.X, coord.Y + i * 15);
+                    newPoint = new Point(coord.X, coord.Y + i * distance);
                 else
-                    newPoint = new Point(coord.X + i * 30, coord.Y);
+                    newPoint = new Point(coord.X + i * distance, coord.Y);
 
                 if (withBorder) g.DrawImage(UI.Resistance, newPoint);
 
