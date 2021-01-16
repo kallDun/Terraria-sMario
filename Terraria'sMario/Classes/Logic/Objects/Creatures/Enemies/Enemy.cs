@@ -4,6 +4,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
 using Terraria_sMario.Classes.Logic.Objects.Features;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
@@ -28,12 +29,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
         public override void updateProperties(in List<ParentObject> objects)
         {
-            if (isDead)
-            {
-                setAnimation(Dead);
-                return;
-            }
-
+            if (isDead) return;
             enemy_behavior?.update(this, objects); // Enemy behavior
         }
 
@@ -66,6 +62,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             if (base.Heal(objects, standartHeal_enemy))
             {
                 setAnimation(Healing);
+                environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
                 return true;
             }
             else

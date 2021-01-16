@@ -17,7 +17,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             EntityType = EntityTypes.Turtle;
 
             coords = new Point(X, Y);
-            size = new Size(25, 50);
+            standing_size = new Size(40, 90);
+            dead_size = new Size(40, 90);
             maxHealth = 40;
             health = maxHealth;
             jumpHeight = -14;

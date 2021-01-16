@@ -65,9 +65,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3,  width_4);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4,  width_5);
 
-            //BuildingStatic.BuildBrickHouse(levelObjects, 1750, 500, BuildingTypes.Medium);
+            BuildingStatic.BuildBrickHouse(levelObjects, 1750, 500, BuildingTypes.Medium);
 
-            //BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 450, BuildingTypes.Large);
+            BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 450, BuildingTypes.Large);
         }
     }
 }

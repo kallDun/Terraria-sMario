@@ -55,8 +55,11 @@
     <Compile Include="Classes\Logic\Levels\Level.cs" />
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
     <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimation.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimationTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\EntityWeaponAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonArcher.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\EntityStates.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Potions\SmallHealing_Potion.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Weapons\Bullets\Basic_arrow.cs" />
@@ -122,6 +125,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EnemiesWithWeapons_res.resx</DependentUpon>
     </Compile>
+    <Compile Include="Images\EnvironmentEffects.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnvironmentEffects.resx</DependentUpon>
+    </Compile>
     <Compile Include="Images\Items_res.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +173,10 @@
     <EmbeddedResource Include="Images\EnemiesWithWeapons_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EnemiesWithWeapons_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\EnvironmentEffects.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EnvironmentEffects.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\Items_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -392,6 +404,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Stone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heal_Effect_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heal_Effect_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heal_Effect_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heal_Effect_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heal_Effect_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Heal_Effect_6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

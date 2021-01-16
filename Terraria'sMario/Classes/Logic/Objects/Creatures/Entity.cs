@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations;
 using Terraria_sMario.Classes.Logic.Objects.Features;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
 using Terraria_sMario.Classes.Logic.Services;
@@ -31,8 +32,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         protected UI_Entity_Draw uI_Entity_Draw;
         public List<EntityAnimation> animations { get; protected set; }
         public EntityAnimation activeAnimation { get; protected set; }
+        public List<EffectAnimation> environment_effects_anim { get; protected set; }
+            = new List<EffectAnimation> { };
 
-        public void setAnimation(EntityAnimationTypes type) // Animations SET
+        public void setAnimation(EntityAnimationTypes type) // Animation SET
         {
             if (weaponInHand == null) setStandartAnimation(type);
             else
@@ -46,14 +49,31 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
                     if (activeAnimation == null || activeAnimation.images.Count == 0) setStandartAnimation(type);
                 }
-                else setStandartAnimation(type);
-            }            
+                else 
+                    setStandartAnimation(type);
+            }
         }
 
         private void setStandartAnimation(EntityAnimationTypes type)
         {
+            if (type == Walking && EntityState == EntityStates.Sitting) type = WalkingSquat;
+
             activeAnimation = animations.Find(x => x.type == type);
+
+            if (type == Standing && EntityState != EntityStates.Standing) activeAnimation = null;
         }
+
+        // Character states (Stand, Sit, Dead)
+
+        public EntityStates EntityState { get; protected set; } = EntityStates.Standing;
+
+        public Image standingImage { get; protected set; }
+        public Image sittingImage { get; protected set; }
+        public Image deadImage { get; protected set; }
+
+        public Size standing_size { get; protected set; }
+        public Size sitting_size { get; protected set; }
+        public Size dead_size { get; protected set; }
 
         // Effects System
 
@@ -89,7 +109,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             health -= damage;
             uI_Entity_Draw.gettingDamage(damage);
 
-            if (health <= 0) isDead = true;
+            if (health <= 0) 
+            {
+                isDead = true;
+                setAnimation(Dead);
+                EntityState = EntityStates.Dead;
+            }
         }
 
         public void getCure(float healing)
@@ -124,6 +149,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public virtual bool Hit(in List<ParentObject> objects)
         {
             if (!isReadyToHit) return false;
+            if (EntityState != EntityStates.Standing) return false;
             if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return false;
 
             if (weaponInHand != null)
@@ -147,6 +173,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public virtual bool Shoot(in List<ParentObject> objects, float? angle = null)
         {
             if (!isReadyToHit) return false;
+            if (EntityState != EntityStates.Standing) return false;
             if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return false;
 
             if (weaponInHand != null && weaponInHand.canShoot)
@@ -243,15 +270,36 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             // update Weapon
             if (weaponInHand?.opportunUseCount == 0) weaponInHand = null;
 
-            // update Statements
+            // update Effects Statements
             if (Effect.isEffectInList(effects, EffectTypes.Fire)) getDamage(1.0f / Parameters.fps);
             if (Effect.isEffectInList(effects, EffectTypes.Blessing)) getCure(0.5f / Parameters.fps);
 
+            // update base states
+            drawingImage = 
+                EntityState == EntityStates.Standing ? standingImage :
+                EntityState == EntityStates.Sitting ? sittingImage :
+                EntityState == EntityStates.Dead ? deadImage : standingImage;
+            size =
+                EntityState == EntityStates.Standing ? standing_size :
+                EntityState == EntityStates.Sitting ? sitting_size :
+                EntityState == EntityStates.Dead ? dead_size : standing_size;
+
+            // check the end of Environment Animations
+            for (int i = environment_effects_anim.Count - 1; i >= 0; i--)
+            {
+                if (environment_effects_anim[i].isLastFrame()) 
+                    environment_effects_anim.RemoveAt(i);
+            }
         }
 
         public override void Draw(Graphics g)
         {
             if (!isDead) uI_Entity_Draw.Draw(g, this);
+
+            foreach (var animat in environment_effects_anim)
+            {
+                animat.Draw(g, coords, true);
+            }
         }
 
         // Gravitation
@@ -270,13 +318,16 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public virtual void Jump(in List<ParentObject> objects) 
         {
-            if (!Effect.isEffectInList(effects, EffectTypes.Stunning))
-                gravitationService.tryToJump(objects, this, jumpHeight);
+            if (EntityState != EntityStates.Standing) return;
+            if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return;
+
+            gravitationService.tryToJump(objects, this, jumpHeight);
         }
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 
         {
             if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return 0;
+            if (EntityState != EntityStates.Standing) run = false;
 
             int offsetX = direction * (int) Math.Round(run ? speed * 1.5 : speed);
             if (Effect.isEffectInList(effects, EffectTypes.Ice)) offsetX /= 2;

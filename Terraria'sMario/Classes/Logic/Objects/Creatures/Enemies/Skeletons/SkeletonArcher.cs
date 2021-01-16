@@ -17,7 +17,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
             EntityType = EntityTypes.Skeleton;
 
             coords = new Point(X, Y);
-            size = new Size(40, 90);
+            standing_size = new Size(40, 90);
+            dead_size = new Size(40, 90);
             maxHealth = 25;
             health = maxHealth;
             jumpHeight = -14;
@@ -44,8 +45,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
                 }
                 );
 
-            uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.WithoutName);
             drawingImage = Skeleton_image;
+            standingImage = Skeleton_image;
+            deadImage = Skeleton_image;
+            uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.WithoutName);
             animations = new List<EntityAnimation>
             {
                 new EntityAnimation(new List<Image>{

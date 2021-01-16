@@ -15,7 +15,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             EntityType = EntityTypes.Hero;
 
             coords = new Point(X, Y);
-            size = new Size(45, 95);
+            standing_size = new Size(45, 95);
+            sitting_size = new Size(45, 95);
+            dead_size = new Size(45, 95);
             maxHealth = 50;
             health = maxHealth;
             jumpHeight = -20;
@@ -36,7 +38,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
             getEffect(new Effect(EffectTypes.Fire, 5));  // temporary ---------
 
 
+            // ----------------- Drawing elements
             drawingImage = sherif_image;
+            standingImage = sherif_image;
+            sittingImage = sherif_image;
+            deadImage = sherif_image;
+
             animations = new List<EntityAnimation>
             {
                 new EntityAnimation(new List<Image> {

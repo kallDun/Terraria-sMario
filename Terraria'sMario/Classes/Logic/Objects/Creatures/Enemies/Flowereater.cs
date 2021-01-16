@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Features;
 
@@ -17,7 +13,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             EntityType = EntityTypes.FlowerEater;
 
             coords = new Point(X, Y);
-            size = new Size(50, 50);
+            standing_size = new Size(40, 90);
+            dead_size = new Size(40, 90);
             maxHealth = 500;
             health = maxHealth;
             jumpHeight = -14;

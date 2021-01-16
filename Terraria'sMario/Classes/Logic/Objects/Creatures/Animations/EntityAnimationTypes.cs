@@ -10,6 +10,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
     {
         Standing, Walking, Running, Sitting, Dead, Jumping,
         
-        Hitting, Healing, Shooting
+        Hitting, Healing, Shooting,
+
+        WalkingSquat
     }
 }

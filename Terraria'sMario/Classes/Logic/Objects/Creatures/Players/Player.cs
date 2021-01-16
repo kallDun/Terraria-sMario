@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
+using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons;
@@ -34,12 +35,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         {
             weaponInHand = inventory.inventory_cells.Last().item as Weapon;
             inventory.Update();
-
-            if (isDead)
-            {
-                setAnimation(Dead);
-                return;
-            }
 
             if (activeAnimation != null && activeAnimation.isLastFrame())
             {
@@ -154,6 +149,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (base.Heal(objects, standartHeal))
             {
                 setAnimation(Healing);
+                environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
                 return true;
             }
             else
@@ -162,6 +158,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 if (inventory.TryToUseBaseActiveSlot())
                 {
                     setAnimation(Healing);
+                    environment_effects_anim.Add(new EffectAnimation(EffectAnimationTypes.Heal));
                     return true;
                 }
                 else return false;

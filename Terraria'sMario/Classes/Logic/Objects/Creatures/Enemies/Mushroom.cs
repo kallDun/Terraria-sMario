@@ -17,7 +17,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             EntityType = EntityTypes.Mushroom;
 
             coords = new Point(X, Y);
-            size = new Size(40, 50);
+            standing_size = new Size(40, 90);
+            dead_size = new Size(40, 90);
             maxHealth = 20;
             health = maxHealth;
             jumpHeight = -14;

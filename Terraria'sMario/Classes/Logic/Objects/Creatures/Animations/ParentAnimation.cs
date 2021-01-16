@@ -11,28 +11,38 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
     {
         public List<Image> images { get; protected set; }
         public Image activeImage { get; protected set; }
+        public bool isLoop { get; protected set; } = true;
+        public Point coord { get; protected set; } = new Point(0, 0);
 
         protected int skipFrames;
         protected int skipedFrames = 1;
 
         public bool isTurnToRight { get; protected set; } = true;
 
-        public void Draw(Graphics g, Point playerCoord, bool isTurnToRight)
+        public void Draw(Graphics g, Point coord, bool isTurnToRight)
         {
+            coord.Offset(this.coord);
+
             if (this.isTurnToRight != isTurnToRight)
             {
                 flipImages();
                 this.isTurnToRight = isTurnToRight;
             }
-            g.DrawImage(activeImage, playerCoord);
+            g.DrawImage(activeImage, coord);
 
             if (skipFrames == skipedFrames)
             {
                 skipedFrames = 1;
 
-                activeImage = (images.Last() == activeImage) ?
-                images.First() :
-                images[images.IndexOf(activeImage) + 1];
+                if (images.Last() == activeImage)
+                {
+                    if (isLoop)
+                    {
+                        activeImage = images.First();
+                    }
+                }
+                else 
+                    activeImage = images[images.IndexOf(activeImage) + 1];
             }
             else
             {

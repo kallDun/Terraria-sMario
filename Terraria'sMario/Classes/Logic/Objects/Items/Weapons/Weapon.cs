@@ -48,7 +48,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
                 List<Entity> entities = CheckEntityService.getAllNearEntities(objects, self, actionRadius);
                 foreach (var entity in entities)
                 {
-                    HitEntity(entity, objects);
+                    HitEntity(entity);
                 }
                 return entities.Count > 0;
             }
@@ -57,7 +57,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
                 var entity = CheckEntityService.getNearEntity(objects, self, actionRadius);
                 if (entity != null)
                 {
-                    HitEntity(entity, objects);
+                    HitEntity(entity);
 
                     return true;
                 }
@@ -122,7 +122,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         private void HealEntity(Entity entity) => entity?.getCure(healing);
 
-        private void HitEntity(Entity entity, in List<ParentObject> objects)
+        private void HitEntity(Entity entity)
         {
             entity?.getDamage(damage);
             foreach (var effect in getting_weapon_effects)
