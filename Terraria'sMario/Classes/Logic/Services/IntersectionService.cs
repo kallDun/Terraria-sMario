@@ -5,6 +5,7 @@ using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Background_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets;
@@ -60,6 +61,7 @@ namespace Terraria_sMario.Classes.Logic.Services
             if ((ourBlock is Entity && (otherBlock is ParentItem || otherBlock is Coin)) ||
                     ((ourBlock is ParentItem || ourBlock is Coin) && otherBlock is Entity)) return true;
 
+            if (ourBlock is BackgroundBlockObject || otherBlock is BackgroundBlockObject) return true;
             if (ourBlock is TransparentBlockObject || otherBlock is TransparentBlockObject) return true;
             if (ourBlock is TranslucentBlockObject || otherBlock is TranslucentBlockObject) return true;
 

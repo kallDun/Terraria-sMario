@@ -1,20 +1,16 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Terraria_sMario.Classes.Control;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
-using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Background_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets;
-using Terraria_sMario.Classes.Logic.Services;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
 namespace Terraria_sMario.Classes.Logic.Levels
@@ -35,6 +31,11 @@ namespace Terraria_sMario.Classes.Logic.Levels
 
         public void Draw(Graphics g)
         {
+            // Background blocks
+            foreach (var item in objectsInTheView)
+            {
+                if (item is BackgroundBlockObject) item.Draw(g);
+            }
             // Static blocks
             foreach (var item in objectsInTheView)
             { 

@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Terraria_sMario.Classes.Logic.Objects.Environment
+namespace Terraria_sMario.Classes.Logic.Objects.Environment.Background_Blocks
 {
-    class StaticBlockObject : ParentObject
+    class BackgroundBlockObject : ParentObject
     {
-
         public override void Draw(Graphics g)
         {
             if (!isRendered) return;
@@ -18,8 +17,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Environment
 
         public override void updateProperties(in List<ParentObject> objects)
         {
-            
-        }
 
+        }
     }
 }

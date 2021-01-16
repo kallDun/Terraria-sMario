@@ -63,9 +63,39 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background_Brick {
+            get {
+                object obj = ResourceManager.GetObject("Background_Brick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wood_20_ {
+            get {
+                object obj = ResourceManager.GetObject("Wood_20_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Wood_35_ {
             get {
                 object obj = ResourceManager.GetObject("Wood_35_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wood_50_ {
+            get {
+                object obj = ResourceManager.GetObject("Wood_50_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

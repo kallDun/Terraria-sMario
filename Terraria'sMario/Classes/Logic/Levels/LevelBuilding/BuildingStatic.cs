@@ -2,6 +2,7 @@
 using System.Drawing;
 using Terraria_sMario.Classes.Logic.Objects;
 using Terraria_sMario.Classes.Logic.Objects.Environment;
+using Terraria_sMario.Classes.Logic.Objects.Environment.Background_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks;
@@ -116,6 +117,7 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                 for (int j = 0; j <= floor_width; j++)
                 {
                     levelObjects.Add(new WoodTranslucentBlock(newCoord));
+                    levelObjects.Add(new BackgroundBrickBlock(newCoord));
                     newCoord.Offset(blockSize, 0);
                 }
             }
@@ -127,6 +129,7 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                 for (int j = 0; j <= floor_width - 2; j++)
                 {
                     levelObjects.Add(new WoodTranslucentBlock(newCoord));
+                    levelObjects.Add(new BackgroundBrickBlock(newCoord));
                     newCoord.Offset(blockSize, 0);
                 }
             }
@@ -137,6 +140,7 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                 for (int j = 0; j <= floor_width - (2 * (i + 2)); j++)
                 {
                     levelObjects.Add(new WoodTranslucentBlock(newCoord));
+                    levelObjects.Add(new BackgroundBrickBlock(newCoord));
                     newCoord.Offset(blockSize, 0);
                 }
             }
@@ -264,11 +268,13 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                     {
                         coord.Offset(1 * blockSize, 0);
                         levelObjects.Add(new WoodTranslucentBlock(coord));
+                        levelObjects.Add(new BackgroundBrickBlock(coord));
                     }
                     coord.Offset(-7 * blockSize, -1 * blockSize);
                 }
                 coord.Offset(3 * blockSize, 0);
                 levelObjects.Add(new WoodTranslucentBlock(coord));
+                levelObjects.Add(new BackgroundBrickBlock(coord));
                 coord.Offset(-3 * blockSize, -1 * blockSize);
             }
             for (int j = 0; j < 4; j++)
@@ -277,17 +283,22 @@ namespace Terraria_sMario.Classes.Logic.Levels.LevelBuilding
                 {
                     coord.Offset(1 * blockSize, 0);
                     levelObjects.Add(new WoodTranslucentBlock(coord));
+                    levelObjects.Add(new BackgroundBrickBlock(coord));
                 }
                 coord.Offset(-7 * blockSize, -1 * blockSize);
             }
             coord.Offset(0, 6 * (floor - 1) * blockSize - (floor - 5) * blockSize);
             levelObjects.Add(new WoodTranslucentBlock(coord));
+            levelObjects.Add(new BackgroundBrickBlock(coord));
             coord.Offset(0, -1 * blockSize);
             levelObjects.Add(new WoodTranslucentBlock(coord));
+            levelObjects.Add(new BackgroundBrickBlock(coord));
             coord.Offset(8 * blockSize, -4 * blockSize);
             levelObjects.Add(new WoodTranslucentBlock(coord));
+            levelObjects.Add(new BackgroundBrickBlock(coord));
             coord.Offset(0, -1 * blockSize);
             levelObjects.Add(new WoodTranslucentBlock(coord));
+            levelObjects.Add(new BackgroundBrickBlock(coord));
         }
 
         private static void RemoveBlocks(List<ParentObject> levelObjects, int X, int Y, int width, int height)
