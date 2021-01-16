@@ -8,13 +8,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
         public StandartBomb(int X, int Y)
         {
             Name = "Обычная бомба";
-            Description = "Взорвет врагов в радиусе 6 блоков .";
+            Description = "Взорвет врагов на 20 урона в радиусе 6 блоков .";
             coords = new Point(X, Y);
             size = new Size(40, 40);
 
             opportunUseCount = 1;
 
-            damage = 15;
+            damage = 20;
             timerMax = 5;
             radius = 6 * Parameters.blockSize;
 

@@ -11,7 +11,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
 {
     class Bomb : ParentItem
     {
-        public Entity entity;
         public List<Effect> effects { get; protected set; } = new List<Effect> { };
         public int damage { get; protected set; } = 0;
         protected double timerMax;
@@ -63,7 +62,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
 
         private void explode(in List<ParentObject> objects)
         {
-            var list = CheckEntityService.searchAllEntities(objects, entity, this, radius, true);
+            var list = CheckEntityService.searchAllEntities(objects, new AbstractEntity(coords, size), radius, true);
 
             foreach (var item in list)
             {
@@ -90,7 +89,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
             isTimerStarted = true;
             canGrab = false;
 
-            this.entity = entity;
             base.Use(entity);
         }
 

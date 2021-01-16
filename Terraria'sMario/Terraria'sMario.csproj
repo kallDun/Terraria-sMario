@@ -55,6 +55,7 @@
     <Compile Include="Classes\Logic\Levels\Level.cs" />
     <Compile Include="Classes\Logic\Levels\TestLevel_1.cs" />
     <Compile Include="Classes\Logic\Objects\AbstractObject.cs" />
+    <Compile Include="Classes\Logic\Objects\Creatures\AbstractEntity.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimation.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimationControl.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimationTypes.cs" />
