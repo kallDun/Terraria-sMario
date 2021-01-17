@@ -68,7 +68,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
                 Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is ParentItem; };
 
                 var item = CheckNearObjectByPredicationService.getNearObject(objects, this, predicate);
-                if (item != null && (item as ParentItem).canGrab && inventory.tryToTakeItemToInventory(item as ParentItem)) 
+                if (item != null && (item as ParentItem).canGrab && !item.isToDestroy && inventory.tryToTakeItemToInventory(item as ParentItem)) 
                     (item as ParentItem).takeItem();
             }
 

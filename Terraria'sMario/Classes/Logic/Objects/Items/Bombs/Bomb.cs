@@ -27,13 +27,23 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
             // Draw object
             if (!isExploded) base.Draw(g);
 
-            // Draw timer
+            
             if (isTimerStarted)
             {
+                // Draw timer
                 UI_Drawing_Static.DrawString(g,
                     new Point(coords.X + size.Width - 10, coords.Y - 10),
                     string.Format("{0 : 0.0}", timerMax - timerNow),
                     Brushes.Red, 16);
+
+                // Draw dashed red line
+                float[] dashValues = { 3, 4, 3, 4 };
+                Pen pen = new Pen(Color.Red, 3);
+                pen.DashPattern = dashValues;
+
+                g.DrawLine(pen, 
+                    new Point(coords.X + size.Width / 2 - (radius + 10), coords.Y + size.Height), 
+                    new Point(coords.X + size.Width / 2 + (radius + 10), coords.Y + size.Height));
             }
 
             // Draw explosion animation
