@@ -163,6 +163,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                 var isLadder = (usingLadder && near_ladder != null ||
                     (near_ladder != null &&
                     enemy.coords.Y - needEntity.coords.Y >= 3 * Parameters.blockSize
+                    && Math.Abs(enemy.coords.X - needEntity.coords.X) <= 5 * Parameters.blockSize
                     && action != ActionType.Retreat));
 
                 if (isJump)
@@ -219,13 +220,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
             else
             if (action == ActionType.Shoot)
             {
-                if (closestEnemy != null)
-                {
-                    bool isRight = closestEnemy.coords.X > enemy.coords.X;
-                    int direction = isRight ? 1 : -1;
-                    lastMove = enemy.moveRightOrLeft(objects, direction);
-                }
-
                 var angle = CheckDistanceBetweenObjectsService.FindAngleBetweenTwoObjects(enemy, closestEnemy);
 
                 enemy.Shoot(objects, angle);

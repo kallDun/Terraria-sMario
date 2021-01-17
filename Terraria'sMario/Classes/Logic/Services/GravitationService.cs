@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria_sMario.Classes.Logic.Objects;
-using Terraria_sMario.Classes.Logic.Objects.Creatures;
-using Terraria_sMario.Classes.Logic.Objects.Environment;
 using Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks;
 
 namespace Terraria_sMario.Classes.Logic.Services

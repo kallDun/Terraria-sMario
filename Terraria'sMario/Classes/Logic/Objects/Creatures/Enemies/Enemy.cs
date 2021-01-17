@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
-using Terraria_sMario.Classes.Logic.Objects.Features;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_System;
 using System.Linq;
