@@ -5,6 +5,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_System;
 using Terraria_sMario.Classes.Logic.Objects.Features;
+using Terraria_sMario.Classes.Logic.Objects.Items.Armor;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns;
 using static Terraria_sMario.Images.Mobs_res;
 
@@ -30,8 +31,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
             weaponInHand = new Basic_Bow();
 
             lootSystem = new LootSystem(new List<ItemDropUnit> {
+                new ItemDropUnit(weaponInHand, chance: 60),
                 new ItemDropUnit(numberOfCoins: 1, chance: 100),
-                new ItemDropUnit(weaponInHand, chance: 65),
                 new ItemDropUnit(numberOfCoins: 1, chance: 50)
             });
 

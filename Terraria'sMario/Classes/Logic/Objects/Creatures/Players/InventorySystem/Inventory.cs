@@ -21,10 +21,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Player player;
         private Image drawingImage;
 
-        private Point coords;
+        private Point global_coords;
+        public Point coords { get; private set; }
 
         public Cell active_cell { get; private set; }
         public int countOfCoins = 0;
+
+        private bool isShow = true;
+        private int belowY_coords = 720;
 
         // coords
 
@@ -72,6 +76,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
                 drawingImage = UI.Inventory_player1;
             }
 
+            global_coords = coords;
             this.player = player;
             active_cell = inventory_cells[10];
         }
@@ -81,8 +86,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public void Draw(Graphics g)
         {
-            // Draw cells
+            // Draw main image
             g.DrawImage(drawingImage, coords);
+
+            // Draw cells
             foreach (var cell in inventory_cells)
             {
                 cell.Draw(g, coords);
@@ -239,14 +246,40 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public void Update()
         {
+            // Update cells
             foreach (var cell in inventory_cells)
             {
                 cell.Update();
             }
+
+            // Visibility
+            if (isShow)
+            {
+                if (coords.Y != global_coords.Y)
+                {
+                    coords = new Point(coords.X, coords.Y - 20); 
+
+                    if (coords.Y < global_coords.Y) 
+                        coords = new Point(coords.X, global_coords.Y);
+                }
+            }
+            else
+            {
+                if (coords.Y != belowY_coords)
+                {
+                    coords = new Point(coords.X, coords.Y + 20);
+
+                    if (coords.Y > belowY_coords)
+                        coords = new Point(coords.X, belowY_coords);
+                }
+            }
+
         }
 
 
         // Controls & Actions
+
+        public void changeVisibility() => isShow = !isShow;
 
         public void takeToWeapons(ParentItem item) // temporary void
         { 
@@ -256,10 +289,23 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             }
         }
 
-
         public void dropItemFromActiveCell() => active_cell.item = null;
         public bool tryToTakeItemToInventory(ParentItem item)
         {
+            for (int i = 0; i < inventory_cells.Length; i++)
+            {
+                var inv_item = inventory_cells[i].item;
+                if (inv_item != null)
+                {
+                    if (inv_item.GetType() == item.GetType() &&
+                        inv_item.opportunUseCount > 0 && item.opportunUseCount > 0)
+                    {
+                        inv_item.addItems(item);
+                        return true;
+                    }
+                }
+            }
+
             for (int i = 0; i < inventory_cells.Length; i++)
             {
                 if (inventory_cells[i].item == null)

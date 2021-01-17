@@ -13,10 +13,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
     {
         public List<Effect> effects { get; protected set; } = new List<Effect> { };
         public int damage { get; protected set; } = 0;
-        protected double timerMax;
+        public double timerMax { get; protected set; }
         public int radius { get; protected set; }
 
-        private bool isTimerStarted = false;
+        public bool isTimerStarted { get; protected set; } = false;
         private bool isExploded = false;
         private double timerNow = 0;
 
@@ -83,11 +83,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
         public override void Use(in Entity entity)
         {
             var newCoord = new Point(coords.X, coords.Y);
-
-            dropItem(newCoord);
-            entity.newObjects.Add(this);
-            isTimerStarted = true;
-            canGrab = false;
+            var explosionBomb = new BombConstructor(this, true);
+            explosionBomb.dropItem(newCoord);
+            entity.newObjects.Add(explosionBomb);
 
             base.Use(entity);
         }

@@ -41,8 +41,14 @@ namespace Terraria_sMario.Classes.Logic.Levels
             var potion_heal = new SmallHealing_Potion(520, 100);
             levelObjects.Add(potion_heal);
 
+            var potion_heal2 = new SmallHealing_Potion(520, 100);
+            levelObjects.Add(potion_heal2);
+
             var bomb = new StandartBomb(520, 100);
             levelObjects.Add(bomb);
+
+            var bomb2 = new StandartBomb(520, 100);
+            levelObjects.Add(bomb2);
 
             var armor = new Basic_Armor(520, 100);
             levelObjects.Add(armor);

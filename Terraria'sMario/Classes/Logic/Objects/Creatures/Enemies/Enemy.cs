@@ -34,10 +34,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
         {
             if (isDead)
             {
-                if (lootSystem != null)
-                    newObjects = newObjects
-                        .Concat(lootSystem.dropAll(X: coords.X, Y: coords.Y - 15))
-                        .ToList();
+                newObjects = newObjects
+                    .Concat(lootSystem.dropAll(coords, objects))
+                    .ToList();
+
                 return;
             }
 

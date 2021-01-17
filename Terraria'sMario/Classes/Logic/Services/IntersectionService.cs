@@ -51,6 +51,7 @@ namespace Terraria_sMario.Classes.Logic.Services
         }
 
 
+        // return true if not intersect 
         private static bool Rules(in ParentObject ourBlock, in ParentObject otherBlock)
         {
             if (!ourBlock.isHaveCollision || !otherBlock.isHaveCollision) return true;

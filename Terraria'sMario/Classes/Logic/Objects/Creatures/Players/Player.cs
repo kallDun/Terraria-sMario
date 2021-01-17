@@ -50,7 +50,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         public void controlPlayerKeysDown(in List<ParentObject> objects, 
             bool iskeyDown__Inv_right, bool iskeyDown__Inv_left, bool iskeyDown__Inv_start, bool iskeyDown__Inv_end,
             bool iskeyDown__Inv_changePosToWeapon, bool iskeyDown__Inv_changePosToOtherActive, bool iskeyDown__Inv_useActive,
-            bool iskeyDown__Inv_takeItem, bool iskeyDown__Inv_dropItem)
+            bool iskeyDown__Inv_takeItem, bool iskeyDown__Inv_dropItem, bool show_hide__inventory)
         {
             if (isDead) return;
             if (iskeyDown__Inv_right) inventory.takeRightCell();
@@ -60,6 +60,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (iskeyDown__Inv_changePosToWeapon) inventory.setActiveCellToWeaponActiveSlot();
             if (iskeyDown__Inv_changePosToOtherActive) inventory.setActiveCellToBaseActiveSlot();
             if (iskeyDown__Inv_useActive) inventory.tryToUseActiveCell();
+            if (show_hide__inventory) inventory.changeVisibility();
 
 
             if (iskeyDown__Inv_takeItem)

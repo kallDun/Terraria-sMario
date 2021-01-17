@@ -66,6 +66,7 @@
     <Compile Include="Classes\Logic\Objects\Creatures\EntityStates.cs" />
     <Compile Include="Classes\Logic\Objects\Creatures\EntityTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Items\Armor\Basic_Armor.cs" />
+    <Compile Include="Classes\Logic\Objects\Items\Bombs\BombConstructor.cs" />
     <Compile Include="Classes\Logic\Objects\Items\ItemTypes.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Background Blocks\BackgroundBlockObject.cs" />
     <Compile Include="Classes\Logic\Objects\Environment\Background Blocks\BackgroundBrickBlock.cs" />

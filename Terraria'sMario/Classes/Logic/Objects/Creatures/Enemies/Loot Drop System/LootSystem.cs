@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_Syst
             this.itemDrops = new List<ItemDropUnit> {itemDrop};
         }
 
-        public List<ParentObject> dropAll(int X, int Y)
+        public List<ParentObject> dropAll(Point coords, List<ParentObject> objects)
         {
             var list = new List<ParentObject> { };
 
             foreach (var item in itemDrops)
             {
-                list = list.Concat(item.getItem(X, Y)).ToList();
+                list = list.Concat(item.getItem(coords, objects)).ToList();
             }
 
             return list;

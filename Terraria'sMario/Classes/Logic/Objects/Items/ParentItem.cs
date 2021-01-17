@@ -29,6 +29,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Items
             return this;
         }
 
+        public void addItems(ParentItem otherItem)
+        {
+            opportunUseCount += otherItem.opportunUseCount;
+        }
+
         public virtual void Use(in Entity entity)
         {
             opportunUseCount--;
