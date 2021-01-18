@@ -26,7 +26,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns
             shoot_damage = 5;
             timerHitMax = 2.5;
 
-            drawingImage = Items_res.Basic_Bow_Inventory;
+            drawingImage = Items_res.Basic_Bow_World;
             smallImage_inInventory = Items_res.Basic_Bow_Inventory;
         }
 

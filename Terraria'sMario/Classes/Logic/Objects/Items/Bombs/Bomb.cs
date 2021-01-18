@@ -92,7 +92,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Bombs
 
         public override void Use(in Entity entity)
         {
-            var newCoord = new Point(coords.X, coords.Y);
+            var newCoord = new Point(entity.coords.X, entity.coords.Y);
             var explosionBomb = new BombConstructor(this, true);
             explosionBomb.dropItem(newCoord);
             entity.newObjects.Add(explosionBomb);
