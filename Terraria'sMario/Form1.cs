@@ -16,12 +16,11 @@ namespace Terraria_sMario
         public Form1()
         { 
             InitializeComponent();
-            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
+            KeyDown += (s, e) => gameplay.KeyboardListenerKeyDown(e);
         }
 
         private Gameplay gameplay;
         private Graphics g;
-
         
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -46,8 +45,6 @@ namespace Terraria_sMario
         private void checkCamera_Tick(object sender, EventArgs e) => gameplay.KeepMainPlayerInTheCenter();
 
         // KEYBOARD LISTENER
-
-        void Form1_KeyDown(object sender, KeyEventArgs e) => gameplay.KeyboardListenerKeyDown(e);
 
         private void Form1_KeyUp(object sender, KeyEventArgs e) => gameplay.KeyboardListenerKeyUp(e);
     }

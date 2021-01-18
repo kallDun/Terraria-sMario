@@ -13,7 +13,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
 {
     class SkeletonArcher : Enemy
     {
-        public SkeletonArcher(int X, int Y)
+        public SkeletonArcher(int X, int Y, int level = 1)
         {
             Name = "Skeleton Archer";
             EntityType = EntityTypes.Skeleton;
@@ -27,6 +27,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
             baseCloseDamage = 7;
             baseTimerHitMax = 2;
             damage_heal_ActionRadius = 20;
+
+            this.level = level;
+            updatePropertiesToLevel();
 
             weaponInHand = new Basic_Bow();
 

@@ -18,8 +18,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         // Score System
 
-        public double scores { get; private set; }
-        public int level { get; private set; }
+        public double scores { get; private set; } = 120;
 
         public void getScores(double scores) => this.scores += scores;
 
@@ -36,8 +35,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
             for (int i = beforeLevel + 1; i <= level; i++)
             {
-                maxHealth *= (float) Parameters.HealthMultiplier[i];
+                maxHealth *= (float) Parameters.HealthMultiplierPlayer[i];
                 health = maxHealth;
+                damage_amplification *= (float) Parameters.DamageMultiplierPlayer[i];
             }
         }
 

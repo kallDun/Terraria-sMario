@@ -10,14 +10,26 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
     abstract class Enemy : Entity
     {
+        // Fields
+
         protected LootSystem lootSystem = new LootSystem(new ItemDropUnit(numberOfCoins: 1, 100));
         protected BehaviorControl enemy_behavior;
         protected int standartHeal_enemy = 6;
 
-        // Score system
+        // Score & Level System
 
         protected int scoreForHit = 1;
         protected int scoreForKilling = 3;
+
+        public void updatePropertiesToLevel()
+        {
+            for (int i = 1; i <= level; i++)
+            {
+                maxHealth *= (float)Parameters.HealthMultiplierEnemy[i];
+                health = maxHealth;
+                damage_amplification *= (float)Parameters.DamageMultiplierEnemy[i];
+            }
+        }
 
         // Threads
 
@@ -100,6 +112,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
         {
             if (isDead) return;
             base.getDamage(damage);
+
+            // add scores:
 
             if (entity is Player)
             {

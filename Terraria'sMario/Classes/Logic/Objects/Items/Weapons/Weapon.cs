@@ -124,7 +124,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons
 
         private void HitEntity(Entity entity, in Entity self)
         {
-            entity?.getDamage(damage, self);
+            entity?.getDamage(damage * self.damage_amplification, self);
             foreach (var effect in getting_weapon_effects)
             {
                 entity?.getEffect(new Effect(effect));

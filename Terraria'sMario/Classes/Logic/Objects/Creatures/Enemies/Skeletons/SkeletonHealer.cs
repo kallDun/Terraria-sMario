@@ -10,7 +10,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
 {
     class SkeletonHealer : Enemy
     {
-        public SkeletonHealer(int X, int Y)
+        public SkeletonHealer(int X, int Y, int level = 1)
         {
             Name = "Skeleton Healer";
             EntityType = EntityTypes.Skeleton;
@@ -27,6 +27,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
             standartHeal_enemy = 8;
             resistancesEffects.Add(EffectTypes.Curse);
             resistancesEffects.Add(EffectTypes.Blessing);
+
+            this.level = level;
+            updatePropertiesToLevel();
 
             enemy_behavior = new BehaviorControl(
                 new List<BehaviorUnitMoving> {

@@ -12,7 +12,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
     class SkeletonBasic : Enemy
     {
-        public SkeletonBasic(int X, int Y)
+        public SkeletonBasic(int X, int Y, int level = 1)
         {
             Name = "Skeleton";
             EntityType = EntityTypes.Skeleton;
@@ -27,6 +27,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             baseTimerHitMax = 2; 
             damage_heal_ActionRadius = 20;
             resistancesEffects.Add(EffectTypes.Curse);
+
+            this.level = level;
+            updatePropertiesToLevel();
 
             enemy_behavior = new BehaviorControl(
                 new List<BehaviorUnitMoving> {

@@ -11,7 +11,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 {
     class Mushroom : Enemy
     {
-        public Mushroom(int X, int Y)
+        public Mushroom(int X, int Y, int level = 1)
         {
             Name = "Mushroom";
             EntityType = EntityTypes.Mushroom;
@@ -24,6 +24,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             jumpHeight = -14;
             resistancesEffects.Add(EffectTypes.Poisoning);
             uI_Entity_Draw = new UI_Entity_Draw(this, Services.UI_Entity_Draw_Type.WithoutName);
+
+            this.level = level;
+            updatePropertiesToLevel();
 
             //drawingImage = Resources.mushroom_image;  <== needs to add
 

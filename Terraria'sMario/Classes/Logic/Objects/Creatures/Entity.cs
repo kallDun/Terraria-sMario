@@ -29,6 +29,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public bool isColisionWithOtherEntitiesOn { get; protected set; } = true;
 
+        // Level System
+
+        public float damage_amplification { get; protected set; } = 1;
+        public int level { get; protected set; }
+
         // Drawing UI & Animations
 
         protected UI_Entity_Draw uI_Entity_Draw;
@@ -165,7 +170,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             else
             {
                 CheckEntityService.getNearEntity(objects, this, damage_heal_ActionRadius)
-                    ?.getDamage(baseCloseDamage, this);
+                    ?.getDamage(baseCloseDamage * damage_amplification, this);
 
                 restartHitTimer();
                 return true;

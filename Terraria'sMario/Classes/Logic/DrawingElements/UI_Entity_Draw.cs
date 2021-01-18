@@ -13,12 +13,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
     {
         private UI_Entity_Draw_Type type;
         private Point name_coord;
+        private Point level_coord;
         private Point health_coord;
         private Point effects_coord;
         private Point resistEffects_coord;
         private Point damage_coord;
 
         private string name;
+        private int level;
         private float health;
         private float maxHealth;
         private List<Effect> effects;
@@ -46,6 +48,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
 
         public void updateEntityDraw(in Entity entity)
         {
+            level = entity.level;
             health = entity.health;
             effects = entity.effects;
             resistancesEffects = entity.resistancesEffects;
@@ -57,13 +60,15 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
             if (type == UI_Entity_Draw_Type.WithoutName || 
                 type == UI_Entity_Draw_Type.WithoutNameAndHP)
             {
-                health_coord = new Point(coords.X - 10, coords.Y - 15);
+                health_coord = new Point(coords.X - 10, coords.Y - 33);
+                level_coord = new Point(coords.X + 5, coords.Y - 22);
             }
             else
             {
-                health_coord = new Point(coords.X - 10, coords.Y - 32);
+                health_coord = new Point(coords.X - 10, coords.Y - 48);
+                level_coord = new Point(coords.X + 5, coords.Y - 35);
             }
-            
+
             name_coord = new Point(coords.X - 10, coords.Y - 22);
             effects_coord = new Point(coords.X + size.Width, coords.Y + 20);
             resistEffects_coord = new Point(coords.X - 15, coords.Y + 0);
@@ -88,6 +93,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
                     DrawEffects(g);
                     DrawDamage(g);
                     DrawResistEffects(g);
+                    DrawLevel(g);
                     break;
 
                 case UI_Entity_Draw_Type.WithoutName:
@@ -95,12 +101,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
                     DrawEffects(g);
                     DrawDamage(g);
                     DrawResistEffects(g);
+                    DrawLevel(g);
                     break;
 
                 case UI_Entity_Draw_Type.WithoutNameAndHP:
                     DrawEffects(g);
                     DrawDamage(g);
                     DrawResistEffects(g);
+                    DrawLevel(g);
                     break;
 
                 case UI_Entity_Draw_Type.WithoutHP:
@@ -108,6 +116,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
                     DrawEffects(g);
                     DrawDamage(g);
                     DrawResistEffects(g);
+                    DrawLevel(g);
                     break;
 
                 case UI_Entity_Draw_Type.WithoutResistance:
@@ -115,6 +124,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
                     DrawHealth(g);
                     DrawEffects(g);
                     DrawDamage(g);
+                    DrawLevel(g);
                     break;
 
                 case UI_Entity_Draw_Type.WithoutGettingDamage:
@@ -122,14 +132,24 @@ namespace Terraria_sMario.Classes.Logic.Objects.Features
                     DrawHealth(g);
                     DrawEffects(g);
                     DrawResistEffects(g);
+                    DrawLevel(g);
                     break;
 
                 case UI_Entity_Draw_Type.OnlyNameAndDamage:
                     DrawName(g);
                     DrawDamage(g);
                     break;
+
+                case UI_Entity_Draw_Type.WithoutNameAndLevel:
+                    DrawHealth(g);
+                    DrawEffects(g);
+                    DrawDamage(g);
+                    DrawResistEffects(g);
+                    break;
             }
         }
+
+        private void DrawLevel(Graphics g) => UI_Drawing_Static.DrawString(g, level_coord, $"<{level}>", Brushes.OrangeRed, 14);
 
         private void DrawName(Graphics g) => UI_Drawing_Static.DrawString(g, name_coord, name, Brushes.Black);
 
