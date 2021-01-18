@@ -14,16 +14,16 @@ namespace Terraria_sMario.Classes
             activeLevel = new TestLevel_1 ();
         }
 
-        public void Update() => activeLevel.Update();
+        public void Update() => activeLevel?.Update();
 
-        public void Draw(Graphics g) => activeLevel.Draw(g);
+        public void Draw(Graphics g) => activeLevel?.Draw(g);
 
-        public void KeepMainPlayerInTheCenter() => activeLevel.KeepMainObjectInTheCenter();
+        public void KeepMainPlayerInTheCenter() => activeLevel?.KeepMainObjectInTheCenter();
 
-        public void checkField() => activeLevel.updateFieldOfView();
+        public void checkField() => activeLevel?.updateFieldOfView();
 
-        public void KeyboardListenerKeyDown(KeyEventArgs e) => activeLevel.KeyboardListenerPressed(e);
+        public void KeyboardListenerKeyDown(KeyEventArgs e) => activeLevel?.KeyboardListenerPressed(e);
 
-        internal void KeyboardListenerKeyUp(KeyEventArgs e) => activeLevel.KeyboardListenerReleased(e);
+        public void KeyboardListenerKeyUp(KeyEventArgs e) => activeLevel?.KeyboardListenerReleased(e);
     }
 }
