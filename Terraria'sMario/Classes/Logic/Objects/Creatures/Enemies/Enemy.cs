@@ -14,6 +14,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
         protected BehaviorControl enemy_behavior;
         protected int standartHeal_enemy = 6;
 
+        // Score system
+
+        protected int scoreForHit = 1;
+        protected int scoreForKilling = 3;
+
         // Threads
 
         public override void Draw(Graphics g)
@@ -87,6 +92,20 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
             }
             else
                 return false;
+        }
+
+        // Override
+
+        public override void getDamage(float damage, Entity entity = null)
+        {
+            if (isDead) return;
+            base.getDamage(damage);
+
+            if (entity is Player)
+            {
+                if (isDead) (entity as Player).getScores(scoreForKilling);
+                else (entity as Player).getScores(scoreForHit);
+            }
         }
 
     }

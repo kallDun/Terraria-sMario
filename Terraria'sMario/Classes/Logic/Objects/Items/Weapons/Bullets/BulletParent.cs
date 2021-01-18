@@ -101,7 +101,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets
             }
             else
             {
-                enemy.getDamage(damage);
+                enemy.getDamage(damage, owner);
                 foreach (var effect in effects)
                 {
                     enemy.getEffect(new Effect(effect));

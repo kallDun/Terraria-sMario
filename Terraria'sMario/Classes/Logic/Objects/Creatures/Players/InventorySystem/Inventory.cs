@@ -45,6 +45,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
         private Point resistance_coord = new Point(300, 106);
         private Point reloadWeaponSec_coord = new Point(134, 212);
 
+        private Point level_coord = new Point(390, 12);
+        private Point scores_coord = new Point(460, 14);
+
         // item stats coords
         private Point weaponStat_name__coord = new Point(198, 220);
         private Point weaponStat_description__coord = new Point(162, 246);
@@ -123,6 +126,14 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
             var resistances = player.resistancesEffects.Union(resistance_list_armor).ToList();
             UI_Drawing_Static.DrawResistanceEffects(g, new Point(coords.X + resistance_coord.X, coords.Y + resistance_coord.Y),
                 resistances, true, 30, false);
+
+            // Draw level 
+            UI_Drawing_Static.DrawString(g, new Point(level_coord.X + coords.X, level_coord.Y + coords.Y),
+                $"lv: {player.level}", Brushes.CadetBlue, 20);
+            // Draw scores
+            UI_Drawing_Static.DrawString(g, new Point(scores_coord.X + coords.X, scores_coord.Y + coords.Y),
+                $"({player.scores})", Brushes.Goldenrod, 14);
+
 
             // Draw reload weapon seconds
             var seconds_max = (inventory_cells[10].item == null) ? player.baseTimerHitMax :

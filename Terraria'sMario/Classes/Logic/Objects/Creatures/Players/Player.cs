@@ -16,6 +16,31 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
     {
         protected Inventory inventory;
 
+        // Score System
+
+        public double scores { get; private set; }
+        public int level { get; private set; }
+
+        public void getScores(double scores) => this.scores += scores;
+
+        public void updateLevel()
+        {
+            var beforeLevel = level;
+            foreach (var item in Parameters.ScoresToGetLevel)
+            {
+                if (item.Value <= scores)
+                {
+                    level = item.Key;
+                }
+            }
+
+            for (int i = beforeLevel + 1; i <= level; i++)
+            {
+                maxHealth *= (float) Parameters.HealthMultiplier[i];
+                health = maxHealth;
+            }
+        }
+
         // Threads
 
         public override void Draw(Graphics g)
@@ -36,13 +61,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         {
             weaponInHand = inventory.inventory_cells.Last().item as Weapon;
             inventory.Update();
+            updateLevel();
 
             if (activeAnimation != null && activeAnimation.isLastFrame())
             {
                 activeAnimation.setFirstFrame();
                 setAnimation(Standing);
             }
-
         }
 
         // Control
@@ -172,7 +197,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         // Override
 
-        public override void getDamage(float damage)
+        public override void getDamage(float damage, Entity entity = null)
         {
             if (damage <= 0) return;
 

@@ -104,7 +104,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public bool isDead { get; private set; } = false;
 
-        public virtual void getDamage(float damage)
+        public virtual void getDamage(float damage, Entity entity = null)
         {
             if (damage < 0 || isDead) return;
             if (Effect.isEffectInList(effects, EffectTypes.Poisoning)) damage *= 1.5f;
@@ -165,7 +165,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             else
             {
                 CheckEntityService.getNearEntity(objects, this, damage_heal_ActionRadius)
-                    ?.getDamage(baseCloseDamage);
+                    ?.getDamage(baseCloseDamage, this);
 
                 restartHitTimer();
                 return true;
