@@ -125,6 +125,7 @@
     <Compile Include="Classes\Logic\Services\GravitationService.cs" />
     <Compile Include="Classes\Logic\Services\IntersectionService.cs" />
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw_Type.cs" />
+    <Compile Include="Classes\Management\Design Elements\Menu Background.cs" />
     <Compile Include="Classes\Management\Interaction Elements\Button_.cs" />
     <Compile Include="Classes\Management\Screens\GameScreen.cs" />
     <Compile Include="Classes\Management\Screens\MenuScreen.cs" />
@@ -151,6 +152,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Items_res.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Images\Management_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Management_res.resx</DependentUpon>
     </Compile>
     <Compile Include="Images\Mobs_res.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -198,6 +204,10 @@
     <EmbeddedResource Include="Images\Items_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Items_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\Management_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Management_res.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Images\Mobs_res.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -496,6 +506,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Basic Bow World.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Continue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New game.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Click.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

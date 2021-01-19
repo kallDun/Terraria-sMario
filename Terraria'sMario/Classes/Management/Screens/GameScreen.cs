@@ -30,6 +30,14 @@ namespace Terraria_sMario.Classes.Management.Screens
         {
         }
 
+        public override void MouseClick(MouseEventArgs e)
+        {
+        }
+
+        public override void MouseMove(MouseEventArgs e)
+        {
+        }
+
         public override void Update()
         {
         }

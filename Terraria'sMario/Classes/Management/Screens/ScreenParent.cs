@@ -21,5 +21,9 @@ namespace Terraria_sMario.Classes.Management.Screens
         public abstract void KeyboardListenerKeyDown(KeyEventArgs e);
 
         public abstract void KeyboardListenerKeyUp(KeyEventArgs e);
+
+        public abstract void MouseMove(MouseEventArgs e);
+
+        public abstract void MouseClick(MouseEventArgs e);
     }
 }
