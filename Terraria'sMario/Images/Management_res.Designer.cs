@@ -63,6 +63,26 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap But_arrow {
+            get {
+                object obj = ResourceManager.GetObject("But_arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap But_arrow_hovered {
+            get {
+                object obj = ResourceManager.GetObject("But_arrow_hovered", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Click {
             get {
                 object obj = ResourceManager.GetObject("Click", resourceCulture);

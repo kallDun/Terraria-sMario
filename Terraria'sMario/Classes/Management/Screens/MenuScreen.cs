@@ -13,7 +13,6 @@ namespace Terraria_sMario.Classes.Management.Screens
 {
     class MenuScreen : ScreenParent
     {
-        private List<Button_> buttons;
         private Menu_Background menu_Background = new Menu_Background();
 
         public MenuScreen()
@@ -28,6 +27,7 @@ namespace Terraria_sMario.Classes.Management.Screens
 
         public override void Draw(Graphics g)
         {
+            DesignElementsStatic.FillScreenWithColor(g, Brushes.LightBlue);
             menu_Background.Draw(g);
             buttons.ForEach(x => x.Draw(g));
         }
@@ -39,12 +39,7 @@ namespace Terraria_sMario.Classes.Management.Screens
             
         }
 
-        private bool isButtonClicked(string Name) => buttons.Where(x => x.Name == Name).First().isCLicked;
-
-        public override void MouseMove(MouseEventArgs e)
-        {
-            buttons.ForEach(x => x.MouseOn(e.X, e.Y));
-        }
+        public override void MouseMove(MouseEventArgs e) => buttons.ForEach(x => x.MouseOn(e.X, e.Y));
 
         public override void MouseClick(MouseEventArgs e)
         {

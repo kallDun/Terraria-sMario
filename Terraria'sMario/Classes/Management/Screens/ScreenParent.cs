@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Terraria_sMario.Classes.Management.Interaction_Elements;
 
 namespace Terraria_sMario.Classes.Management.Screens
 {
@@ -25,5 +26,11 @@ namespace Terraria_sMario.Classes.Management.Screens
         public abstract void MouseMove(MouseEventArgs e);
 
         public abstract void MouseClick(MouseEventArgs e);
+
+        // Buttons
+
+        protected List<Button_> buttons;
+
+        protected bool isButtonClicked(string Name) => buttons.Where(x => x.Name == Name).First().isCLicked;
     }
 }

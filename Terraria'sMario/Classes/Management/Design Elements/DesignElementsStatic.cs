@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Terraria_sMario.Classes.Management.Design_Elements
 {
-    class Menu_Background
+    static class DesignElementsStatic
     {
 
-        public void Draw(Graphics g)
+        public static void FillScreenWithColor(Graphics g, Brush brush)
         {
-            
-
+            g.FillRectangle(brush, new RectangleF(x: 0, y: 0, 1300, 700));
         }
+
 
     }
 }

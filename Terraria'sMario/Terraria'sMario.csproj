@@ -125,6 +125,7 @@
     <Compile Include="Classes\Logic\Services\GravitationService.cs" />
     <Compile Include="Classes\Logic\Services\IntersectionService.cs" />
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw_Type.cs" />
+    <Compile Include="Classes\Management\Design Elements\DesignElementsStatic.cs" />
     <Compile Include="Classes\Management\Design Elements\Menu Background.cs" />
     <Compile Include="Classes\Management\Interaction Elements\Button_.cs" />
     <Compile Include="Classes\Management\Screens\GameScreen.cs" />
@@ -527,6 +528,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Click.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\But_arrow_hovered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\But_arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
