@@ -535,5 +535,11 @@
   <ItemGroup>
     <None Include="Resources\But_arrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jumped in the walk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\jumped.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
