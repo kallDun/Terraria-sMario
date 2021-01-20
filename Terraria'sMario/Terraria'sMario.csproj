@@ -127,12 +127,17 @@
     <Compile Include="Classes\Logic\DrawingElements\UI_Entity_Draw_Type.cs" />
     <Compile Include="Classes\Management\Design Elements\DesignElementsStatic.cs" />
     <Compile Include="Classes\Management\Design Elements\Menu Background.cs" />
+    <Compile Include="Classes\Management\Interaction Elements\ButtonParent.cs" />
     <Compile Include="Classes\Management\Interaction Elements\Button_.cs" />
+    <Compile Include="Classes\Management\Interaction Elements\SaveData_but.cs" />
     <Compile Include="Classes\Management\Screens\GameScreen.cs" />
     <Compile Include="Classes\Management\Screens\MenuScreen.cs" />
     <Compile Include="Classes\Management\Screens\OptionScreen.cs" />
     <Compile Include="Classes\Management\Screens\ScreenControl.cs" />
     <Compile Include="Classes\Management\Screens\ScreenParent.cs" />
+    <Compile Include="Classes\Save System\DifficultTypes.cs" />
+    <Compile Include="Classes\Save System\SaveData.cs" />
+    <Compile Include="Classes\Save System\Saves.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,6 +545,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\jumped.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Margin_in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnknownMan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Border.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

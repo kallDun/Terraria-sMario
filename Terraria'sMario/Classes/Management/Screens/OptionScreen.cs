@@ -16,7 +16,7 @@ namespace Terraria_sMario.Classes.Management.Screens
 
         public OptionScreen()
         {
-            buttons = new List<Button_> {
+            buttons = new List<ButtonParent> {
                 new Button_("Exit", Management_res.Exit, new Size(100, 40), new Point(135, 505)),
             };
         }

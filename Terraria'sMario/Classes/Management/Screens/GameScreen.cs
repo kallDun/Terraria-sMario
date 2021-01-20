@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Terraria_sMario.Classes.Management.Design_Elements;
 using Terraria_sMario.Classes.Management.Interaction_Elements;
+using Terraria_sMario.Classes.Save_System;
 using Terraria_sMario.Images;
 
 namespace Terraria_sMario.Classes.Management.Screens
 {
     class GameScreen : ScreenParent
     {
+
+        private List<SaveData_but> saveData_Buttons = new List<SaveData_but> { };
 
         public GameScreen()
         {
@@ -21,7 +24,7 @@ namespace Terraria_sMario.Classes.Management.Screens
             image_left.RotateFlip(RotateFlipType.Rotate180FlipNone);
             image_left_hovered.RotateFlip(RotateFlipType.Rotate180FlipNone);
 
-            buttons = new List<Button_> {
+            buttons = new List<ButtonParent> {
                 new Button_("Exit", Management_res.Exit, new Size(100, 40), new Point(135, 505)),
 
                 new Button_("Right_", Management_res.But_arrow, Management_res.But_arrow_hovered, Management_res.But_arrow_hovered, 
@@ -30,6 +33,18 @@ namespace Terraria_sMario.Classes.Management.Screens
                 new Button_("Left_", image_left, image_left_hovered, image_left_hovered, 
                 new Size(40, 40), new Point(450, 400)),
             };
+
+            PullSaves();
+        }
+
+        public void PullSaves()
+        {
+            saveData_Buttons.Add(new SaveData_but("SaveDataBut", new Point(60, 60), null));
+
+            foreach (var save in Saves.game_Saves)
+            {
+                saveData_Buttons.Add(new SaveData_but("SaveDataBut", new Point(60, 60), save));
+            }
         }
 
 
@@ -54,12 +69,10 @@ namespace Terraria_sMario.Classes.Management.Screens
         public override void MouseMove(MouseEventArgs e) => buttons.ForEach(x => x.MouseOn(e.X, e.Y));
 
 
+
         public override void Update()
         {
         }
-
-
-
 
         public override void KeepMainPlayerInTheCenter()
         {

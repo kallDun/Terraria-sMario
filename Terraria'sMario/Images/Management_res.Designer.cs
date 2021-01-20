@@ -63,6 +63,16 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Border {
+            get {
+                object obj = ResourceManager.GetObject("Border", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap But_arrow {
             get {
                 object obj = ResourceManager.GetObject("But_arrow", resourceCulture);
@@ -123,6 +133,16 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Margin_in {
+            get {
+                object obj = ResourceManager.GetObject("Margin_in", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap New_game {
             get {
                 object obj = ResourceManager.GetObject("New_game", resourceCulture);
@@ -146,6 +166,16 @@ namespace Terraria_sMario.Images {
         internal static System.Drawing.Bitmap Start {
             get {
                 object obj = ResourceManager.GetObject("Start", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UnknownMan {
+            get {
+                object obj = ResourceManager.GetObject("UnknownMan", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

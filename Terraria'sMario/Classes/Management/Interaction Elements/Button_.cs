@@ -8,20 +8,15 @@ using Terraria_sMario.Images;
 
 namespace Terraria_sMario.Classes.Management.Interaction_Elements
 {
-    class Button_
+    class Button_ : ButtonParent
     {
-        public string Name { get; private set; }
 
         private int version;
 
         private Image image;
         private Image hovered_image;
         private Image clicked_image;
-        private Size size;
-        private Point position;
 
-        public bool isCLicked { get; private set; }
-        public bool isHovered { get; private set; }
 
         public Button_(string Name, Image image, Image hovered_image, Image clicked_image, Size size, Point position)
         {
@@ -45,7 +40,7 @@ namespace Terraria_sMario.Classes.Management.Interaction_Elements
             version = 2;
         }
 
-        public void Draw(Graphics g)
+        public override void Draw(Graphics g)
         {
             if (version == 1)
             {
@@ -62,11 +57,6 @@ namespace Terraria_sMario.Classes.Management.Interaction_Elements
             }
         }
 
-        public void MouseOn(int X, int Y) => isHovered = isCoordInButton(X, Y);
-
-        public void MouseClick(int X, int Y) => isCLicked = isCoordInButton(X, Y);
-
-        private bool isCoordInButton(int X, int Y) =>
-            X >= position.X && Y >= position.Y && X <= position.X + size.Width && Y <= position.Y + size.Height;
+        
     }
 }

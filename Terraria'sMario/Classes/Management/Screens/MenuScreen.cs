@@ -17,7 +17,7 @@ namespace Terraria_sMario.Classes.Management.Screens
 
         public MenuScreen()
         {
-            buttons = new List<Button_> {
+            buttons = new List<ButtonParent> {
                 new Button_("New_game", Management_res.New_game, new Size(175, 40), new Point(135, 235)),
                 new Button_("Continue", Management_res.Continue, new Size(175, 40), new Point(135, 325)),
                 new Button_("Settings", Management_res.Settings, new Size(175, 40), new Point(135, 415)),

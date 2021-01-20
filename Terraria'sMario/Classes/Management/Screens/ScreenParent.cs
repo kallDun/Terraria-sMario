@@ -29,7 +29,7 @@ namespace Terraria_sMario.Classes.Management.Screens
 
         // Buttons
 
-        protected List<Button_> buttons;
+        protected List<ButtonParent> buttons;
 
         protected bool isButtonClicked(string Name) => buttons.Where(x => x.Name == Name).First().isCLicked;
     }
