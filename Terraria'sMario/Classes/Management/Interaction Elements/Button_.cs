@@ -44,15 +44,15 @@ namespace Terraria_sMario.Classes.Management.Interaction_Elements
         {
             if (version == 1)
             {
-                g.DrawImage(isCLicked ? clicked_image : isHovered ? hovered_image : image, position);
+                g.DrawImage(isClicked ? clicked_image : isHovered ? hovered_image : image, position);
             }
             else
             if (version == 2)
             {
                 g.DrawImage(image, position);
-                if (isHovered || isCLicked)
+                if (isHovered || isClicked)
                 {
-                    g.DrawImage(isCLicked ? clicked_image : hovered_image, new Point(position.X + size.Width, position.Y));
+                    g.DrawImage(isClicked ? clicked_image : hovered_image, new Point(position.X + size.Width, position.Y));
                 }
             }
         }

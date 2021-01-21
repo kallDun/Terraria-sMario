@@ -16,7 +16,7 @@ namespace Terraria_sMario.Classes.Management.Screens
     {
 
         private List<SaveData_but> saveData_Buttons = new List<SaveData_but> { };
-        private int saveData_Buttons_on = 0;
+        private int saveData_Buttons_on;
 
         public ChooseSaveScreen()
         {
@@ -49,6 +49,8 @@ namespace Terraria_sMario.Classes.Management.Screens
                 saveData_Buttons.Add(new SaveData_but("SaveDataBut_Choose", location, save));
             }
 
+
+            saveData_Buttons_on = saveData_Buttons.Count - 1;
             buttons.Add(saveData_Buttons[saveData_Buttons_on]);
         }
 

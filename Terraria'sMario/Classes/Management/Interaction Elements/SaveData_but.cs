@@ -72,7 +72,6 @@ namespace Terraria_sMario.Classes.Management.Interaction_Elements
                     }
                 }
 
-
             }
             
         }

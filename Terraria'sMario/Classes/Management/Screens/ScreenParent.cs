@@ -34,7 +34,7 @@ namespace Terraria_sMario.Classes.Management.Screens
         protected bool isButtonClicked(string Name) 
         {
             var list = buttons.Where(x => x.Name == Name);
-            return list.Count() > 0 && list.First().isCLicked; 
+            return list.Count() > 0 && list.First().isClicked; 
         }
     }
 }

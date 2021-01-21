@@ -13,15 +13,15 @@ namespace Terraria_sMario.Classes.Management.Interaction_Elements
         protected Size size;
         protected Point position;
 
-        public bool isCLicked { get; protected set; }
+        public bool isClicked { get; protected set; }
         public bool isHovered { get; protected set; }
 
         public void MouseOn(int X, int Y) { 
             isHovered = isCoordInButton(X, Y);
-            if (isHovered) isCLicked = false;
+            if (isHovered) isClicked = false;
         }
 
-        public void MouseClick(int X, int Y) => isCLicked = isCoordInButton(X, Y);
+        public void MouseClick(int X, int Y) => isClicked = isCoordInButton(X, Y);
 
         private bool isCoordInButton(int X, int Y) =>
             X >= position.X && Y >= position.Y && X <= position.X + size.Width && Y <= position.Y + size.Height;
