@@ -23,7 +23,7 @@ namespace Terraria_sMario.Classes.Management.Interaction_Elements
 
         public override void Draw(Graphics g)
         {
-            if (isHovered) g.FillRectangle(Brushes.DimGray, 
+            if (isHovered) g.FillRectangle(isClicked? Brushes.Black : Brushes.DimGray, 
                 new RectangleF(new Point(position.X + 3, position.Y + 3), size));
 
             g.FillRectangle(Brushes.DarkCyan, new RectangleF(position, size));

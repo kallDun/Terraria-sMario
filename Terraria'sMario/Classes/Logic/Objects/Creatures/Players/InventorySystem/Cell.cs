@@ -33,7 +33,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySyste
 
         public ItemTypes Use(in Entity entity) 
         { 
-            if (item != null && !(item is Weapon && item is Armor))
+            if (item != null && !(item is Weapon || item is Armor))
             {
                 item.Use(entity);
                 return item.itemType;

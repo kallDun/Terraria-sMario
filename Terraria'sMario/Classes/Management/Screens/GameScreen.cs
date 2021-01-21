@@ -55,6 +55,8 @@ namespace Terraria_sMario.Classes.Management.Screens
 
         public override void MouseClick(MouseEventArgs e)
         {
+            if (gameplay != null) return;
+
             buttons.ForEach(x => x.MouseClick(e.X, e.Y));
 
             if (isButtonClicked("Exit"))
