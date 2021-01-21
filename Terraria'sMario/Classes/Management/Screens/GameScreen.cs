@@ -15,36 +15,15 @@ namespace Terraria_sMario.Classes.Management.Screens
     class GameScreen : ScreenParent
     {
 
-        private List<SaveData_but> saveData_Buttons = new List<SaveData_but> { };
+        Gameplay gameplay;
+
+        List<LevelButton> levelButtons = new List<LevelButton> { };
 
         public GameScreen()
         {
-            var image_left = Management_res.But_arrow;
-            var image_left_hovered = Management_res.But_arrow_hovered;
-            image_left.RotateFlip(RotateFlipType.Rotate180FlipNone);
-            image_left_hovered.RotateFlip(RotateFlipType.Rotate180FlipNone);
-
             buttons = new List<ButtonParent> {
-                new Button_("Exit", Management_res.Exit, new Size(100, 40), new Point(135, 505)),
-
-                new Button_("Right_", Management_res.But_arrow, Management_res.But_arrow_hovered, Management_res.But_arrow_hovered, 
-                new Size(40, 40), new Point(500, 400)),
-
-                new Button_("Left_", image_left, image_left_hovered, image_left_hovered, 
-                new Size(40, 40), new Point(450, 400)),
+                new Button_("Exit", Management_res.Exit, new Size(100, 40), new Point(135, 505))
             };
-
-            PullSaves();
-        }
-
-        public void PullSaves()
-        {
-            saveData_Buttons.Add(new SaveData_but("SaveDataBut", new Point(60, 60), null));
-
-            foreach (var save in Saves.game_Saves)
-            {
-                saveData_Buttons.Add(new SaveData_but("SaveDataBut", new Point(60, 60), save));
-            }
         }
 
 
@@ -52,44 +31,38 @@ namespace Terraria_sMario.Classes.Management.Screens
         {
             DesignElementsStatic.FillScreenWithColor(g, Brushes.LightBlue);
             buttons.ForEach(x => x.Draw(g));
+
+            gameplay?.Draw(g);
         }
-
-
+        
+        // Mouse Control
 
         public override void MouseClick(MouseEventArgs e)
         {
             buttons.ForEach(x => x.MouseClick(e.X, e.Y));
 
             if (isButtonClicked("Exit"))
-            {
-                ScreenControl.ChangeScreen(new MenuScreen());
-            }
+                ScreenControl.ChangeScreen(new ChooseSaveScreen());
         }
 
         public override void MouseMove(MouseEventArgs e) => buttons.ForEach(x => x.MouseOn(e.X, e.Y));
 
 
-
         public override void Update()
         {
+            if (Saves.activeSaveData == null) ScreenControl.ChangeScreen(new ChooseSaveScreen());
+            if (gameplay?.activeLevel == null) gameplay = null;
+            gameplay?.Update();
         }
 
-        public override void KeepMainPlayerInTheCenter()
-        {
-        }
+        // Only Gameplay's Voids
 
-        public override void checkField()
-        {
+        public override void checkField() => gameplay?.checkField();
 
-        }
+        public override void KeepMainPlayerInTheCenter() => gameplay?.KeepMainPlayerInTheCenter();
 
-        public override void KeyboardListenerKeyDown(KeyEventArgs e)
-        {
-        }
+        public override void KeyboardListenerKeyDown(KeyEventArgs e) => gameplay?.KeyboardListenerKeyDown(e);
 
-        public override void KeyboardListenerKeyUp(KeyEventArgs e)
-        {
-        }
-
+        public override void KeyboardListenerKeyUp(KeyEventArgs e) => gameplay?.KeyboardListenerKeyUp(e);
     }
 }

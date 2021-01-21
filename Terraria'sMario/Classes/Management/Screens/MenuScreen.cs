@@ -47,11 +47,11 @@ namespace Terraria_sMario.Classes.Management.Screens
 
             if (isButtonClicked("New_game"))
             {
-                ScreenControl.ChangeScreen(new GameScreen());
+                ScreenControl.ChangeScreen(new ChooseSaveScreen());
             }
             else if (isButtonClicked("Continue"))
             {
-                ScreenControl.ChangeScreen(new GameScreen());
+                ScreenControl.ChangeScreen(new ChooseSaveScreen());
             }
             else if (isButtonClicked("Settings"))
             {

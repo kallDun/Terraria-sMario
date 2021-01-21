@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Terraria_sMario.Classes.Logic.Objects.Creatures;
@@ -23,6 +24,7 @@ namespace Terraria_sMario.Classes.Save_System
 
         public void updatePlayers(List<Player> players) => this.players = players;
 
+        public int getRoundPlayersLevel() => (int) Math.Round(getPlayerLevels().Average());
 
         public List<Image> getPlayerImages() => players.Select(x => x.drawingImage).ToList();
 

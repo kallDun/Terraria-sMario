@@ -10,27 +10,37 @@ using Terraria_sMario.Classes.Logic.Objects.Items.Bombs;
 using Terraria_sMario.Classes.Logic.Objects.Items.Potions;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns;
 using Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords;
+using Terraria_sMario.Classes.Save_System;
 using static Terraria_sMario.Classes.Logic.Parameters;
 
 namespace Terraria_sMario.Classes.Logic.Levels
 {
     class TestLevel_1 : Level
     {
-        public TestLevel_1 ()
+        public TestLevel_1 (SaveData saveData)
         {
-            var player = new Hero(480, 100, "Player_1", 1);
-            levelObjects.Add(player);
-            players.Add(player);
+            foreach (var player in saveData.players)
+            {
+                levelObjects.Add(player);
+                players.Add(player);
+            }
 
+            var needLevel = saveData.getRoundPlayersLevel() + 
+                (saveData.Difficult == DifficultTypes.Easy ? -1 : saveData.Difficult == DifficultTypes.Normal ? 0 :
+                saveData.Difficult == DifficultTypes.Hard ? 1 : saveData.Difficult == DifficultTypes.Hardcore ? 2 : 0);
 
-            /*var skelet2 = new SkeletonBasic(800, 100);
+            // Mobs
+
+            /*var skelet2 = new SkeletonBasic(800, 100, needLevel);
             levelObjects.Add(skelet2);
 
-            var skelet3 = new SkeletonHealer(1400, 100);
+            var skelet3 = new SkeletonHealer(1400, 100, needLevel);
             levelObjects.Add(skelet3);*/
 
-            var skelet = new SkeletonArcher(900, 100);
+            var skelet = new SkeletonArcher(900, 100, needLevel);
             levelObjects.Add(skelet);
+
+            // Items
 
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
@@ -56,10 +66,9 @@ namespace Terraria_sMario.Classes.Logic.Levels
             var coin = new Coin(1750, 350);
             levelObjects.Add(coin);
 
-            /*var sword = new Sword(580, 100);
-            levelObjects.Add(sword);*/
+            // Field & Buildings
 
-            fieldSize = new Size(100, 100);
+            fieldSize = new Size(100, 100); // in blocks
 
             int height_down = fieldSize.Height;
             int height_1 = 8;

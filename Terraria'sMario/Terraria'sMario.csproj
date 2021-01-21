@@ -129,7 +129,9 @@
     <Compile Include="Classes\Management\Design Elements\Menu Background.cs" />
     <Compile Include="Classes\Management\Interaction Elements\ButtonParent.cs" />
     <Compile Include="Classes\Management\Interaction Elements\Button_.cs" />
+    <Compile Include="Classes\Management\Interaction Elements\LevelButton.cs" />
     <Compile Include="Classes\Management\Interaction Elements\SaveData_but.cs" />
+    <Compile Include="Classes\Management\Screens\ChooseSaveScreen.cs" />
     <Compile Include="Classes\Management\Screens\GameScreen.cs" />
     <Compile Include="Classes\Management\Screens\MenuScreen.cs" />
     <Compile Include="Classes\Management\Screens\OptionScreen.cs" />
@@ -550,10 +552,13 @@
     <None Include="Resources\Margin_in.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Border.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\UnknownMan.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Border.png" />
+    <None Include="Resources\Border_Hovered.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

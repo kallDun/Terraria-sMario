@@ -32,7 +32,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
         // Level System
 
         public float damage_amplification { get; protected set; } = 1;
-        public int level { get; protected set; }
+        public int level { get; protected set; } = 1;
 
         // Drawing UI & Animations
 

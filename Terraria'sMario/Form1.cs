@@ -11,16 +11,13 @@ namespace Terraria_sMario
         public Form1()
         { 
             InitializeComponent();
-            //KeyDown += (s, e) => gameplay.KeyboardListenerKeyDown(e);
-            //KeyDown += (s, e) => ScreenControl.Screen.KeyboardListenerKeyDown(e);
+            KeyDown += (s, e) => ScreenControl.Screen.KeyboardListenerKeyDown(e);
         }
 
-        private Gameplay gameplay;
         private Graphics g;
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            gameplay = new Gameplay();
             update.Start();
             draw.Start();
             checkCamera.Start();
@@ -33,45 +30,22 @@ namespace Terraria_sMario
             g = Graphics.FromImage(pictureBox1.Image);
 
             ScreenControl.Screen.Draw(g);
-            //gameplay.Draw(g);
 
             pictureBox1.Refresh();
         }
 
-        private void update_Tick(object sender, EventArgs e) 
-        { 
-            //gameplay.Update();
-            ScreenControl.Screen.Update();
-        }
+        private void update_Tick(object sender, EventArgs e) => ScreenControl.Screen.Update();
 
-        private void checkField_Tick(object sender, EventArgs e) 
-        { 
-            //gameplay.checkField();
-            ScreenControl.Screen.checkField();
-        }
+        private void checkField_Tick(object sender, EventArgs e) => ScreenControl.Screen.checkField();
 
-        private void checkCamera_Tick(object sender, EventArgs e) 
-        { 
-            //gameplay.KeepMainPlayerInTheCenter();
-            ScreenControl.Screen.KeepMainPlayerInTheCenter();
-        }
+        private void checkCamera_Tick(object sender, EventArgs e) => ScreenControl.Screen.KeepMainPlayerInTheCenter();
 
         // KEYBOARD LISTENER
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e) 
-        { 
-            //gameplay.KeyboardListenerKeyUp(e);
-            ScreenControl.Screen.KeyboardListenerKeyUp(e);
-        }
+        private void Form1_KeyUp(object sender, KeyEventArgs e) => ScreenControl.Screen.KeyboardListenerKeyUp(e);
 
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            ScreenControl.Screen.MouseMove(e);
-        }
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e) => ScreenControl.Screen.MouseMove(e);
 
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            ScreenControl.Screen.MouseClick(e);
-        }
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e) => ScreenControl.Screen.MouseClick(e);
     }
 }

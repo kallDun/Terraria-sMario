@@ -2,17 +2,36 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Terraria_sMario.Classes.Logic.Levels;
+using Terraria_sMario.Classes.Save_System;
 
 namespace Terraria_sMario.Classes
 {
     class Gameplay
     {
-        private Level activeLevel;
+        // Fields & Costrustor
 
-        public Gameplay()
+        public Level activeLevel { get; private set; }
+
+        public Gameplay(int levelNumber)
         {
-            activeLevel = new TestLevel_1 ();
+            activeLevel = getActiveLevelByNumber(levelNumber);
         }
+
+        // Level calls
+
+        public Level getActiveLevelByNumber(int levelNumber)
+        {
+            switch (levelNumber)
+            {
+                case 1:
+                    return new TestLevel_1(Saves.activeSaveData);
+
+                default:
+                    return null;
+            }
+        }
+
+        // Threads
 
         public void Update() => activeLevel?.Update();
 
