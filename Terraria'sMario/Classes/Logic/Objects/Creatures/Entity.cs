@@ -50,6 +50,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (type == inAir && (activeAnimation?.type == Walking || activeAnimation?.type == Running) || 
                 (type == Walking || type == Running) && activeAnimation?.type == inAir) type = inAirWalking;
 
+            if ((type == Walking || type == Running || type == inAir || type == inAirWalking) 
+                && (activeAnimation?.type == Hitting || activeAnimation?.type == Shooting)) return;
 
             if (weaponInHand == null) setStandartAnimation(type);
             else
