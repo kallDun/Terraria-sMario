@@ -4,7 +4,7 @@ using Terraria_sMario.Classes.Logic.Objects.Creatures.Animations;
 using Terraria_sMario.Images;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.EntityTypes;
 using static Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes;
-using static Terraria_sMario.Images.EnemiesWithWeapons_res;
+using static Terraria_sMario.Images.PlayersWithWeapons_res;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
@@ -51,7 +51,20 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
                         AnimationBeat_3, AnimationBeat_3, 
                         AnimationBeat_2, AnimationBeat_2 }, Hitting, skipFrames: 2),
 
-                    new EntityAnimation(new List<Image>{ }, Standing, skipFrames: 4)
+                    new EntityAnimation(new List<Image>{ }, Standing, skipFrames: 4),
+
+                    new EntityAnimation(new List<Image>
+                    {  Sherif_WithStandartSword_Walking_1, Sherif_WithStandartSword_Walking_2,
+                       Sherif_WithStandartSword_Walking_3, Sherif_WithStandartSword_Walking_4,
+                       Sherif_WithStandartSword_Walking_3, Sherif_WithStandartSword_Walking_2
+                    }, Walking, skipFrames: 6),
+                    
+                    new EntityAnimation(new List<Image>
+                    {  Sherif_WithStandartSword_Walking_1, Sherif_WithStandartSword_Walking_2,
+                       Sherif_WithStandartSword_Walking_3, Sherif_WithStandartSword_Walking_4,
+                       Sherif_WithStandartSword_Walking_3, Sherif_WithStandartSword_Walking_2
+                    }, Running, skipFrames: 4),
+
                 })
             };
     }

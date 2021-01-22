@@ -44,6 +44,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         public void setAnimation(EntityAnimationTypes type) // Animation SET
         {
+            // Animation rules
+            if (type == Walking && EntityState == EntityStates.Sitting) type = WalkingSquat;
+
+            if (type == inAir && (activeAnimation?.type == Walking || activeAnimation?.type == Running) || 
+                (type == Walking || type == Running) && activeAnimation?.type == inAir) type = inAirWalking;
+
+
             if (weaponInHand == null) setStandartAnimation(type);
             else
             {
@@ -63,8 +70,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
 
         private void setStandartAnimation(EntityAnimationTypes type)
         {
-            if (type == Walking && EntityState == EntityStates.Sitting) type = WalkingSquat;
-
             activeAnimation = animations.Find(x => x.type == type);
 
             if (type == Standing && EntityState != EntityStates.Standing) activeAnimation = null;
@@ -315,6 +320,13 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (!canFly)
             {
                 gravitationService.updateGravitation(this, objects);
+            }
+            if (!gravitationService.canJump(objects, this))
+            {
+                if (gravitationService.isLadder(objects, this) && gravitationService.acceler <= 0)
+                    setAnimation(useLadder);
+                else 
+                    setAnimation(inAir);
             }
         }
 

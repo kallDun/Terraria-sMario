@@ -59,9 +59,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
 
                 new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Standing),
 
-                new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Jumping),
+                new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Dead),
+                
+                new EntityAnimation(new List<Image> { sherif_jumped, sherif_jumped }, EntityAnimationTypes.inAir, 4),
 
-                new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Dead)
+                new EntityAnimation(new List<Image> { sherif_Jumped_in_the_walk, sherif_Jumped_in_the_walk }, EntityAnimationTypes.inAirWalking, 4),
             };
         }
 

@@ -8,7 +8,7 @@ namespace Terraria_sMario.Classes.Logic.Services
 {
     class GravitationService
     {
-        private double acceler = 0;
+        public double acceler { get; private set; } = 0;
 
         public void updateGravitation(ParentObject self, in List<ParentObject> objects)
         {
@@ -19,12 +19,11 @@ namespace Terraria_sMario.Classes.Logic.Services
             // set offset
             int offsetY = (int)Math.Round(acceler);
 
+            
 
-            Predicate<ParentObject> predicate = delegate (ParentObject obj) { return obj is LadderBlock; };
-            var ladder = CheckNearObjectByPredicationService.getNearObject(objects, self, predicate);
-
-            if (ladder != null && offsetY < 0)
+            if (isLadder(objects, self) && offsetY < 0)
             {
+                // use ladder
                 var offset_temp = -5;
                 var testCoords = new Point(self.coords.X, self.coords.Y + offset_temp);
                 if (!IntersectionService.isBlockIntersectSomething
@@ -75,19 +74,34 @@ namespace Terraria_sMario.Classes.Logic.Services
 
         public void tryToJump(in List<ParentObject> objects, ParentObject self,  int jumpHeight)
         {
-            Predicate<ParentObject> predicate = delegate (ParentObject obj) { 
-                return obj is LadderBlock; // jump ladder rule
-            };
+            if (canJump(objects, self))
+                acceler = jumpHeight;
 
+            if (isLadder(objects, self)) 
+                acceler = jumpHeight;
+        }
+
+        public bool canJump(in List<ParentObject> objects, ParentObject self)
+        {
             var area = new AbstractObject(
                 self.coords,
                 new Size(self.size.Width, self.size.Height + 1));
 
-            if (IntersectionService.isBlockIntersectSomething(area, self, objects))
-                acceler = jumpHeight;
+            return IntersectionService.isBlockIntersectSomething(area, self, objects);
+        }
 
+        public bool isLadder(in List<ParentObject> objects, ParentObject self)
+        {
+            var area = new AbstractObject(
+                self.coords,
+                new Size(self.size.Width, self.size.Height + 1));
+
+            Predicate<ParentObject> predicate = delegate (ParentObject obj) {
+                return obj is LadderBlock; // jump ladder rule
+            };
             var blockDown = CheckNearObjectByPredicationService.getNearObject(objects, area, predicate);
-            if (blockDown != null) acceler = jumpHeight;
+
+            return (blockDown != null);
         }
     }
 }

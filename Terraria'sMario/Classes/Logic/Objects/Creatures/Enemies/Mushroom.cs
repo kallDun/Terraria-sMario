@@ -35,7 +35,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Walking),
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Standing),
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Running),
-                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Jumping),
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Hitting),
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Dead)            
             };

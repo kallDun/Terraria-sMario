@@ -73,7 +73,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons
                     Skeleton_walking_2, Skeleton_walking_4,
                     Skeleton_walking_2 }, EntityAnimationTypes.Running, skipFrames: 2),
 
-                new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Jumping),
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Hitting),
                 new EntityAnimation(new List<Image>{ /*animation pictures*/ }, EntityAnimationTypes.Dead)
             };

@@ -560,5 +560,44 @@
   <ItemGroup>
     <None Include="Resources\Border_Hovered.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimationBeat_51.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sherif_WithStandartSword_Walking_41.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

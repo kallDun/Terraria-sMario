@@ -63,7 +63,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies
 
         public override void Jump(in List<ParentObject> objects)
         {
-            setAnimation(Jumping);
             base.Jump(objects);
         }
 

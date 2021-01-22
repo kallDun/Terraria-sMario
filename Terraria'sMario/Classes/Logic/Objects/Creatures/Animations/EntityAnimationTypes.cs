@@ -2,7 +2,7 @@
 {
     enum EntityAnimationTypes
     {
-        Standing, Walking, Running, Sitting, Dead, Jumping,
+        Standing, Walking, Running, Sitting, Dead, inAir, inAirWalking, useLadder,
         
         Hitting, Shooting,
 
