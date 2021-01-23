@@ -33,6 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WMPLib.1.0.0\lib\AxInterop.WMPLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WMPLib.1.0.0\lib\Interop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -140,6 +147,8 @@
     <Compile Include="Classes\Save System\DifficultTypes.cs" />
     <Compile Include="Classes\Save System\SaveData.cs" />
     <Compile Include="Classes\Save System\Saves.cs" />
+    <Compile Include="Classes\Sound\Sound.cs" />
+    <Compile Include="Classes\Sound\SoundType.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +207,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sound_res\Ambient_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ambient_res.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sound_res\Music_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Music_res.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sound_res\Sound_res.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sound_res.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +274,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Sound_res\Ambient_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Ambient_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sound_res\Music_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Music_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sound_res\Sound_res.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Sound_res.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -598,6 +635,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sherif_WithStandartSword_Walking_41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\smth.mp3" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
