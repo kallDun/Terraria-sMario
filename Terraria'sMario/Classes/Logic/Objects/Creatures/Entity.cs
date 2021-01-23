@@ -53,6 +53,9 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if ((type == Walking || type == Running || type == inAir || type == inAirWalking) 
                 && (activeAnimation?.type == Hitting || activeAnimation?.type == Shooting)) return;
 
+            if ((type == inAir || type == inAirWalking) && activeAnimation?.type == EntityAnimationTypes.Jump) return;
+
+            // set animation
             if (weaponInHand == null) setStandartAnimation(type);
             else
             {
@@ -339,7 +342,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures
             if (EntityState != EntityStates.Standing) return;
             if (Effect.isEffectInList(effects, EffectTypes.Stunning)) return;
 
-            gravitationService.tryToJump(objects, this, jumpHeight);
+            if (gravitationService.tryToJump(objects, this, jumpHeight)) 
+                setAnimation(EntityAnimationTypes.Jump);
         }
 
         public virtual int moveRightOrLeft(in List<ParentObject> objects, int direction, bool run = false) 

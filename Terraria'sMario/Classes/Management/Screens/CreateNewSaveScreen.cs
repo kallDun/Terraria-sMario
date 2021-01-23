@@ -11,76 +11,55 @@ using Terraria_sMario.Images;
 
 namespace Terraria_sMario.Classes.Management.Screens
 {
-    class MenuScreen : ScreenParent
+    class CreateNewSaveScreen : ScreenParent
     {
-        private Menu_Background menu_Background = new Menu_Background();
 
-        public MenuScreen()
+        // constructor
+        public CreateNewSaveScreen()
         {
             buttons = new List<ButtonParent> {
-                new Button_("New_game", Management_res.New_game, new Size(175, 40), new Point(135, 235)),
-                new Button_("Continue", Management_res.Continue, new Size(175, 40), new Point(135, 325)),
-                new Button_("Settings", Management_res.Settings, new Size(175, 40), new Point(135, 415)),
                 new Button_("Exit", Management_res.Exit, new Size(100, 40), new Point(135, 505)),
             };
+
         }
 
         public override void Draw(Graphics g)
         {
             DesignElementsStatic.FillScreenWithColor(g, Brushes.LightBlue);
-            menu_Background.Draw(g);
             buttons.ForEach(x => x.Draw(g));
         }
 
-        
-
         public override void Update()
         {
-            
+
         }
 
-        public override void MouseMove(MouseEventArgs e) => buttons.ForEach(x => x.MouseOn(e.X, e.Y));
-
+        // mouse
         public override void MouseClick(MouseEventArgs e)
         {
             buttons.ForEach(x => x.MouseClick(e.X, e.Y));
 
-            if (isButtonClicked("New_game"))
+            if (isButtonClicked("Exit"))
             {
-                ScreenControl.ChangeScreen(new CreateNewSaveScreen());
-            }
-            else if (isButtonClicked("Continue"))
-            {
-                ScreenControl.ChangeScreen(new ChooseSaveScreen());
-            }
-            else if (isButtonClicked("Settings"))
-            {
-                ScreenControl.ChangeScreen(new OptionScreen());
-            }
-            else if (isButtonClicked("Exit"))
-            {
-                Application.Exit();
+                ScreenControl.ChangeScreen(new MenuScreen());
             }
         }
 
+        public override void MouseMove(MouseEventArgs e) => buttons.ForEach(x => x.MouseOn(e.X, e.Y));
 
-        // Useless in this class
 
+        // useless voids
         public override void checkField()
         {
         }
-
         public override void KeepMainPlayerInTheCenter()
         {
         }
-
         public override void KeyboardListenerKeyDown(KeyEventArgs e)
         {
         }
-
         public override void KeyboardListenerKeyUp(KeyEventArgs e)
         {
         }
-
     }
 }

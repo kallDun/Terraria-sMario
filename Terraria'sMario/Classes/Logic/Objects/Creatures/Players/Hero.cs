@@ -57,6 +57,11 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Players
                     sherif_beat_1, sherif_beat_2,
                     sherif_beat_3, sherif_beat_4 }, EntityAnimationTypes.Hitting, 4),
 
+                new EntityAnimation(new List<Image> {
+                    sherif_to_land, sherif_to_land2,
+                    sherif_to_land3, sherif_to_land2
+                     }, EntityAnimationTypes.Jump, 2),
+
                 new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Standing),
 
                 new EntityAnimation(new List<Image> { /*animation pictures*/ }, EntityAnimationTypes.Dead),

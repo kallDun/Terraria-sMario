@@ -72,13 +72,18 @@ namespace Terraria_sMario.Classes.Logic.Services
             self.setNewCoords(test_coord);
         }
 
-        public void tryToJump(in List<ParentObject> objects, ParentObject self,  int jumpHeight)
+        public bool tryToJump(in List<ParentObject> objects, ParentObject self,  int jumpHeight)
         {
             if (canJump(objects, self))
+            {
                 acceler = jumpHeight;
+                return true;
+            }
 
             if (isLadder(objects, self)) 
                 acceler = jumpHeight;
+
+            return false;
         }
 
         public bool canJump(in List<ParentObject> objects, ParentObject self)

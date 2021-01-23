@@ -83,6 +83,10 @@ namespace Terraria_sMario.Classes.Management.Screens
                 Saves.activeSaveData = saveData_Buttons[saveData_Buttons_on].saveData;
                 ScreenControl.ChangeScreen(new GameScreen());
             }
+            else if (isButtonClicked("SaveDataBut_New"))
+            {
+                ScreenControl.ChangeScreen(new CreateNewSaveScreen());
+            }
         }
 
         public override void MouseMove(MouseEventArgs e) => buttons.ForEach(x => x.MouseOn(e.X, e.Y));

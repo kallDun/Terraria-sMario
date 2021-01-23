@@ -143,6 +143,36 @@ namespace Terraria_sMario.Images {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sherif_to_land {
+            get {
+                object obj = ResourceManager.GetObject("sherif_to_land", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sherif_to_land2 {
+            get {
+                object obj = ResourceManager.GetObject("sherif_to_land2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sherif_to_land3 {
+            get {
+                object obj = ResourceManager.GetObject("sherif_to_land3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap sherifwent1 {
             get {
                 object obj = ResourceManager.GetObject("sherifwent1", resourceCulture);
@@ -176,36 +206,6 @@ namespace Terraria_sMario.Images {
         internal static System.Drawing.Bitmap sherifwent4 {
             get {
                 object obj = ResourceManager.GetObject("sherifwent4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap to_land {
-            get {
-                object obj = ResourceManager.GetObject("to_land", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap to_land2 {
-            get {
-                object obj = ResourceManager.GetObject("to_land2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap to_land3 {
-            get {
-                object obj = ResourceManager.GetObject("to_land3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

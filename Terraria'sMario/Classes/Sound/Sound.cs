@@ -11,9 +11,9 @@ namespace Visual_Novel_Engine
         public bool isPlaying { get; private set; } = false;
         public SoundType type { get; private set; }
 
-        public Sound(string URL, SoundType type = SoundType.Sound)
+        public Sound(string URL_, SoundType type = SoundType.Sound)
         {
-
+            wplayer.URL = $@"{Environment.CurrentDirectory}\{URL_}";
             wplayer.controls.stop();
 
             this.type = type;
@@ -24,22 +24,16 @@ namespace Visual_Novel_Engine
 
         private void setVolume()
         {
-            if (type == SoundType.Music)
-            {
-                wplayer.settings.volume = 10;
-            }
-            else if (type == SoundType.AmbientSound)
-            {
-                wplayer.settings.volume = 10;
-            }
-            else if (type == SoundType.Sound)
-            {
-                wplayer.settings.volume = 10;
-            }
+            wplayer.settings.volume =
+                type == SoundType.Music ? SoundParameters.music_volume_level :
+                type == SoundType.AmbientSound ? SoundParameters.ambient_volume_level :
+                type == SoundType.Sound ? SoundParameters.sound_volume_level : 100;
         }
 
         public void Play()
         {
+            if (wplayer.playState == WMPLib.WMPPlayState.wmppsPlaying) return;
+
             wplayer.controls.play();
             isPlaying = true;
         }

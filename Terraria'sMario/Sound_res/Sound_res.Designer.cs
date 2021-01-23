@@ -59,15 +59,5 @@ namespace Terraria_sMario.Sound_res {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        internal static byte[] smth {
-            get {
-                object obj = ResourceManager.GetObject("smth", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }
