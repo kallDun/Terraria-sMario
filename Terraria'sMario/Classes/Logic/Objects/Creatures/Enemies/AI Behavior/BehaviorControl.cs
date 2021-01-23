@@ -20,7 +20,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
         private double jump_seconds_max = 0.5;
         private int jump_direction;
 
-
         private List<BehaviorUnitFinding> findingBehaviourList;
         private int findBehaveList_on = 0;
         private List<Entity> found_enemies = new List<Entity> { }; // Враги
@@ -31,10 +30,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
         private double found_seconds_now = 0;
         private double found_seconds_max = 10;
 
-
         private List<BehaviorUnitCombat> combatBehaviourList;
         private int combatBehaveList_on = 0;
-
 
         public BehaviorControl(
             List<BehaviorUnitMoving> movingBehaviourList,
@@ -59,7 +56,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
             {
                 MovingSystem(enemy, objects);
             }
-            
             SearchSystem(enemy, objects);
             TrackingHealthSystem(enemy);
         }
@@ -124,7 +120,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                 lastMove = enemy.moveRightOrLeft(objects, jump_direction);
             }
         }
-
 
         private void CombatSystem(Enemy enemy, List<ParentObject> objects)
         {
@@ -282,10 +277,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
             }
         }
 
-
-
         // Слежка за показателем здоровья
-
         private double? health;
 
         private void TrackingHealthSystem(Enemy enemy)
@@ -307,13 +299,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior
                             foreach (var item in combatBehaviourList)
                                 item.restartUnit();
                         }
-
                     }
                 }
             }
-
             health = enemy.health;
         }
-
     }
 }

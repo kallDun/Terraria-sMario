@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Terraria_sMario.Classes.Logic.Objects
 {
@@ -33,7 +30,6 @@ namespace Terraria_sMario.Classes.Logic.Objects
 
         public void addDuration(double duration) => this.duration += duration;
 
-
         public static bool isEffectInList(List<Effect> effects, EffectTypes effectType)
         {
             foreach (var effect in effects)
@@ -42,6 +38,5 @@ namespace Terraria_sMario.Classes.Logic.Objects
             }
             return false;
         }
-
     }
 }

@@ -11,7 +11,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
 {
     class Basic_Sword : Weapon
     {
-
         public Basic_Sword(int X = 0, int Y = 0)
         {
             coords = new Point(X, Y);
@@ -37,8 +36,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
             drawingImage = Items_res.Sword;
             smallImage_inInventory = Items_res.Basic_Sword_Inventory;
 
-            // animations
-
+            // Animations
             entityWeaponAnimations = new List<EntityWeaponAnimation> 
             {
                 // for Hero
@@ -64,10 +62,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords
                        Sherif_WithStandartSword_Walking_3, Sherif_WithStandartSword_Walking_4,
                        Sherif_WithStandartSword_Walking_3, Sherif_WithStandartSword_Walking_2
                     }, Running, skipFrames: 4),
-
                 })
             };
-    }
-
+        }
     }
 }

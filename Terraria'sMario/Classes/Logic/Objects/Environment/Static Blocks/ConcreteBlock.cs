@@ -11,7 +11,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks
             size = new Size(Parameters.blockSize, Parameters.blockSize);
             drawingImage = StaticBlocks_res.concrete;
         }
-
         public ConcreteBlock(int X, int Y)
         {
             coords = new Point(X, Y);

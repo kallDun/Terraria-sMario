@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Terraria_sMario.Classes.Logic.Objects.Creatures.Items;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Items.Armor

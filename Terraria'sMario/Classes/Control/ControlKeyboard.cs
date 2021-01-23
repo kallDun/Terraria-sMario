@@ -16,8 +16,6 @@ namespace Terraria_sMario.Classes.Control
         public bool isHealing_player1 { get; private set; } = false;
         public bool isShooting_player1 { get; private set; } = false;
 
-
-
         public void KeyPress(KeyEventArgs e, List<Player> players, in List<ParentObject> objects)
         {
             if (checkOnPressedLeft(e)) isWentLeft_player1 = true;
@@ -40,8 +38,6 @@ namespace Terraria_sMario.Classes.Control
                 iskeyDown__Inv_dropItem: e.KeyCode == Keys.H,
                 show_hide__inventory: e.KeyCode == Keys.T);
         }
-
-
         public void KeyUp(KeyEventArgs e)
         {
             if (checkOnPressedLeft(e)) isWentLeft_player1 = false;
@@ -52,8 +48,6 @@ namespace Terraria_sMario.Classes.Control
             if (checkOnPressedR(e)) isShooting_player1 = false;
             isPressedShift_player1 = checkOnPressedShift(e);
         }
-
-        
 
         public void updateMove(List<Player> players, in List<ParentObject> objects)
         {

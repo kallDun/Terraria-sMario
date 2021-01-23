@@ -18,7 +18,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
     abstract class Level
     {
         // fields
-
         public List<ParentObject> levelObjects { get; protected set; } = new List<ParentObject> { };
         
         public List<ParentObject> objectsInTheView { get; protected set; } = new List<ParentObject> { };
@@ -28,7 +27,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
         public Size fieldSize { get; protected set; }
 
         // threads
-
         public void Draw(Graphics g)
         {
             // Background blocks
@@ -102,7 +100,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
                     levelObjects.Remove(item);
                 }
             }
-
         }
 
         public void KeepMainObjectInTheCenter()
@@ -131,7 +128,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
         }
 
         // field offset
-
         private void offsetAllObjectsInPosition(int offSetX, int offSetY)
         {
             foreach (var obj in levelObjects)
@@ -141,12 +137,10 @@ namespace Terraria_sMario.Classes.Logic.Levels
         }
 
         // listeners to control player
-
         private ControlKeyboard controlKeyboard = new ControlKeyboard();
 
         public void KeyboardListenerPressed(KeyEventArgs e) => controlKeyboard.KeyPress(e, players, objectsInTheView);
 
         public void KeyboardListenerReleased(KeyEventArgs e) => controlKeyboard.KeyUp(e);
-
     }
 }

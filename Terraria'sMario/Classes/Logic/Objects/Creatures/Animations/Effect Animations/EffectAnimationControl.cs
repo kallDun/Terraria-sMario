@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations
 {
     class EffectAnimationControl

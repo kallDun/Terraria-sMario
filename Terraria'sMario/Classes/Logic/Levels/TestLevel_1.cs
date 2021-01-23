@@ -30,7 +30,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
                 saveData.Difficult == DifficultTypes.Hard ? 1 : saveData.Difficult == DifficultTypes.Hardcore ? 2 : 0);
 
             // Mobs
-
             /*var skelet2 = new SkeletonBasic(800, 100, needLevel);
             levelObjects.Add(skelet2);
 
@@ -41,7 +40,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(skelet);
 
             // Items
-
             var item = new Basic_Sword(520, 250);
             levelObjects.Add(item);
 
@@ -67,7 +65,6 @@ namespace Terraria_sMario.Classes.Logic.Levels
             levelObjects.Add(coin);
 
             // Field & Buildings
-
             fieldSize = new Size(100, 100); // in blocks
 
             int height_down = fieldSize.Height;
@@ -86,10 +83,8 @@ namespace Terraria_sMario.Classes.Logic.Levels
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_2, width_1,  width_2);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_3, width_2,  width_3);
             BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_4, width_3,  width_4);
-            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4,  width_5);
-
+            BuildingStatic.fillFieldWithGrass(levelObjects, height_down, height_5, width_4,  width_5)
             BuildingStatic.BuildBrickHouse(levelObjects, 1750, 500, BuildingTypes.Medium);
-
             BuildingStatic.BuildBlockOfFlats(levelObjects, 1100, 450, BuildingTypes.Large);
         }
     }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_System
 {
@@ -29,9 +26,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_Syst
             {
                 list = list.Concat(item.getItem(coords, objects)).ToList();
             }
-
             return list;
         }
-
     }
 }

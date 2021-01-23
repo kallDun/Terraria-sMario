@@ -639,5 +639,14 @@
   <ItemGroup>
     <None Include="Resources\smth.mp3" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\to_land.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\to_land2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\to_land3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

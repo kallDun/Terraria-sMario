@@ -56,11 +56,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
                 if (direction == 1) return ActionType.MoveRight;
                 else return ActionType.MoveLeft;
             }
-
             return ActionType.Stand;
         }
-
-
-
     }
 }

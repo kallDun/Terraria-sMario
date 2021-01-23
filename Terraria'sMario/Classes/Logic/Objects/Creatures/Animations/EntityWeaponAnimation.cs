@@ -18,8 +18,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Animations
             this.animations = animations;
         }
 
-
-
         public static EntityWeaponAnimation getAnimationsToEntity(List<EntityWeaponAnimation> entityWeaponAnimations, EntityTypes entityType)
         {
             foreach (var animation in entityWeaponAnimations)

@@ -16,6 +16,7 @@ namespace Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.T
         protected Image transparentImage_35perc; // 2
         protected Image transparentImage_50perc; // 1
         protected Image transparentImage_80perc; // usual, 0
+
         public bool isPlayerIn { get; private set; } = false;
 
         public int translucentNow { get; private set; } = 0;

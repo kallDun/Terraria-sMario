@@ -145,10 +145,8 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
                     }
                     else
                         return ActionType.Heal;
-                }    
-
+                }
             }
-
             return ActionType.None;
         }
     }

@@ -8,7 +8,6 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
 {
     static class UI_Drawing_Static
     {
-
         public static void DrawHealth(Graphics g, Point coord, float health, 
             float maxHealth, int heartsInRow, bool y_dir = true, bool isBig = false) // y_dir = true is up, false is down 
         {
@@ -135,7 +134,6 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
             brush, rect, stringFormat);
         }
 
-
         private static Image getEffectImage(EffectTypes effect)
         {
             switch (effect)
@@ -156,6 +154,5 @@ namespace Terraria_sMario.Classes.Logic.DrawingElements
                     return null;
             }
         }
-
     }
 }

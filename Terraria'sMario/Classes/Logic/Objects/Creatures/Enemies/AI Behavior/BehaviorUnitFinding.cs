@@ -53,7 +53,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             return new List<Entity>{};
         }
 
-
         public List<Entity> UpdateEllies(List<ParentObject> objects, Enemy enemy) =>
             CheckEntityService.searchAllEntities(objects, enemy, 20 * Parameters.blockSize, isEverywhere: true, isEnemy: false);
 
@@ -71,14 +70,12 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
         }
 
         // Усиленный тип поиска в случае нанесения урона
-
         private double forcedType_seconds_Max = 5;
         private double forcedType_seconds_Now = 0;
         private bool isForcedTypeActive = false;
 
         BehaviorTypes last_behaviorType;
         private int last_radius;
-
 
         private void forcedTypeUpdateTimer()
         {
@@ -109,7 +106,5 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior
             behaviorType = BehaviorTypes.SearchingEverywhere;
             radius = 12 * Parameters.blockSize;
         }
-
-        
     }
 }

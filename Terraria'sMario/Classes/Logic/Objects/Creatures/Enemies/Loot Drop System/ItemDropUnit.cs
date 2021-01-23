@@ -57,13 +57,10 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_Syst
 
                 item = null;
             }
-
             return list;
         }
 
-
         // set item in the world
-
         private int radius = Parameters.blockSize; // block to the right & block to the left
 
         private ParentObject tryToSetItem(ParentObject item, List<ParentObject> objects)
@@ -84,7 +81,6 @@ namespace Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_Syst
                     return item;
                 }
             }
-
             return item;
         }
     }
