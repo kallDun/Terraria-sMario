@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Terraria_sMario.Classes.Logic.DrawingElements.UI_Drawing_Static" Collapsed="true">
+    <Position X="67.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAABAAAAAAAAAAAAAgAAEAAAAAAAAAAAAAAEE=</HashCode>
+      <FileName>Classes\Logic\DrawingElements\UI_Drawing_Static.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Features.UI_Entity_Draw" Collapsed="true">
+    <Position X="69.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAIgAAEgggAAAQAEABEAAElAEACAYAhAAAAIEk=</HashCode>
+      <FileName>Classes\Logic\DrawingElements\UI_Entity_Draw.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Services.CheckDistanceBetweenObjectsService" Collapsed="true">
+    <Position X="69.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABABAAAAAAAAAAAAABAAAIAAAAAAAAAAIA=</HashCode>
+      <FileName>Classes\Logic\Services\CheckDistanceBetweenObjectsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Services.CheckEntityService" Collapsed="true">
+    <Position X="64" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAgAAAAAIAAAAABAACAQAAAAgBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Services\CheckEntityService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Services.CheckNearObjectByPredicationService" Collapsed="true">
+    <Position X="65.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Services\CheckNearObjectByPredicationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Services.GravitationService" Collapsed="true">
+    <Position X="65.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAQAAAgABACAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Services\GravitationService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Services.IntersectionService" Collapsed="true">
+    <Position X="67.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAEAAAAAAAAAAAAAAAABAAIAAAAgAAAAA=</HashCode>
+      <FileName>Classes\Logic\Services\IntersectionService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Levels.Level" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAEAAoAAgAAAQAIAAAAAAAAAAACIAiAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Levels\Level.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Levels.TestLevel_1" Collapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Levels\TestLevel_1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Levels.LevelBuilding.BuildingStatic" Collapsed="true">
+    <Position X="65.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAIAAAQAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Levels\LevelBuilding\BuildingStatic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.AbstractObject" Collapsed="true">
+    <Position X="25.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\AbstractObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Effect" Collapsed="true">
+    <Position X="67.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAKAAAAAAAAIAAAAAAAQAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Features\Effect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Coin" Collapsed="true">
+    <Position X="54.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAoA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Coin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.ParentObject" Collapsed="true">
+    <Position X="33.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAABAAAAAQAAwAAAIAAQAAAAABAAAAAAQAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\ParentObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.AbstractEntity" Collapsed="true">
+    <Position X="23.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\AbstractEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Entity" Collapsed="true">
+    <Position X="14.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FDBACQgICgggRxSGICIAIAQFUBEAEQAIABAgAACUIKg=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Player" Collapsed="true">
+    <Position X="21" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAACAAAAggABgCAAQIKAACAEAAAAACCAAAAQAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Players\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EffectAnimation" Collapsed="true">
+    <Position X="2.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimation" Collapsed="true">
+    <Position X="4.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\EntityAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityWeaponAnimation" Collapsed="true">
+    <Position X="64" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAEAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\EntityWeaponAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.ParentAnimation" Collapsed="true">
+    <Position X="3.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAgAAAAAAAAAAEABBAAAAgQAAACAwAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\ParentAnimation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations.EffectAnimationControl" Collapsed="true">
+    <Position X="69.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAgQAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimationControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior.BehaviorUnitCombat" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorUnitCombat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior.BehaviorUnitFinding" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAKAAACQgAAAQAAAABAAAQBAAQAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorUnitFinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior.BehaviorUnitMoving" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAACAAAIAAAAAAAAAAAAAAAAAAAAAAAQAACAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorUnitMoving.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior.BehaviorUnitParent" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEIAAAAAAAAAAAACAAAAAAAAABAgBAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorUnitParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Behavior.BehaviorControl" Collapsed="true">
+    <Position X="64" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACzYAAhAACAAAAAAACAQQQAAAABAAAACASAAEAAEgFg=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Enemy" Collapsed="true">
+    <Position X="12" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAQgAIBgCAAAIAABAAEAgAAAAAAAAAAAEAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Enemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.FlowerEater" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\FlowerEater.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Mushroom" Collapsed="true">
+    <Position X="9.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Mushroom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.SkeletonBasic" Collapsed="true">
+    <Position X="12" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonBasic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.SkeletonSwordsman" Collapsed="true">
+    <Position X="14.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonSwordsman.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Turtle" Collapsed="true">
+    <Position X="16.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Turtle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_System.ItemDropUnit" Collapsed="true">
+    <Position X="64" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIASAAAAAAAAAQAABAABAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Loot Drop System\ItemDropUnit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Loot_Drop_System.LootSystem" Collapsed="true">
+    <Position X="65.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Loot Drop System\LootSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons.SkeletonArcher" Collapsed="true">
+    <Position X="18.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonArcher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.Skeletons.SkeletonHealer" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\Skeletons\SkeletonHealer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Players.Hero" Collapsed="true">
+    <Position X="21" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Players\Hero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem.Cell" Collapsed="true">
+    <Position X="67.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAQAAAAAAABEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Players\InventorySystem\Cell.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem.Inventory" Collapsed="true">
+    <Position X="69.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAQAAAABpAAAAggCAEFYBlkEA9BIAiwBGQCEJAABAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Players\InventorySystem\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Background_Blocks.BackgroundBlockObject" Collapsed="true">
+    <Position X="52.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Background Blocks\BackgroundBlockObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Background_Blocks.BackgroundBrickBlock" Collapsed="true">
+    <Position X="52.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Background Blocks\BackgroundBrickBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks.BrickBlock" Collapsed="true">
+    <Position X="32.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Static Blocks\BrickBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks.ConcreteBlock" Collapsed="true">
+    <Position X="34.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Static Blocks\ConcreteBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks.DirtBlock" Collapsed="true">
+    <Position X="27.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Static Blocks\DirtBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks.GrassBlock" Collapsed="true">
+    <Position X="30" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Static Blocks\GrassBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Static_Blocks.LadderBlock" Collapsed="true">
+    <Position X="57" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Transparent Blocks\LadderBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.StaticBlockObject" Collapsed="true">
+    <Position X="31" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Static Blocks\StaticBlockObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Transparent_Blocks.Translucent_Blocks.TranslucentBlockObject" Collapsed="true">
+    <Position X="50.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAkAQAAAAiAAAAAgAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Translucent Blocks\TranslucentBlockObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks.WoodTranslucentBlock" Collapsed="true">
+    <Position X="50.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Translucent Blocks\WoodTranslucentBlock.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Environment.Translucent_Blocks.TransparentBlockObject" Collapsed="true">
+    <Position X="57" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Environment\Transparent Blocks\TransparentBlockObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Armor.Armor" Collapsed="true">
+    <Position X="48" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Armor\Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Armor.Basic_Armor" Collapsed="true">
+    <Position X="48" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Armor\Basic_Armor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Bombs.Bomb" Collapsed="true">
+    <Position X="37.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAACAAAgggACAAAAQAEgAAEAAAAAAAAAAAAAgg=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Bombs\Bomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Bombs.BombConstructor" Collapsed="true">
+    <Position X="36.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Bombs\BombConstructor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Bombs.StandartBomb" Collapsed="true">
+    <Position X="39" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Bombs\StandartBomb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Items.ParentItem" Collapsed="true">
+    <Position X="42.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAgAgBAAAAgAAQAAAAUAAAAAAACAAAgAoA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\ParentItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Potions.Potion" Collapsed="true">
+    <Position X="45.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Potions\Potion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Potions.SmallHealing_Potion" Collapsed="true">
+    <Position X="45.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Potions\SmallHealing_Potion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets.Basic_arrow" Collapsed="true">
+    <Position X="59.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Weapons\Bullets\Basic_arrow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets.BulletConstructor" Collapsed="true">
+    <Position X="61.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Weapons\Bullets\BulletConstructor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Bullets.BulletParent" Collapsed="true">
+    <Position X="60.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAABAhgAAAAAAAAAUAAAAAAAgAAQAAAhAAgA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Weapons\Bullets\BulletParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Guns.Basic_Bow" Collapsed="true">
+    <Position X="41.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Weapons\Guns\Basic_Bow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Swords.Basic_Sword" Collapsed="true">
+    <Position X="43.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Weapons\Swords\Basic_Sword.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Logic.Objects.Items.Weapons.Weapon" Collapsed="true">
+    <Position X="42.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAICgAAAAAAhIQAAAGAAIAQggAAABIAAAQAgAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\Weapons\Weapon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Design_Elements.DesignElementsStatic" Collapsed="true">
+    <Position X="65.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Management\Design Elements\DesignElementsStatic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Design_Elements.Menu_Background" Collapsed="true">
+    <Position X="67.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Management\Design Elements\Menu Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Interaction_Elements.Button_" Collapsed="true">
+    <Position X="34.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAgAAAAAAAAAAEAAAAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>Classes\Management\Interaction Elements\Button_.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Interaction_Elements.ButtonParent" Collapsed="true">
+    <Position X="34.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAggAAYAAIAQAQCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Management\Interaction Elements\ButtonParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Interaction_Elements.LevelButton" Collapsed="true">
+    <Position X="37" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Management\Interaction Elements\LevelButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Interaction_Elements.SaveData_but" Collapsed="true">
+    <Position X="32.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAACAAgAQABAAAAAAAAQgAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Management\Interaction Elements\SaveData_but.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.ChooseSaveScreen" Collapsed="true">
+    <Position X="23.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUABAAAAAACAoAAgAAAAAAAgAADAAgAAAAAAACAAAA=</HashCode>
+      <FileName>Classes\Management\Screens\ChooseSaveScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.CreateNewSaveScreen" Collapsed="true">
+    <Position X="25.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUABAAAAAACAoAAAAAAAAAAAAACAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Classes\Management\Screens\CreateNewSaveScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.GameScreen" Collapsed="true">
+    <Position X="27.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUABAQAAAACAoAAAAAAAAAAAAACAAAAAAAAAACAAAI=</HashCode>
+      <FileName>Classes\Management\Screens\GameScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.MenuScreen" Collapsed="true">
+    <Position X="30" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUABAAAAAACAoAAAAAAAAAAAAACAAAAAAAAAACABAA=</HashCode>
+      <FileName>Classes\Management\Screens\MenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.OptionScreen" Collapsed="true">
+    <Position X="21" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUABAAAAAACAoAAAAAAAAAAAAACAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Classes\Management\Screens\OptionScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.ScreenControl" Collapsed="true">
+    <Position X="67.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Classes\Management\Screens\ScreenControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Management.Screens.ScreenParent" Collapsed="true">
+    <Position X="25.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUABAAAAAACAoAAIAAAAAAAAAACgAAAAAAAAACAAAA=</HashCode>
+      <FileName>Classes\Management\Screens\ScreenParent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Save_System.SaveData" Collapsed="true">
+    <Position X="64" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAACAAAgAAAAAAAAAAAEAAAAAIAAAgAQEAAA=</HashCode>
+      <FileName>Classes\Save System\SaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Save_System.Saves" Collapsed="true">
+    <Position X="65.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAACAAAAAAAAA=</HashCode>
+      <FileName>Classes\Save System\Saves.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Terraria_sMario.Classes.Control.ControlKeyboard" Collapsed="true">
+    <Position X="64" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABIAEAAEIAAAgAhCAACAAAAAAAQAAgAAAAAAAAA=</HashCode>
+      <FileName>Classes\Control\ControlKeyboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Terraria_sMario.Classes.Logic.Services.UI_Entity_Draw_Type" Collapsed="true">
+    <Position X="65.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAoAAAAAAAAAAAGAAAEAAAAAAAAAAAAAIQAAAAAAAg=</HashCode>
+      <FileName>Classes\Logic\DrawingElements\UI_Entity_Draw_Type.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Levels.BuildingTypes" Collapsed="true">
+    <Position X="67.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Classes\Logic\Levels\LevelBuilding\BuildingTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.EffectTypes" Collapsed="true">
+    <Position X="64" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAEAAAIQAQ=</HashCode>
+      <FileName>Classes\Logic\Objects\Features\EffectTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.EntityStates" Collapsed="true">
+    <Position X="67.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAUA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\EntityStates.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.EntityTypes" Collapsed="true">
+    <Position X="69.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAABEAAAAAACAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\EntityTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.EntityAnimationTypes" Collapsed="true">
+    <Position X="65.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAIAAgAEAAgAAAAAAEAAAAAAABQIAAAACAAAAUA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\EntityAnimationTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Animations.Effect_Animations.EffectAnimationTypes" Collapsed="true">
+    <Position X="69.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAABACAgAAAAAAEAAAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Animations\Effect Animations\EffectAnimationTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior.ActionType" Collapsed="true">
+    <Position X="64" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAACAAAABACAAAIAAAIEACACAAAIQAAAAAEAQAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\ActionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Enemies.AI_Behavior.BehaviorTypes" Collapsed="true">
+    <Position X="65.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAIAAAAAQAgAAAAAAAAACAAAAAAAQAgAAAEgAQA=</HashCode>
+      <FileName>Classes\Logic\Objects\Creatures\Enemies\AI Behavior\BehaviorTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Logic.Objects.Creatures.Players.InventorySystem.ItemTypes" Collapsed="true">
+    <Position X="64" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAIAAAAAAAAAAAAAAAAgAEAAAAAEAAAA=</HashCode>
+      <FileName>Classes\Logic\Objects\Items\ItemTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Terraria_sMario.Classes.Save_System.DifficultTypes" Collapsed="true">
+    <Position X="64" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Classes\Save System\DifficultTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
